@@ -1,3 +1,5 @@
+<div class="updated">{docsify-updated}</div>
+
 ?> 本章节将会涉及到变量类型及函数回调，都是一些特别基础的知识  
 在这里不会做基础讲解，如果你至少要对一门编程语言有相关程度的认知，可以继续往下看
 
@@ -7,7 +9,7 @@
 
 在插件加载后 kokkoro 去调用了 `enable` 函数，去执行 `bot` 对象的 `on` 方法
 
-那个那个，bot 到底是什么呀？~~哈？你问我干嘛，打出来看看不就知道了嘛！~~
+那个那个，bot 到底是什么呀？~~（哈？你问我干嘛，打出来看看不就知道了嘛！）~~
 
 ``` javascript
 function enable(bot) {
@@ -21,20 +23,10 @@ function enable(bot) {
 
 ``` shell
 bot {
-  # 昵称
   nickname: 'kokkoro',
-  # 年龄
   age: 12,
-  # 性别
   sex: 'female',
-  # 好友列表
-  fl: Map(3) {
-    ...
-  },
-  # 群组列表
-  gl: Map(1) {
-    ...
-  },
+  uin: 437402067,
   ...
 }
 ```
@@ -51,9 +43,7 @@ bot {
 其它比较常见的例如 `新人入群`、`塞口球` 甚至是 `戳一戳` 都有相关事件  
 在这里，你可以制作各种各样有趣的插件，能让 kokkoro 变得更加强大 o((>ω< ))o
 
-> 更多事件可查看：https://github.com/takayama-lily/oicq/wiki/92.%E4%BA%8B%E4%BB%B6%E6%96%87%E6%A1%A3
-
-我们接触到的消息相关事件，共有以下三种：
+例如我们刚刚使用到的是消息事件，共有以下三种：
 
 ``` javascript
 // 全部消息事件
@@ -68,6 +58,8 @@ bot.on('message.private', event => console.log(event));
 
 不同之前介绍的 `bot` 与 `enable` ，在一般插件开发中，对于 `event` 使用是 **最为频繁** 的
 
+> 更多 oicq 消息事件可查看：https://github.com/takayama-lily/oicq/wiki/92.%E4%BA%8B%E4%BB%B6%E6%96%87%E6%A1%A3
+
 ## 消息对象
 
 为什么说 `event` 的使用及其频繁？
@@ -76,13 +68,11 @@ bot.on('message.private', event => console.log(event));
 
 ``` javascript
 function listener (event) {
-  const { raw_message, reply } = event;
-
-  raw_message === '你好' && reply(`你好呀`);
+  event.raw_message === '你好' && event.reply(`你好呀`);
 }
 ```
 
-回顾之前编写的代码，我们在 `event` 对象里解构赋值了 `raw_message` 与 `reply`
+回顾之前编写的代码，我们使用了 `event` 对象里的 `raw_message` 属性与 `reply` 方法
 
 属性 `raw_message` 是接收到的消息文本，方法 `reply` 则是引用来源回复（私信和群聊都可使用）
 
@@ -116,8 +106,12 @@ yuki：“嗯？（察觉）”
 
 ``` javascript
 export function enable(bot) {
-  bot.on('message.private', event => {
-    event.raw_message === '你好' && reply(`你好呀`);
+  bot.on('message', event => {
+    const { raw_message, reply } = event;
+
+    if (raw_message === '你好') {
+      reply(`你好呀`);
+    }
   });
 }
 ```
@@ -125,10 +119,12 @@ export function enable(bot) {
 天の声：“蒋蒋~我把 hello 代码优化了亿下，怎么样？是不是比你一开始写的要好多了？”  
 yuki：“蛤？！”
 
-![shine](../images/emoji/shine.jpg ':size=20%')
+![shine](../images/emoji/shine.jpg ':size=200')
 
-!> 尽量避免将 **逻辑代码** 写到 `enable`、`disable` 方法里  
-为什么说是尽量避免，而不是严格禁止？ ~~你非要写我也拦不住啊，而且这样并不会报错~~
+你现在这样写会**直接报错**，而且这段代码因为使用了解构赋值和箭头函数会导致各种各样的问题
+
+!> 尽量避免将 **逻辑代码** 直接写到 `enable`、`disable` 方法里  
+为什么说是尽量避免，而不是严格禁止？ ~~你非要写我也拦不住啊，而且这样并不会有编译错误~~
 
 不要仅看了前面一点内容就开始急于编写代码
 

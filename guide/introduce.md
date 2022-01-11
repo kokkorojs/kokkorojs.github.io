@@ -1,6 +1,29 @@
+<div class="updated">{docsify-updated}</div>
+
 ?> 本项目是一个基于 [oicq](https://github.com/takayama-lily/oicq) 协议库，使用 [TypeScript](https://www.typescriptlang.org/) 语言开发的 [QQ](https://im.qq.com/index) 机器人框架
 
-## 许可协议
+## 环境要求
+
+依赖 [nodejs](https://nodejs.org/zh-cn/) 运行，版本不能低于 v14 ，以下平台均通过本人测试，可稳定运行
+
+- windows
+  + [ ] windows 7 (没测过，硬盘是 mbr 格式，装不上 win7，都 2202 年了不会还有人在用吧)
+  + [x] windows 8
+  + [x] windows 8.1
+  + [x] windows 10
+  + [x] windows 11
+  + [x] windows server
+- lunux
+  + [x] ubintu 18.04
+  + [x] ubintu 20.04
+  + [x] cent os 8
+  + [x] cent os 8.2
+  + [x] raspberry pi os desktop
+- mac
+  + [x] intel
+  + [x] m1
+
+## 开源协议
 
 > 使用 [MIT License](https://github.com/kokkorojs/kokkoro/blob/master/LICENSE) 开源许可协议，没有特别严格的限制
 

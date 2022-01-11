@@ -7,10 +7,38 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
   <!-- Aplayer -->
   <script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+  <!-- Edit Github -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-edit-on-github"></script>
+
+  <style>
+    :root {
+      --theme-color: #57B497;
+      --cover-heading-color: #000;
+      --cover-background-color: #fff;
+      /* Notice - Tip */
+      --notice-tip-border-color: #57B497;
+      /* Plugin: Zoom Image */
+      --zoomimage-overlay-background: rgba(0, 0, 0, 0.5);
+    }
+
+    :root::-webkit-scrollbar {
+      width: 10px;
+      background-color: #f6f6f6;
+    }
+
+    :root::-webkit-scrollbar-thumb {
+      background-color: #57B497;
+    }
+
+    .updated {
+      position: absolute;
+      top: 70px;
+    }
+  </style>
 </head>
 
 <body>
@@ -21,17 +49,17 @@
       {
         name: 'リトルアドベンチャー',
         artist: '諸星すみれ / 小倉唯 / 日高里菜',
-        url: 'https://m801.music.126.net/20211211003504/340680b2fb0f4ff04bc371b1c6478c7f/jdyyaac/020e/545e/0f0b/5d5f7aa397c425ba8b9b8a13b652b7bc.m4a',
-        cover: 'http://p1.music.126.net/XFsiL-OdZTsq04DtbgLU1w==/109951163568867279.jpg?param=130y130'
+        url: 'musics/リトルアドベンチャー.m4a',
+        cover: 'http://p1.music.126.net/XFsiL-OdZTsq04DtbgLU1w==/109951163568867279.jpg?param=130y130',
       },
       {
         name: 'つなぐもの',
         artist: '種田梨沙 / 東山奈央 / 早見沙織',
-        url: 'https://m701.music.126.net/20211211002742/bfa4014363ff2f92691fdf20690b308d/jdyyaac/0008/045b/045a/7be4288f323142122f45307ca8758b38.m4a',
-        cover: 'http://p1.music.126.net/53b-RQDfkB63N5el8nEh6g==/109951163556786166.jpg?param=130y130'
+        url: 'musics/つなぐもの.m4a',
+        cover: 'http://p1.music.126.net/53b-RQDfkB63N5el8nEh6g==/109951163556786166.jpg?param=130y130',
       }
     ]
-    const ap = new APlayer({
+    const aplayer = new APlayer({
       container: document.getElementById('aplayer'),
       fixed: true,
       audio,
@@ -46,10 +74,24 @@
       loadSidebar: true,
       // 自定义侧边栏目录
       subMaxLevel: 2,
+      // 切换页面后跳转到顶部
+      auto2top: true,
       // 开启封面
       coverpage: true,
       // 只在访问主页时加载封面
       onlyCover: true,
+      // 小屏设备下合并导航栏到侧边栏
+      mergeNavbar: true,
+      formatUpdated: '更新日期：{YYYY}/{MM}/{DD} {HH}:{mm}',
+      // default 'hash'
+      routerMode: 'hash',
+      // 在找不到指定页面时加载 '_404.md'
+      notFoundPage: true,
+      // 主题
+      themeable: {
+        readyTransition: true,
+        responsiveTables: true,
+      },
       search: {
         placeholder: '搜索',
         noData: '电波传达不到哦...',
@@ -63,6 +105,13 @@
         errorText: '错误',
         successText: '已复制'
       },
+      plugins: [
+        EditOnGithubPlugin.create(
+          'https://github.com/kokkorojs/kokkorojs.github.io/edit/master/',
+          null,
+          '帮助改善当前页面',
+        ),
+      ],
       Valine: {
         appId: 'RJLQJfUKoYOV5SzpvMncPTeW-gzGzoHsz',
         appKey: 'ClRCnvQG6NwOS3VHmaWXPrjK',
@@ -91,20 +140,24 @@
           "公主连结-怎么这样": "https://i0.hdslb.com/bfs/emote/7461756bf9c49c4b48d1c26083695044b468ad7c.png",
           "公主连结-emmm": "https://i0.hdslb.com/bfs/emote/99ca73b1f486042cd8ab6b17fd5ad638ed777899.png",
         },
-      }
+      },
     }
   </script>
   <!-- Docsify -->
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  <!-- Docsify Themeable -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
   <!-- Valine -->
   <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
   <script src="//unpkg.com/docsify-valine/dist/docsify-valine.min.js"></script>
   <!-- Search -->
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-  <!-- Zoom image -->
+  <!-- Zoom Image -->
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
   <!-- Copy Code -->
   <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <!-- Docsify Tabs -->
+<script src="//cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
 </body>
 
 </html>
