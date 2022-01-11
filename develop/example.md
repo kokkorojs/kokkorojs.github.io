@@ -1,3 +1,5 @@
+<div class="updated">{docsify-updated}</div>
+
 ?> 当前页面并不会对 js 做深入讲解，即使你是小白也可以放心观看  
 即使你之前从未接触过 js 也没关系，接下来的开发过程中会为你逐一讲解 \\(￣︶￣*\\))
 
@@ -12,7 +14,7 @@
   + 所有由你自己编写，并 **仅供个人使用** 的插件就可以称为本地插件
 - npm 插件
   + npm 插件都是直接使用 `npm i` 命令安装，存放在 `node_modules` 目录下
-  + 是由我或者其他开发者编写，上传至 `npmjs` 平台，为 **所有使用 kokkoro 框架的人** 提供服务
+  + 是由我或者其他开发者编写，上传至 [npmjs](https://www.npmjs.com/) 平台，为 **所有使用 kokkoro 框架的人** 提供服务
 
 还记得在初始化项目时输入的 `kokkoro init` 么，在界面会有一个选择安装插件的步骤，那些插件就全部属于 npm 插件
 
@@ -30,8 +32,8 @@
 
 ``` text
 plugins
-└─ hello
-   └─ index.js       hello 插件
+└─ hello            hello 插件
+   └─ index.js
 ```
 
 现在就可以开始编写代码了，需要注意的是，`enable` 和 `disable` 方法是必须写入并导出的
@@ -69,11 +71,11 @@ module.exports = {
 
 ``` javascript
 function listener (event) {
-  // raw_message 是 bot 接收到的消息字段，reply 是发送消息的方法
-  const { raw_message, reply } = event;
-
-  // 如果收到的字段是 'hello'，则调用 reply 发送消息
-  raw_message === '你好' && reply(`你好呀`);
+  /**
+   * 如果收到的字段是 'hello'，则调用 reply 发送消息
+   * raw_message 是 bot 接收到的消息字段，reply 是引用消息回复的方法
+   */
+  event.raw_message === '你好' && event.reply(`你好呀`);
 }
 ```
 
