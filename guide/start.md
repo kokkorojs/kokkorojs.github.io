@@ -82,4 +82,4 @@ kokkoro start
 ![hello world](../images/illustrate/hello_world.png)
   
 > 当然，如果你有 js 的相关知识，随时都可以编写自己的插件，详情可在 [开发](/develop/example) 一栏查看  
-> 更多插件和使用说明可以在 [插件](/plugin/awesome) 中查找，不过文档不一定及时更新，你也可以访问 [GitHub](https://github.com/kokkorojs) 仓库
+> 更多插件和使用说明可以在 [插件社区](/plugin/awesome) 中查找，不过文档不一定及时更新，你也可以访问 [GitHub](https://github.com/kokkorojs) 仓库
