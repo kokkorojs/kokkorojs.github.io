@@ -22,6 +22,46 @@
 
 但是如果你想对 kokkoro 有一个更深入的了解，还是需要熟悉 nodejs 及 npmjs 的基本原理
 
+## 临时示例
+
+!> v0.2 版本已发布，开发文档将在近期编写，与 v0.1 不兼容，此处为临时示例，文档更新后移除
+
+``` typescript
+import { AllMessageEvent, Extension, Bot } from 'kokkoro-core';
+
+export default class implements Extension {
+  bot: Bot;
+
+  constructor(bot: Bot) {
+    this.bot = bot;
+  }
+
+  onMessage(event: AllMessageEvent) {
+    const raw_message = event.raw_message;
+
+    raw_message === '你好' && event.reply('hello world');
+  }
+}
+```
+
+你也可以使用 js 来编写插件，不过不推荐，没有 interface 与 implements 就不会有代码提示
+
+``` javascript
+module.exports = class {
+  constructor(bot) {
+    this.bot = bot;
+  }
+
+  onMessage(event) {
+    const raw_message = event.raw_message;
+
+    raw_message === '你好' && event.reply('hello world');
+  }
+}
+```
+
+!> 下方代码段为 v0.1 开发旧示例，将在近期移除，仅供参考
+
 ## 编写插件
 
 > 在编写模块前，你需要先在 plugins 目录下，创建一个文件夹来存放代码文件
@@ -76,6 +116,26 @@ function listener (event) {
    * raw_message 是 bot 接收到的消息字段，reply 是引用消息回复的方法
    */
   event.raw_message === '你好' && event.reply(`你好呀`);
+}
+```
+
+## 完整代码
+
+``` javascript
+function listener (event) {
+  event.raw_message === '你好' && event.reply(`你好呀`);
+}
+
+function enable (bot) {
+  bot.on('message.private', listener);
+}
+
+function disable (bot) {
+  bot.off('message.private', listener);
+}
+
+module.exports = {
+  enable, disable
 }
 ```
 
