@@ -1,9 +1,32 @@
 <div class="updated">{docsify-updated}</div>
 
+!> 因时间有限，该页面无法保证与 Github 仓库同步更新，插件基本使用在相关仓库 README 有说明  
+这里仅给出部分插件的图片演示，不定时更新，若要访问全部插件可 [点击查找](https://github.com/kokkorojs)
+
+## 群管理
+``` shell
+npm i kokkoro-plugin-group
+```
+
+群管插件，有各种各样的例如成员退群提醒、申请头衔等小功能
+
+### 默认参数
+``` typescript
+interface GroupOption {
+  // 群通知
+  notice: boolean;
+  // 申请头衔等级限制
+  title_level: number;
+}
+```
+
+### 申请头衔
+> 申请头衔相关正则 `/^申请头衔[\s]?.+$/`
+
 ## 公会助手
 
 ``` shell
-npm i kokkoro-guild
+npm i kokkoro-plugin-guild
 ```
 
 原名 kokkoro-gvg ，作为会战的报刀专用插件，因为后续会扩展一系列基于公会的非会战功能，所以改名
@@ -13,6 +36,7 @@ npm i kokkoro-guild
 > 在使用会战功能前，若你从未设置过公会信息，则需要先修改当前游戏服务器
 
 ### 默认参数
+
 ``` javascript
 const option = {
   // 游戏服务器
@@ -43,13 +67,14 @@ server 默认参数为 `none` ，可选 `bl`、`tw`、`jp`，对应`国服`、`�
 
 ### 伤害记录
 
-> 报刀的相关正则 ``/(^[1-5]?\s?报刀\s?[1-9]\d*$|^[1-5]?\s?尾刀$)/``
+> 报刀的相关正则 `/(^[1-5]?\s?(报刀|连报)\s?[1-9]\d*$|^[1-5]?\s?尾刀$)/`
 
 ![guild fight](../images/illustrate/fight.png)
 
 发送 `报刀 <伤害>` 即可记录出刀数据，若斩杀 boss ，则需要输入 `尾刀` 而不是报刀，不必传递其它参数
 
-如果你是日服公会，在 `报刀` 前面输入 boss 编号可指定对应 boss ，例如 `2 报刀 3000000` 或 `5 尾刀`，若未指定 boss 则与国服逻辑保持一致，会默认指定当前第一个存活的 boss
+如果你是日服公会，在 `报刀` 前面输入 boss 编号可指定对应 boss ，例如 `2 报刀 3000000` 或 `5 尾刀`，若未指定 boss 则与国服逻辑保持一致，会默认指定当前第一个存活的 boss  
+如果你有多个小号，在当前已报完三刀的情况下，可以输入 `连报` 无视出刀数量限制
 
 ### 出刀代报
 
