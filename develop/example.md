@@ -22,46 +22,6 @@
 
 但是如果你想对 kokkoro 有一个更深入的了解，还是需要熟悉 nodejs 及 npmjs 的基本原理
 
-## 临时示例
-
-!> v0.2 版本已发布，开发文档将在近期编写，与 v0.1 不兼容，此处为临时示例，文档更新后移除
-
-``` typescript
-import { AllMessageEvent, Extension, Bot } from 'kokkoro-core';
-
-export default class implements Extension {
-  bot: Bot;
-
-  constructor(bot: Bot) {
-    this.bot = bot;
-  }
-
-  onMessage(event: AllMessageEvent) {
-    const raw_message = event.raw_message;
-
-    raw_message === '你好' && event.reply('hello world');
-  }
-}
-```
-
-你也可以使用 js 来编写插件，不过不推荐，没有 interface 与 implements 就不会有代码提示
-
-``` javascript
-module.exports = class {
-  constructor(bot) {
-    this.bot = bot;
-  }
-
-  onMessage(event) {
-    const raw_message = event.raw_message;
-
-    raw_message === '你好' && event.reply('hello world');
-  }
-}
-```
-
-!> 下方代码段为 v0.1 开发旧示例，将在近期移除，仅供参考
-
 ## 编写插件
 
 > 在编写模块前，你需要先在 plugins 目录下，创建一个文件夹来存放代码文件
@@ -76,67 +36,70 @@ plugins
    └─ index.js
 ```
 
-现在就可以开始编写代码了，需要注意的是，`enable` 和 `disable` 方法是必须写入并导出的
+现在就可以开始编写代码了，需要注意的是，`plugin` 变量是必须实例化并导出的
 
-``` javascript
-// 在这里编写你的插件逻辑，名字不一定非要是 listener
-function listener (event) {
+``` typescript
+import { Plugin, Option } from 'kokkoro';
 
-}
+// plugin 必须实例化并导出
+export const plugin = new Plugin('hello');
 
-// 插件启用函数（必须编写）
-function enable (bot) {
-  bot.on('message.private', listener);
-}
-
-// 插件禁用函数（必须编写）
-function disable (bot) {
-  bot.off('message.private', listener);
-}
-
-// enable 和 disable 必须导出
-module.exports = {
-  enable, disable
-}
+plugin
+  .command('say')
+  .sugar(/^(你好)$/)
+  .action(function () {
+    // 可以在此处编写你的插件逻辑
+  })
 ```
 
 ## 实现交互
 
-相信你这个时候一定有很多疑问，`bot` 是什么？`message.private` 又是什么？`event` ？
+相信你这个时候一定有很多疑问，`Plugin` 是什么？`command` 又是什么？`action` ？
 
 > 当前章节仅提供示例，目的在于让你能自己编写出可以进行简单交互的插件  
 目前你无需关心这段代码是什么意思，后面会逐一介绍，所以不用着急，让我们继续
 
-在 `listener` 函数里添加以下代码
+在 `action` 函数里添加以下代码
 
-``` javascript
-function listener (event) {
-  /**
-   * 如果收到的字段是 'hello'，则调用 reply 发送消息
-   * raw_message 是 bot 接收到的消息字段，reply 是引用消息回复的方法
-   */
-  event.raw_message === '你好' && event.reply(`你好呀`);
-}
+``` typescript
+action(function () {
+  // 可以在此处编写你的插件逻辑
+  this.event.replay('你好呀');
+})
 ```
 
 ## 完整代码
 
-``` javascript
-function listener (event) {
-  event.raw_message === '你好' && event.reply(`你好呀`);
-}
+``` typescript
+import { Plugin, Option } from 'kokkoro';
 
-function enable (bot) {
-  bot.on('message.private', listener);
-}
+export const plugin = new Plugin('hello');
 
-function disable (bot) {
-  bot.off('message.private', listener);
-}
-
-module.exports = {
-  enable, disable
-}
+plugin
+  .command('say')
+  .sugar(/^(你好)$/)
+  .action(function () {
+    this.event.replay('你好呀');
+  })
 ```
 
-现在，启用插件后，只要有人给 bot **私信发送** 了 `你好` ，便会自动回复 `你好呀` 相关字段，是不是非常简单？ (●'◡'●)
+当然，你完全也可以使用 js 来编写插件
+
+``` javascript
+const { Plugin } = require('kokkoro');
+  
+const plugin = new Plugin('hello');
+
+plugin
+  .command('say')
+  .sugar(/^(测试)$/)
+  .action(function () {
+    this.event.replay('你好呀');
+  })
+
+module.exports = {
+  plugin,
+};
+```
+
+现在，启用插件后，只要有人给 bot 发送了 `你好` ，便会自动回复 `你好呀` 相关字段，是不是非常简单？ (●'◡'●)

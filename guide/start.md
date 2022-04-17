@@ -11,8 +11,8 @@
 #### **全局安装**
 
 ``` shell
-# 安装 kokkoro
-npm i -g kokkoro
+# 安装 kokkoro cli
+npm i -g @kokkoro/cli
 
 # 创建并进入文件夹
 mkdir bot && cd bot
@@ -27,8 +27,8 @@ kokkoro init
 # 创建并进入文件夹
 mkdir bot && cd bot
 
-# 安装 kokkoro
-npm i kokkoro
+# 安装 kokkoro cli
+npm i @kokkoro/cli
 
 # 初始化项目
 npx kokkoro init
@@ -37,7 +37,7 @@ npx kokkoro init
 <!-- tabs:end -->
 
 > 若网速较慢可以尝试使用阿里镜像源  
-> `npm i -g kokkoro --registry=https://registry.npm.taobao.org`
+> `npm i -g @kokkoro/cli --registry=https://registry.npm.taobao.org`
 
 ~~yuki，你为什么不讲下用 yarn 如何安装呀？（这是给小白看的，你 npm 都会用了还需要讲 yarn 么）~~
 
@@ -77,7 +77,7 @@ kokkoro start
 ## 你好世界
 
 登录成功后，你将会收到一条私信（你填写的 masters）
-输入 `>echo` 指令可以测试消息打印，现在开启一段属于你的物语吧 q(≧▽≦q)
+输入 `print` 指令可以测试消息打印，现在开启一段属于你的物语吧 q(≧▽≦q)
 
 ![hello world](../images/illustrate/hello_world.png)
 
@@ -99,17 +99,15 @@ port: 0
 bots:
   # bot 账号
   "123456789":
-    # 指令前缀，默认 '>'
-    prefix: ">"
     # 项目启动时自动登录，默认 true
     auto_login: true
     # 登录模式，默认扫码登录
-    login_mode: qrcode
+    mode: qrcode
     # bot 主人，可添加多个
     masters:
       - 123456789
     # 协议配置，不要随意修改，除非你知道自己在做什么
-    config:
+    protocol:
       # 日志等级，默认 info
       # 打印日志会降低性能，若消息量巨大建议修改此参数
       log_level: info
