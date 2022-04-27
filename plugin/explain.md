@@ -1,5 +1,3 @@
-<div class="updated">{docsify-updated}</div>
-
 ?> kokkoro 主要以 [公主连结☆Re:Dive](https://priconne-redive.jp/) 玩家为核心开发相关插件
 
 ## 指令介绍
