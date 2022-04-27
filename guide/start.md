@@ -1,5 +1,3 @@
-<div class="updated">{docsify-updated}</div>
-
 ?> 在此之前你需要安装并掌握 [nodejs](https://nodejs.org/) 及 [npmjs](https://www.npmjs.com/) 的相关知识
 
 ## 项目安装

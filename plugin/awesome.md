@@ -1,5 +1,3 @@
-<div class="updated">{docsify-updated}</div>
-
 !> 因时间有限，该页面无法保证与 Github 仓库同步更新，插件基本使用在相关仓库 README 有说明  
 这里仅给出部分插件的图片演示，不定时更新，若要访问全部插件可 [点击查找](https://github.com/kokkorojs)
 
