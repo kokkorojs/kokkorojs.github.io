@@ -40,39 +40,20 @@
   <div id="aplayer"></div>
   <!-- Aplayer -->
   <script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-  <!-- Docsify -->
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
-  <!-- Docsify Themeable -->
-  <script src="//cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
   <!-- Edit Github -->
   <script src="//cdn.jsdelivr.net/npm/docsify-edit-on-github"></script>
-  <!-- Docsify Count -->
-  <script src="//unpkg.com/docsify-count/dist/countable.min.js"></script>
-  <!-- Waline -->
-  <script src="//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-waline/docsify-waline.min.js"></script>
-  <!-- Search -->
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-  <!-- Zoom Image -->
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-  <!-- Copy Code -->
-  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
-  <!-- Docsify Tabs -->
-  <script src="//cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
-  <!-- Docsify Updated -->
-  <script src="//cdn.jsdelivr.net/npm/docsify-updated/src/time-updater.min.js"></script>
   <script>
     const audio = [
       {
         name: 'リトルアドベンチャー',
         artist: '諸星すみれ / 小倉唯 / 日高里菜',
-        url: '/musics/リトルアドベンチャー.m4a',
+        url: 'musics/リトルアドベンチャー.m4a',
         cover: 'http://p1.music.126.net/XFsiL-OdZTsq04DtbgLU1w==/109951163568867279.jpg?param=130y130',
       },
       {
         name: 'つなぐもの',
         artist: '種田梨沙 / 東山奈央 / 早見沙織',
-        url: '/musics/つなぐもの.m4a',
+        url: 'musics/つなぐもの.m4a',
         cover: 'http://p1.music.126.net/53b-RQDfkB63N5el8nEh6g==/109951163556786166.jpg?param=130y130',
       }
     ]
@@ -100,7 +81,7 @@
       // 小屏设备下合并导航栏到侧边栏
       mergeNavbar: true,
       // default 'hash'
-      routerMode: 'history',
+      routerMode: 'hash',
       // 在找不到指定页面时加载 '_404.md'
       notFoundPage: true,
       // 主题
@@ -151,6 +132,9 @@
           "公主连结-emmm": "https://i0.hdslb.com/bfs/emote/99ca73b1f486042cd8ab6b17fd5ad638ed777899.png",
         },
       },
+      scrollToTop: {
+        // text: '↑'
+      },
       plugins: [
         EditOnGithubPlugin.create(
           'https://github.com/kokkorojs/kokkorojs.github.io/edit/master/',
@@ -161,10 +145,31 @@
       timeUpdater: {
         text: '<div class="updated">最后更新: {docsify-updated}</div>',
         formatUpdated: '{YYYY}/{MM}/{DD}',
-        whereToPlace: 'top',
+        whereToPlace: 'bottom',
       },
     }
   </script>
+  <!-- Docsify -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  <!-- Docsify Themeable -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
+  <!-- Docsify Count -->
+  <script src="//unpkg.com/docsify-count/dist/countable.min.js"></script>
+  <!-- Waline -->
+  <script src="//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-waline/docsify-waline.min.js"></script>
+  <!-- Search -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <!-- Zoom Image -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <!-- Copy Code -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <!-- Docsify Tabs -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+  <!-- Docsify Updated -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-updated/src/time-updater.min.js"></script>
+  <!-- Docsify Scroll Top -->
+  <script src="//unpkg.com/docsify-scroll-to-top/dist/docsify-scroll-to-top.min.js"></script>
 </body>
 
 </html>
