@@ -1,4 +1,4 @@
-![logo](images/74237509.jpg ':size=260')
+![logo](assets/images/pixiv/74237509.jpg ':size=260')
 
 # kokkoro <small>0.3.1</small>
 

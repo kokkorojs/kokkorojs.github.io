@@ -4,11 +4,11 @@
 
 插件针对不同群聊都有着各自的参数设定，互不干扰，在群内输入 `>list` 列出 bot 在该群聊可使用的所有插件
 
-![list](../images/illustrate/list.png)
+![list](../assets/images/illustrate/list.png)
 
 你可以输入指令 `><插件名>` 来查看该插件的所有设置，管理员和群主能修改插件的任意属性 ~~（不要修改一些奇怪的东西进去，程序崩了我不负责）~~
 
-![option](../images/illustrate/option.png)
+![option](../assets/images/illustrate/option.png)
 
 当然，修改属性也特别简单，使用 `><插件名> <插件属性> <修改参数>` 指令即可立即生效
 

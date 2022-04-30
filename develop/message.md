@@ -120,7 +120,7 @@ export function enable(bot) {
 天の声：“蒋蒋~我把 hello 代码优化了亿下，怎么样？是不是比你一开始写的要好多了？”  
 yuki：“蛤？！”
 
-![shine](../images/emoji/shine.jpg ':size=200')
+![shine](../assets/images/emoji/shine.jpg ':size=200')
 
 你现在这样写会**直接报错**，而且这段代码因为使用了解构赋值和箭头函数会导致各种各样的问题
 
