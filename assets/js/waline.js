@@ -28,15 +28,13 @@ $docsify.plugins = [].concat(function (hook, vm) {
     }
     path = window.location.pathname + window.location.hash;
     options.path = path.replace(/\?.*$/, "");
+    // console.log(options.path);
     // 浏览量统计
-    let visitor = document.querySelector("#main div>span");
-    if (visitor) {
-      visitor.innerHTML +=
-        "&nbsp;|&nbsp;<span class=waline-pageview-count id=" +
-        options.path +
-        suffix;
-      w = Waline(options);
+    let pageview = document.querySelector(`#main div>span`);
+    if (pageview) {
+      pageview.innerHTML += `&nbsp;|&nbsp;<span class="waline-pageview-count" data-path="${options.path}"${suffix}`;
     }
+    w = Waline(options);
   });
 
   // 初始化并第一次加载完成数据后调用，只触发一次，没有参数。
