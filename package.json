@@ -1,0 +1,24 @@
+{
+  "name": "kokkorojs.github.io",
+  "description": "Documentation for kokkoro",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kokkorojs/kokkorojs.github.io.git"
+  },
+  "keywords": [],
+  "author": "yuki",
+  "license": "CC-BY-NC-SA-4.0",
+  "bugs": {
+    "url": "https://github.com/kokkorojs/kokkorojs.github.io/issues"
+  },
+  "homepage": "https://github.com/kokkorojs/kokkorojs.github.io#readme",
+  "devDependencies": {
+    "vitepress": "^0.22.3"
+  }
+}
