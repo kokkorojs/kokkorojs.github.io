@@ -47,7 +47,7 @@ server 默认参数为 `none` ，可选 `bl`、`tw`、`jp`，对应`国服`、`�
 
 > 设置公会的相关正则 `/^设置(国|台|日)服(公|工)会$/`
 
-![guild init](../images/illustrate/guild_init.png)
+![guild init](../assets/images/illustrate/guild_init.png)
 
 一般你只用设置一次游戏服务器，如果要中途修改重新设置一次就行了，在一切准备就绪后你就可以开启当期会战
 
@@ -55,7 +55,7 @@ server 默认参数为 `none` ，可选 `bl`、`tw`、`jp`，对应`国服`、`�
 
 > 开启会战的相关正则 `/^(开启|发起)会战$/`
 
-![guild start](../images/illustrate/guild_start.png)
+![guild start](../assets/images/illustrate/guild_start.png)
 
 当前演示为国服，kokkoro 支持日服会战，样式会有些许不一样，不过操作逻辑都是相同的
 
@@ -67,7 +67,7 @@ server 默认参数为 `none` ，可选 `bl`、`tw`、`jp`，对应`国服`、`�
 
 > 报刀的相关正则 `/(^[1-5]?\s?(报刀|连报)\s?[1-9]\d*$|^[1-5]?\s?尾刀$)/`
 
-![guild fight](../images/illustrate/fight.png)
+![guild fight](../assets/images/illustrate/fight.png)
 
 发送 `报刀 <伤害>` 即可记录出刀数据，若斩杀 boss ，则需要输入 `尾刀` 而不是报刀，不必传递其它参数
 
@@ -80,21 +80,21 @@ server 默认参数为 `none` ，可选 `bl`、`tw`、`jp`，对应`国服`、`�
 
 如果有公会成员出刀忘了报，可以使用代报指令，格式为 `@xxx 代报 100000`，若斩杀 boss ，**不输入伤害数值** 默认尾刀
 
-![guild stead](../images/illustrate/stead.png)
+![guild stead](../assets/images/illustrate/stead.png)
 
 ### 预约提醒
 
 > 预约的相关正则 `/^\*?预约[\s]?[1-5]?$/`
 
-![guild reservation](../images/illustrate/reservation.png)
+![guild reservation](../assets/images/illustrate/reservation.png)
 
 发送预约可查看当前预约信息，若需要预约 boss ，输入 `预约 <boss 编号>` 将会在上一个 boss 被斩杀时收到 At 提示
 
-![guild at](../images/illustrate/guild_at.png)
+![guild at](../assets/images/illustrate/guild_at.png)
 
 在预约收到 at 消息后，将会清空该 boss 下所有的预约成员信息，如果想让自己常驻预约，可以在指令前面添加 `*` 号让预约持久化
 
-![guild keep](../images/illustrate/guild_keep.png)
+![guild keep](../assets/images/illustrate/guild_keep.png)
 
 输入 `取消预约 <boss 编号>` 将自己移出预约列表
 
@@ -108,7 +108,7 @@ server 默认参数为 `none` ，可选 `bl`、`tw`、`jp`，对应`国服`、`�
 
 例如 `周目 1 boss 1 血量 6000000`，以上参数并非全部必填项，若只需要修改周目数单独输入指令即可
 
-![guild change](../images/illustrate/guild_change.png)
+![guild change](../assets/images/illustrate/guild_change.png)
 
 ### 会战查询
 
