@@ -2,14 +2,14 @@
 这里仅给出部分插件的图片演示，不定时更新，若要访问全部插件可 [点击查找](https://github.com/kokkorojs)
 
 ## 群管理
-``` shell
+```bash
 npm i kokkoro-plugin-group
 ```
 
 群管插件，有各种各样的例如成员退群提醒、申请头衔等小功能
 
 ### 默认参数
-``` typescript
+```typescript
 interface GroupOption {
   // 群通知
   notice: boolean;
@@ -23,7 +23,7 @@ interface GroupOption {
 
 ## 公会助手
 
-``` shell
+```bash
 npm i kokkoro-plugin-guild
 ```
 
@@ -35,7 +35,7 @@ npm i kokkoro-plugin-guild
 
 ### 默认参数
 
-``` javascript
+```javascript
 const option = {
   // 游戏服务器
   server: 'none',

@@ -8,7 +8,7 @@
 
 #### **全局安装**
 
-``` shell
+```bash
 # 安装 kokkoro cli
 npm i -g @kokkoro/cli
 
@@ -21,7 +21,7 @@ kokkoro init
 
 #### **本地安装**
 
-``` shell
+```bash
 # 创建并进入文件夹
 mkdir bot && cd bot
 
@@ -43,7 +43,7 @@ npx kokkoro init
 
 当你输入 `kokkoro init` 后， kokkoro 将会为你在当前所在目录自动安装并生成相关文件
 
-``` text
+```text
 .
 ├─ data               资源目录
 ├─ plugins            插件目录（存放编写好的插件）
@@ -63,7 +63,7 @@ npx kokkoro init
 
 一切准备就绪，开始启动你的项目吧
 
-``` shell
+```bash
 kokkoro start
 ```
 
@@ -90,7 +90,7 @@ kokkoro start
 YAML 是一种专攻配置的语言，可读性高（JSON 有时确实让人眼花缭乱不是么？）  
 kokkoro 所有的配置文件均使用 YAML 编写，你也可以 [查看 YAML 入门教程](https://www.runoob.com/w3cnote/yaml-intro.html) 获取相关信息
 
-``` yaml
+```yaml
 # web 服务端口号，为 0 则不启用
 port: 0
 # bot 信息，可添加多个

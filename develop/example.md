@@ -28,7 +28,7 @@
 
 创建成功后在当前目录下创建 index.js，命名规范遵循 `CommonJS` ，文件名 **不能随意更改** ，否则无法被检索
 
-``` text
+```text
 plugins
 └─ hello            hello 插件
    └─ index.js
@@ -36,15 +36,14 @@ plugins
 
 现在就可以开始编写代码了，需要注意的是，`plugin` 变量是必须实例化并导出的
 
-``` typescript
+```typescript
 import { Plugin, Option } from 'kokkoro';
 
 // plugin 必须实例化并导出
-export const plugin = new Plugin('hello');
+export const plugin = new Plugin();
 
 plugin
   .command('say')
-  .sugar(/^(你好)$/)
   .action(function () {
     // 可以在此处编写你的插件逻辑
   })
@@ -59,7 +58,7 @@ plugin
 
 在 `action` 函数里添加以下代码
 
-``` typescript
+```typescript
 action(function () {
   // 可以在此处编写你的插件逻辑
   this.event.replay('你好呀');
@@ -68,14 +67,13 @@ action(function () {
 
 ## 完整代码
 
-``` typescript
+```typescript
 import { Plugin, Option } from 'kokkoro';
 
-export const plugin = new Plugin('hello');
+export const plugin = new Plugin();
 
 plugin
   .command('say')
-  .sugar(/^(你好)$/)
   .action(function () {
     this.event.replay('你好呀');
   })
@@ -86,11 +84,10 @@ plugin
 ``` javascript
 const { Plugin } = require('kokkoro');
   
-const plugin = new Plugin('hello');
+const plugin = new Plugin();
 
 plugin
   .command('say')
-  .sugar(/^(测试)$/)
   .action(function () {
     this.event.replay('你好呀');
   })
@@ -100,4 +97,4 @@ module.exports = {
 };
 ```
 
-现在，启用插件后，只要有人给 bot 发送了 `你好` ，便会自动回复 `你好呀` 相关字段，是不是非常简单？ (●'◡'●)
+现在，启用插件后，只要有人给 bot 发送了 `say` ，便会自动回复 `你好呀` 相关字段，是不是非常简单？ (●'◡'●)
