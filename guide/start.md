@@ -77,7 +77,17 @@ kokkoro start
 登录成功后，你将会收到一条私信（你填写的 masters）
 输入 `print` 指令可以测试消息打印，现在开启一段属于你的物语吧 q(≧▽≦q)
 
-![hello world](../assets/images/illustrate/hello_world.png)
+<!-- chat:start -->
+
+#### **yuki**
+
+print hello world
+
+#### **kokkoro**
+
+hello world
+
+<!-- chat:end -->
 
 > 当然，如果你有 js 的相关知识，随时都可以编写自己的插件，详情可在 [开发](develop/example) 一栏查看
 
