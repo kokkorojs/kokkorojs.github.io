@@ -1,6 +1,11 @@
 ![logo](assets/images/pixiv/74237509.jpg ':size=260')
 
-# kokkoro <small>0.3.3</small>
+<h1>
+  <a target="_blank" href="https://www.npmjs.com/package/kokkoro">
+    <span>kokkoro</span>
+    <img src="https://img.shields.io/npm/v/kokkoro?color=fff&label=%20&style=flat-square" style="position: absolute;bottom: 0;" />
+  </a>
+</h1>
 
 > とある咕咕の QQ 机器人框架
 
