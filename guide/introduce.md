@@ -2,7 +2,9 @@
 
 ## 环境要求
 
-依赖 [nodejs](https://nodejs.org/zh-cn/) 运行，版本不能低于 v14 ，以下平台均通过本人测试，可稳定运行
+> 依赖 [nodejs](https://nodejs.org/zh-cn/) 环境运行，因为使用了大量 js 新语法，版本要求不能低于 v15
+
+以下平台均通过本人测试，可稳定运行
 
 - windows
   + [ ] windows 7 (没测过，硬盘是 mbr 格式，装不上 win7，都 2202 年了不会还有人在用吧)
