@@ -9,7 +9,7 @@
 
 > とある咕咕の QQ 机器人框架
 
-[Get Started](guide/start)
+[Get Started](guide/introduce)
 [GitHub](https://github.com/kokkorojs/kokkoro/)
 
 ![color](#ffffff)
