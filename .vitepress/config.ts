@@ -12,26 +12,29 @@ const nav = [
   },
 ];
 
-const sidebar = {
-  '/guide/': [
-    {
-      text: '开始',
-      items: [
-        { text: '简介', link: '/guide/introduce' },
-        { text: '快速开始', link: '/guide/start' },
-      ]
-    },
-    {
-      text: '开发',
-      items: [
-        {
-          text: '简单示例',
-          link: '/develop/example'
-        },
-      ]
-    },
-  ],
-};
+const sidebar = [
+  {
+    text: '开始',
+    items: [
+      { text: '简介', link: '/guide/introduce' },
+      { text: '快速开始', link: '/guide/start' },
+    ]
+  },
+  {
+    text: '开发',
+    items: [
+      {
+        text: '简单示例',
+        link: '/develop/example'
+      },
+      {
+        text: '生命周期',
+        link: '/develop/liftcycle'
+      },
+    ]
+  },
+];
+
 export default defineConfigWithTheme({
   title: 'kokkoro',
   description: 'とある咕咕の QQ 机器人框架',
