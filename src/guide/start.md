@@ -8,7 +8,7 @@
 
 本项目不用安装任何第三方软件，非常简单轻便，仅需三行命令即可构建。
 
-```bash
+```shell
 # 安装 kokkoro cli
 npm i -g @kokkoro/cli
 
@@ -28,53 +28,53 @@ kokkoro init
 
 ```tex
 .
-├─ data               资源目录
-├─ plugins            插件目录（存放编写好的插件）
+├─ data/              资源目录
+├─ plugins/           插件目录（存放编写好的插件）
 ├─ main.js            程序入口
 └─ kokkoro.yml        配置文件
 ```
 
 这个时候你可能就要说了，yuki 你个骗子，我看了目录明明生成了不止上面说的 4 个文件。
 
-别急，kokkoro 确实只会生成上面的 4 个文件。  
-其它例如 `node_modules`、`package.json` 等都是 npm 生成的，后面在插件开发中会讲到。    
-如果你不准备开发插件，就不用去关心这些 **依赖文件**，感兴趣你也可以先使用搜索引擎查找相关知识
+别急，kokkoro 确实只会生成上面的 4 个文件，其它例如 `node_modules`、`package.json` 等都是 npm 生成的，后面在 [插件开发](/develop/example) 中会讲到。
 
-> 项目启动后避免编辑器直接修改配置文件，你改了也不会生效的，使用 **指令修改** 可以立即生效
+> 如果你不准备开发插件，就不用去关心这些 **依赖文件**，感兴趣你也可以先使用搜索引擎查找相关知识。
 
 ## 启动程序
 
-一切准备就绪，开始启动你的项目吧。
+一切准备就绪，开始启动你的项目吧。如果你是本地安装，就要使用 `npx kokkoro start` 启动项目。
 
-```bash
+```shell
 kokkoro start
 ```
 
-如果你是本地安装，就要使用 `npx kokkoro start` 启动项目。
-
-> 如上述步骤无误，根据控制台的提示扫码或输入密码即可成功登录  
-> 账号登录成功后，会在 `data/bot` 目录下自动生成 QQ 账号的缓存及相关配置文件
+> 如上述步骤无误，根据控制台的提示扫码或输入密码即可成功登录。  
+> 账号登录成功后，会在根目录下的 `data/bot` 自动生成 QQ 账号的缓存及相关配置文件。
 
 ## 你好世界
 
-登录成功后，你将会收到一条私信（你填写的 masters）  
-输入 `print` 指令可以测试消息打印，现在开启一段属于你的物语吧 q(≧▽≦q)
+登录成功后，你将会收到一条私信。（你填写的 masters）  
+输入 `print` 指令可以测试消息打印，现在开启一段属于你的物语吧♪ q(≧▽≦q)
 
 <ChatPanel>
-  <ChatMessage :id="2225151531">print hello world</ChatMessage>
-  <ChatMessage :id="709289491">hello world</ChatMessage>
+  <ChatMessage id="2225151531">print hello world</ChatMessage>
+  <ChatMessage id="709289491">hello world</ChatMessage>
 </ChatPanel>
 
-> 当然，如果你有 js 的相关知识，随时都可以编写自己的插件，详情可在 [开发](develop/example) 一栏查看
+> 当然，如果你有 js 的相关知识，随时都可以编写自己的插件，详情可在 [开发](develop/example) 一栏查看。
 
 ## 配置参数
 
 在初始化项目后，会在根目录下生成 `kokkoro.yml` 文件，你可以在此修改相关配置。
 
+:::info
+项目启动后尽量避免编辑器直接修改配置文件，你改了也不会生效，使用 **指令修改** 可以立即生效。
+:::
+
 #### 什么是 YAML ？
 
 YAML 是一种专攻配置的语言，可读性高（JSON 有时确实让人眼花缭乱不是么？）  
-kokkoro 所有的 **配置文件** 均使用 YAML 编写，你也可以查看 [YAML 入门教程](https://www.runoob.com/w3cnote/yaml-intro.html) 获取相关信息。
+kokkoro 所有的 **配置文件** 均使用 YAML 编写，你也可以查看 [YAML 语言教程](https://www.ruanyifeng.com/blog/2016/07/yaml.html) 获取相关信息。
 
 ```yaml
 # 第三方服务 api key
