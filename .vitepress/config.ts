@@ -1,4 +1,4 @@
-import { defineConfigWithTheme } from "vitepress";
+import { defineConfigWithTheme } from 'vitepress';
 
 const nav = [
   {
@@ -48,6 +48,18 @@ export default defineConfigWithTheme({
     footer: {
       message: 'Released under the MIT License.',
       copyright: 'Copyright © 2020-present yuki & kokkorojs'
+    },
+    editLink: {
+      pattern: 'https://github.com/kokkorojs/kokkorojs.github.io/edit/master/src/:path',
+      text: '帮助改善当前页面',
+    },
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/kokkorojs/kokkoro' }
+    ],
+    algolia: {
+      appId: '',
+      apiKey: '',
+      indexName: 'kokkoro'
     },
   }
 });
