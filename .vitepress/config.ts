@@ -4,11 +4,22 @@ const nav = [
   {
     text: '指南',
     link: '/guide/introduce',
+    activeMatch: '/guide/',
   },
   {
-    text: '进阶',
-    link: '/manual/introduction.md',
-    activeMatch: '/manual/',
+    text: '开发',
+    link: '/develop/example',
+    activeMatch: '/develop/',
+  },
+  {
+    text: '插件',
+    link: '/plugin/awesome',
+    activeMatch: '/plugin/',
+  },
+  {
+    text: '更多',
+    link: '/about/history',
+    activeMatch: '/about/',
   },
 ];
 
@@ -24,7 +35,7 @@ const sidebar = [
     text: '开发',
     items: [
       {
-        text: '简单示例',
+        text: '编写一个插件',
         link: '/develop/example'
       },
       {
@@ -61,5 +72,8 @@ export default defineConfigWithTheme({
       apiKey: '',
       indexName: 'kokkoro'
     },
-  }
+  },
+  markdown: {
+    // lineNumbers: true
+  },
 });
