@@ -24,7 +24,7 @@ features:
   - title: 简单
     details: 友好的 cli 工具，配置文件全由命令自动构建，无需手动编辑修改
   - title: 轻便
-    details: 完全基于 node 环境，不用安装任何第三方软件（mirai、cqhttp 等）
+    details: 基于 node 环境，不用安装任何第三方软件（mirai、cqhttp 等）
   - title: 高效
     details: 使用 worker_threads 分离 bot 与 plugin 线程，密集运算性能更佳
   - title: 灵活

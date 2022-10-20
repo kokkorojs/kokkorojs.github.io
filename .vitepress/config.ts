@@ -44,6 +44,15 @@ const sidebar = [
       },
     ]
   },
+  {
+    text: '插件',
+    items: [
+      {
+        text: '插件列表',
+        link: '/plugin/awesome'
+      },
+    ]
+  },
 ];
 
 export default defineConfigWithTheme({
@@ -58,7 +67,7 @@ export default defineConfigWithTheme({
     sidebar,
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2020-present yuki & kokkorojs'
+      copyright: 'Copyright © 2020-2022 yuki'
     },
     editLink: {
       pattern: 'https://github.com/kokkorojs/kokkorojs.github.io/edit/master/src/:path',
