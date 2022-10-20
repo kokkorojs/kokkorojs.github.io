@@ -26,6 +26,7 @@ const nav = [
 const sidebar = [
   {
     text: '开始',
+    collapsible: true,
     items: [
       { text: '简介', link: '/guide/introduce' },
       { text: '快速开始', link: '/guide/start' },
@@ -33,6 +34,7 @@ const sidebar = [
   },
   {
     text: '开发',
+    collapsible: true,
     items: [
       {
         text: '编写一个插件',
@@ -46,6 +48,7 @@ const sidebar = [
   },
   {
     text: '插件',
+    collapsible: true,
     items: [
       {
         text: '插件列表',
@@ -62,12 +65,15 @@ export default defineConfigWithTheme({
   head: [
     ['link', { rel: 'icon', href: `/logo.png` }],
   ],
+  lang: 'zh-CN',
+  // lastUpdated: true,
+  cleanUrls: 'without-subfolders',
   themeConfig: {
     nav,
     sidebar,
     footer: {
-      message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2020-2022 yuki'
+      message: 'Released under the <a href="https://github.com/kokkorojs/kokkoro/blob/master/LICENSE">MIT License</a>.',
+      copyright: 'Copyright © 2020-2022 <a href="https://github.com/dcyuki">Yuki</a>'
     },
     editLink: {
       pattern: 'https://github.com/kokkorojs/kokkorojs.github.io/edit/master/src/:path',
