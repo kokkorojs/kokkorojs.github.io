@@ -1,9 +1,9 @@
 # 插件社区
 
 ::: tip
-当前页面列出的插件都是 **曾经有过** 的，因项目历经重构，并不是所有插件都能立即使用。
+当前页面列出的插件都是 **曾经有过** 的，因项目历经重构，并不是所有插件都能立即使用，你可以将这个页面视为 TODO 清单。
 
-还在适配中的插件会注明，该页面未适配完成的功能都会随着时间逐步完善，若有你比较中意的功能可以提 issue，会优先开发。
+还在适配中的插件会注明，该页面未适配完成的功能都会随着时间逐步完善，若有你比较中意的功能可以在群里催更或者提 issue，会优先开发。
 :::
 
 ## 切噜语
@@ -34,7 +34,7 @@ npm i kokkoro-plugin-cherugo
 npm i kokkoro-plugin-hitokoto
 ```
 
-### ~~网抑云~~
+### 来句骚话
 
 <ChatPanel>
   <ChatMessage id="2225151531">来点骚话</ChatMessage>
@@ -45,7 +45,23 @@ npm i kokkoro-plugin-hitokoto
   </ChatMessage>
 </ChatPanel>
 
+### ~~网抑云~~
+
+::: warning
+因 kokkoro v1 重构，该功能适配中
+:::
+
+<ChatPanel>
+  <ChatMessage id="709289491">
+    <span>失恋的时候，许多年轻人以为整个世界都抛弃了自己，别傻了，世界根本就没需要过你。</span>
+  </ChatMessage>
+</ChatPanel>
+
 ## 群管理
+
+::: warning
+因 kokkoro v1 重构，该插件适配中
+:::
 
 ```shell
 npm i kokkoro-plugin-group
@@ -67,6 +83,10 @@ npm i kokkoro-plugin-group
 
 ## 色图
 
+::: warning
+因 kokkoro v1 重构，该插件适配中
+:::
+
 ```shell
 npm i kokkoro-plugin-setu
 ```
@@ -86,6 +106,10 @@ npm i kokkoro-plugin-setu
 </ChatPanel>
 
 ## RSS 订阅
+
+::: warning
+因 kokkoro v1 重构，该插件适配中
+:::
 
 ```shell
 npm i kokkoro-plugin-rss
@@ -138,7 +162,7 @@ kokkoro 最初就是以公主连结玩家为核心开发相关功能的，现在
 - kokkoro-plugin-dynamic
 - kokkoro-plugin-web
 
-上列插件将全部废弃，并正式更名为 kokkoro-plugin-pcr
+上列插件月底将全部废弃，并正式更名为 kokkoro-plugin-pcr
 
 ### 会战
 
@@ -161,6 +185,8 @@ kokkoro 最初就是以公主连结玩家为核心开发相关功能的，现在
     <div>更新时间:</div>
     <div>&emsp;2022/09/29 22:35:30</div>
   </ChatMessage>
+  <ChatMessage id="2225151531">预约 5</ChatMessage>
+  <ChatMessage id="709289491">预约成功</ChatMessage>
 </ChatPanel>
 
 ### 十连
@@ -175,6 +201,53 @@ kokkoro 最初就是以公主连结玩家为核心开发相关功能的，现在
 ### 买药
 
 ### rank
+
+### 日程推送
+
+## 沙盒
+
+::: warning
+因 kokkoro v1 重构，该插件适配中
+:::
+
+可执行任意 js 代码段，包括 bot api 和发送网络请求，有着极高的可玩性，你可以把这个插件当做浏览器的 f12 去实现各种有意思的东西
+
+### 执行运算符
+
+<ChatPanel>
+  <ChatMessage id="2225151531">> 1000 - 7</ChatMessage>
+  <ChatMessage id="709289491">993</ChatMessage>
+</ChatPanel>
+
+### 创建变量
+
+<ChatPanel>
+  <ChatMessage id="2225151531">> const 贴贴 = "不要贴贴，贴贴危险，还会密接"</ChatMessage>
+  <ChatMessage id="709289491">true</ChatMessage>
+  <ChatMessage id="2225151531">贴贴</ChatMessage>
+  <ChatMessage id="709289491">不要贴贴，贴贴危险，还会密接</ChatMessage>
+  <ChatMessage id="2225151531">delete 贴贴</ChatMessage>
+  <ChatMessage id="709289491">true</ChatMessage>
+</ChatPanel>
+
+你可以通过创建变量实现类似及时问答的效果，不过更推荐通过 [qa](/plugin/awesome#你问我答) 插件去定义，毕竟单纯地变量不支持正则
+
+### 执行脚本
+
+<ChatPanel>
+  <ChatMessage id="2225151531">
+    <div>> for (let i = 0; i &lt 3; i++) {</div>
+    <div>&emsp;event.reply('重要的事情说三遍！');</div>
+    <div>}</div>
+  </ChatMessage>
+  <ChatMessage id="709289491">重要的事情说三遍！</ChatMessage>
+  <ChatMessage id="709289491">重要的事情说三遍！</ChatMessage>
+  <ChatMessage id="709289491">重要的事情说三遍！</ChatMessage>
+</ChatPanel>
+
+我并未对执行语句做过滤，给大家提供较高的自由度并不代表可以做一些危险的举动，包括但不限于 `process.exit()`、`const exec = require('child_process')`、`while(true) {}`...
+
+上述行为一经发现将永久拉入黑名单
 
 ## 空调
 
@@ -194,6 +267,13 @@ kokkoro 最初就是以公主连结玩家为核心开发相关功能的，现在
 <ChatPanel>
   <ChatMessage id="2225151531">设置温度 28</ChatMessage>
   <ChatMessage id="709289491">哔~☀️当前温度 28°</ChatMessage>
+</ChatPanel>
+
+### ~~年轻人的第一款人造太阳~~
+
+<ChatPanel>
+  <ChatMessage id="2225151531">设置温度 114514</ChatMessage>
+  <ChatMessage id="709289491">哔~🥵当前温度 114514°</ChatMessage>
 </ChatPanel>
 
 ## 五子棋

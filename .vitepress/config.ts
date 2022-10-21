@@ -66,7 +66,7 @@ export default defineConfigWithTheme({
     ['link', { rel: 'icon', href: `/logo.png` }],
   ],
   lang: 'zh-CN',
-  // lastUpdated: true,
+  lastUpdated: true,
   cleanUrls: 'without-subfolders',
   themeConfig: {
     nav,
@@ -79,6 +79,7 @@ export default defineConfigWithTheme({
       pattern: 'https://github.com/kokkorojs/kokkorojs.github.io/edit/master/src/:path',
       text: '帮助改善当前页面',
     },
+    lastUpdatedText: '更新日期',
     socialLinks: [
       { icon: 'github', link: 'https://github.com/kokkorojs/kokkoro' }
     ],
