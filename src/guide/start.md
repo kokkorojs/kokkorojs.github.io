@@ -36,7 +36,7 @@ kokkoro init
 
 这个时候你可能就要说了，yuki 你个骗子，我看了目录明明生成了不止上面说的 4 个文件。
 
-别急，kokkoro 确实只会生成上面的 4 个文件，其它例如 `node_modules`、`package.json` 等都是 npm 生成的，后面在 [插件开发](/develop/example) 中会讲到。
+别急，kokkoro 确实只会生成上面的 4 个文件，其它例如 `node_modules`、`package.json` 等都是 npm 生成的，后面在 [插件开发](//develop/example) 中会讲到。
 
 如果你不准备开发插件，就不用去关心这些 **依赖文件**，感兴趣你也可以先使用搜索引擎查找相关知识。
 
@@ -66,7 +66,7 @@ kokkoro start
   <ChatMessage id="709289491">hello world</ChatMessage>
 </ChatPanel>
 
-当然，如果你有 js 的相关知识，随时都可以编写自己的插件，详情可在 [开发](develop/example) 一栏查看。
+当然，如果你有 js 的相关知识，随时都可以编写自己的插件，详情可在 [开发](/develop/example) 一栏查看。
 
 ## 配置参数
 
