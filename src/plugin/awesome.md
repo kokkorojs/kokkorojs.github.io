@@ -375,7 +375,7 @@ kokkoro 最初就是以公主连结玩家为核心开发相关功能的，现在
   <ChatMessage id="709289491">好的，我记住了</ChatMessage>
   <ChatMessage id="2225151531">有人说妈你就说崽</ChatMessage>
   <ChatMessage id="709289491">好的，我记住了</ChatMessage>
-  <ChatMessage id="2225151531">有人说<img width="100" src="/这河里妈.jpg" />你就说<img width="100" src="/这真步河里.png" /></ChatMessage>
+  <ChatMessage id="2225151531">有人说<img width="100" src="/images/meme/这河里妈.jpg" />你就说<img width="100" src="/images/meme/这真步河里.jpg" /></ChatMessage>
   <ChatMessage id="709289491">好的，我记住了</ChatMessage>
 </ChatPanel>
 
@@ -390,7 +390,7 @@ kokkoro 最初就是以公主连结玩家为核心开发相关功能的，现在
 
 <ChatPanel>
   <ChatMessage id="2225151531">看看有人问</ChatMessage>
-  <ChatMessage id="709289491">贴贴 | 妈 | <img width="100" src="/这河里妈.jpg" /></ChatMessage>
+  <ChatMessage id="709289491">贴贴 | 妈 | <img width="100" src="/images/meme/这河里妈.jpg" /></ChatMessage>
 </ChatPanel>
 
 ## Galgame
