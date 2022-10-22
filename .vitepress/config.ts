@@ -30,6 +30,7 @@ const sidebar = [
     items: [
       { text: '简介', link: '/guide/introduce' },
       { text: '快速开始', link: '/guide/start' },
+      { text: '配置项', link: '/guide/config' },
     ]
   },
   {
@@ -38,11 +39,15 @@ const sidebar = [
     items: [
       {
         text: '编写一个插件',
-        link: '/develop/example'
+        link: '/develop/example',
+      },
+      {
+        text: '消息事件',
+        link: '/develop/message',
       },
       {
         text: '生命周期',
-        link: '/develop/liftcycle'
+        link: '/develop/liftcycle',
       },
     ]
   },
@@ -52,7 +57,7 @@ const sidebar = [
     items: [
       {
         text: '插件列表',
-        link: '/plugin/awesome'
+        link: '/plugin/awesome',
       },
     ]
   },
@@ -63,7 +68,7 @@ export default defineConfigWithTheme({
   description: 'とある咕咕の QQ 机器人框架',
   srcDir: 'src',
   head: [
-    ['link', { rel: 'icon', href: `/logo.png` }],
+    ['link', { rel: 'icon', href: `/images/logo.png` }],
   ],
   lang: 'zh-CN',
   lastUpdated: true,
