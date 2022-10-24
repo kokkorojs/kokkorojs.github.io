@@ -18,8 +18,11 @@ const nav = [
   },
   {
     text: '更多',
-    link: '/about/history',
     activeMatch: '/about/',
+    items: [
+      { text: '计划', link: '/about/project' },
+      { text: '历史', link: '/about/history' },
+    ]
   },
 ];
 
