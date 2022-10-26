@@ -60,7 +60,7 @@ const plugin = new Plugin();
 目前你无需关心这段代码是什么意思，后面会逐一介绍，所以不用着急，让我们继续。
 :::
 
-你可以参考下列代码段，添加 `hello` 指令，在 `action` 回调函数里可以编写你的逻辑代码：
+你可以参考下列代码段，添加 `message.private` 事件监听，在 `trigger` 回调函数里可以编写你的逻辑代码：
 
 ```javascript
 const { Plugin } = require('kokkoro');
@@ -68,9 +68,12 @@ const { Plugin } = require('kokkoro');
 const plugin = new Plugin();
 
 plugin
-  .command('hello')
-  .action((ctx) => {
-    ctx.reply('你好鸭~');
+  .listen('message.private')
+  .trigger((event) => {
+    const { sender } = event;
+    const { user_id } = sender;
+
+    event.botApi('sendPrivateMsg', user_id, 'hello world');
   })
 ```
 
@@ -82,13 +85,16 @@ import { Plugin } from 'kokkoro';
 const plugin = new Plugin();
 
 plugin
-  .command('hello')
-  .action((ctx) => {
-    ctx.reply('你好鸭~');
+  .listen('message.private')
+  .trigger((event) => {
+    const { sender } = event;
+    const { user_id } = sender;
+
+    event.botApi('sendPrivateMsg', user_id, 'hello world');
   })
 ```
 
-这下我们就编写好了一段指令完整的交互逻辑，你可以大致理解为只要有人发送了 `hello` ，bot 便会回复 `你好鸭~`，是不是非常简单？ (●'◡'●)
+这下我们就编写好了一段指令完整的交互逻辑，你可以大致理解为只要有人给 bot 私发了消息，便会收到 `hello world`，是不是非常简单？ (●'◡'●)
 
 ## 快来试试！
 
@@ -99,21 +105,17 @@ plugin
 
 什么都没有发生呐！前面我们有提到，插件会在项目服务启动时创建对应的工作线程，当前这个插件不是在项目启动时就存在的，而是你在当前服务运行时完成开发并 **后续添加** 的。
 
-不过你并不需要为此就去重启整个服务，每次重启服务 bot 都将会重新登录，频繁上下线会导致登录异常甚至掉线，我们只需要单独 **启用插件服务** 就可以正常使用。
+不过你并不需要为此就去重启整个服务，每次重启服务 bot 都将会重新登录，频繁上下线会导致登录异常甚至掉线，我们只需要单独 **挂载插件** 就可以正常使用。
 
-## 启用插件
+## 挂载插件
 
-:::warning
-启用插件相关逻辑近期重构中，暂不可用，你可以编写好插件后重启服务
-:::
-
-你可以给机器人发送 `启用<插件名>` 指令，插件名就是你刚才创建的 **文件夹名**，所有插件都是通过 `plugins` 和 `node_module` 内的文件夹名来创建工作线程的。
+你可以给机器人发送 `mount <name>` 或者 `挂载 <插件名>` 指令，插件名就是你刚才创建的 **文件夹名**，所有插件都是通过 `plugins` 和 `node_module` 内的文件夹名来创建工作线程的。
 
 <ChatPanel>
-  <ChatMessage id="2225151531">启用 test</ChatMessage>
-  <ChatMessage id="709289491">启用插件成功</ChatMessage>
+  <ChatMessage id="2225151531">挂载 test</ChatMessage>
+  <ChatMessage id="709289491">已创建 test 线程</ChatMessage>
   <ChatMessage id="2225151531">hello</ChatMessage>
-  <ChatMessage id="709289491">你好鸭~</ChatMessage>
+  <ChatMessage id="709289491">hello world</ChatMessage>
 </ChatPanel>
 
 当然，你也可以自定义插件名和版本信息
@@ -126,12 +128,42 @@ const plugin = new Plugin();
 plugin
   .name('测试插件')
   .version('0.0.1')
-
-plugin
-  .command('hello')
-  .action((ctx) => {
-    ctx.reply('你好鸭~');
-  })
 ```
 
-在这里我们引入了一个新概念，插件的启用，如果你此前从未接触过 bot 可能比较陌生，不过没关系，下一章节将会为你介绍项目的生命周期。
+## 插件生命周期
+
+除了 `mount` 指令外，还有 `unmount`、`enable` 等内置指令，你可以输入 help 查看所有内置指令。
+
+<ChatPanel>
+  <ChatMessage id="2225151531">help</ChatMessage>
+  <ChatMessage id="709289491">
+    <div>Commands: </div>
+    <div>&emsp;print &lt;message&gt;  打印测试</div>
+    <div>&emsp;state  查看 bot 运行信息</div>
+    <div>&emsp;plugin  插件模块列表</div>
+    <div>&emsp;mount &lt;name&gt;  挂载插件</div>
+    <div>&emsp;unmount &lt;name&gt;  卸载插件</div>
+    <div>&emsp;reload &lt;name&gt;  重载插件</div>
+    <div>&emsp;enable &lt;name&gt;  启用插件</div>
+    <div>&emsp;disable &lt;name&gt;  禁用插件</div>
+    <div>&emsp;help  帮助信息</div>
+    <div>&emsp;version  版本信息</div>
+    <br />
+    <div>More: <a style="color: dodgerblue;">https://kokkoro.js.org/</a></div>
+  </ChatMessage>
+</ChatPanel>
+
+你一定有所疑问，mount 与 enable 有什么区别？
+
+kokkoro 使用了 [worker_threads](https://nodejs.org/api/worker_threads.html) 分离插件与 bot，每一个插件都是独立的线程服务。当你挂载插件，程序会从 plugins 与 node_modules 目录中检索，若有与之匹配的 js 文件，就会为其创建一个全新的线程执行对应代码。反之，`unmount` 会直接销毁掉整个插件线程。
+
+那么 enable 呢？kokkoro 支持多 bot 账号管理，若出现机器人 A 想要使用某个插件，机器人 B 却不需要这个插件时，就可以使用该项指令。
+
+<ChatPanel>
+  <ChatMessage id="2225151531">禁用 test</ChatMessage>
+  <ChatMessage id="709289491">已将 test 添加至禁用列表</ChatMessage>
+  <ChatMessage id="2225151531">hello</ChatMessage>
+  <ChatMessage id="2225151531">将不再收到消息</ChatMessage>
+</ChatPanel>
+
+现在 kokkoro 已经将 test 插件屏蔽，该 bot 将不会处理任何 test 插件下的消息事件，不过 test 插件线程仍然在正常运行。
