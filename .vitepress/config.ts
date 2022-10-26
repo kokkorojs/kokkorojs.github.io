@@ -48,10 +48,10 @@ const sidebar = [
         text: '消息事件',
         link: '/develop/message',
       },
-      {
-        text: '生命周期',
-        link: '/develop/liftcycle',
-      },
+      // {
+      //   text: '生命周期',
+      //   link: '/develop/liftcycle',
+      // },
     ]
   },
   {
