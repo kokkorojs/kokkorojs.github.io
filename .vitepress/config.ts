@@ -68,6 +68,7 @@ const sidebar = [
 
 export default defineConfigWithTheme({
   title: 'kokkoro',
+  base: 'https://kokkoro.js.org/',
   description: 'とある咕咕の QQ 机器人框架',
   srcDir: 'src',
   head: [
