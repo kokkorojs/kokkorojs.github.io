@@ -8,7 +8,7 @@ onMounted(() => {
     clientID: '2966b08bee02e561b5f0',
     clientSecret: '717c72176ebe736b21274c4821a2ee23a8042b73',
     repo: 'kokkoro',
-    owner: 'dcyuki',
+    owner: 'kokkorojs',
     admin: ['dcyuki'],
     id: location.pathname,
     distractionFreeMode: false,
