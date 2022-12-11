@@ -47,9 +47,7 @@ npm i kokkoro-plugin-hitokoto
 
 ### ~~网抑云~~
 
-::: warning
-因 kokkoro v1 重构，该功能适配中
-:::
+在每天凌晨自动发送
 
 <ChatPanel>
   <ChatMessage id="709289491">
@@ -58,10 +56,6 @@ npm i kokkoro-plugin-hitokoto
 </ChatPanel>
 
 ## 群管理
-
-::: warning
-因 kokkoro v1 重构，该插件适配中
-:::
 
 ```shell
 npm i kokkoro-plugin-group
@@ -76,16 +70,14 @@ npm i kokkoro-plugin-group
 
 ### 欢新提示
 
+在群成员发生变更时发送
+
 <ChatPanel>
   <ChatMessage id="709289491">欢迎新人的加入</ChatMessage>
   <ChatMessage id="709289491">新人已退出群聊</ChatMessage>
 </ChatPanel>
 
 ## 色图
-
-::: warning
-因 kokkoro v1 重构，该插件适配中
-:::
 
 ```shell
 npm i kokkoro-plugin-setu
@@ -102,6 +94,13 @@ npm i kokkoro-plugin-setu
 
 <ChatPanel>
   <ChatMessage id="2225151531">来点萝莉色图</ChatMessage>
+  <ChatMessage id="709289491">不可以涩涩！</ChatMessage>
+</ChatPanel>
+
+### 多张色图
+
+<ChatPanel>
+  <ChatMessage id="2225151531">来10份色图</ChatMessage>
   <ChatMessage id="709289491">不可以涩涩！</ChatMessage>
 </ChatPanel>
 
