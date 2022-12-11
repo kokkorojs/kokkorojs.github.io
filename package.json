@@ -10,17 +10,17 @@
     "type": "git",
     "url": "git+https://github.com/kokkorojs/kokkorojs.github.io.git"
   },
-  "author": "yuki",
+  "author": "yuki <mail@yuki.sh>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kokkorojs/kokkorojs.github.io/issues"
   },
   "homepage": "https://github.com/kokkorojs/kokkorojs.github.io#readme",
   "dependencies": {
-    "vitepress": "^1.0.0-alpha.26"
+    "vitepress": "^1.0.0-alpha.31"
   },
   "devDependencies": {
     "gitalk": "^1.8.0",
-    "sass": "^1.53.0"
+    "sass": "^1.56.2"
   }
 }

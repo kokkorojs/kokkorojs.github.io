@@ -7,7 +7,7 @@
 
 ## 上下文
 
-在上一章节，我们介绍了如何编写自己的第一个插件，在插件挂载后 kokkoro 创建了 `test` 线程，去监听 `message.private` 事件。
+在上一章节，我们介绍了如何编写自己的第一个插件，在挂载插件后，`test` 监听了 `message.private` 事件。
 
 <ChatPanel>
   <ChatMessage id="437402067">那个那个，event 到底是什么呀？</ChatMessage>
@@ -71,7 +71,7 @@ kokkoro 是基于 oicq 协议库，事件名与协议库保持一致，更多事
   <ChatMessage id="437402067">yuki yuki，听你这么一说，我完全懂了</ChatMessage>
   <ChatMessage id="2225151531">啊？懂...懂什么哦？</ChatMessage>
   <ChatMessage id="437402067">当我需要用到某个插件，在去挂载的时候，kokkoro 就帮我执行插件里面所有的代码</ChatMessage>
-  <ChatMessage id="2225151531">没错，至于插件的挂载路径你可以简单理解为 require 操作，与 npm 规范是保持一致的</ChatMessage>
+  <ChatMessage id="2225151531">没错，至于插件的挂载路径其实就是 require 操作，与 npm 规范是保持一致的</ChatMessage>
   <ChatMessage id="437402067">那么在这个时候，我可以编写执行 plugin.listen() 方法，去监听我想要得到的任何消息</ChatMessage>
   <ChatMessage id="2225151531">是哦，消息事件没有你收不到，只有你想不到，目前来说足够满足日常使用</ChatMessage>
   <ChatMessage id="437402067">那我知道怎么改了！</ChatMessage>
@@ -79,10 +79,10 @@ kokkoro 是基于 oicq 协议库，事件名与协议库保持一致，更多事
     <div>plugin</div>
     <div>&emsp;.listen('message.private')</div>
     <div>&emsp;.trigger((event) => {</div>
-    <div>&emsp;&emsp;const { raw_message } = event;</div>
+    <div>&emsp;&emsp;const { bot, raw_message } = event;</div>
     <br />
     <div>&emsp;&emsp;if (raw_message === 'hello') {</div>
-    <div>&emsp;&emsp;&emsp;event.botApi('sendPrivateMsg', user_id, 'hello world');</div>
+    <div>&emsp;&emsp;&emsp;bot.sendPrivateMsg(user_id, 'hello world');</div>
     <div>&emsp;&emsp;} else {</div>
     <div>&emsp;&emsp;&emsp;// ...</div>
     <div>&emsp;&emsp;}</div>
@@ -118,12 +118,12 @@ const plugin = new Plugin();
 plugin
   .listen('message.private')
   .trigger(event => {
-    const { raw_message } = event;
+    const { raw_message, bot } = event;
 
     if (raw_message === 'hello') {
-      event.botApi('sendPrivateMsg', user_id, 'hello world');
+      bot.sendPrivateMsg(user_id, 'hello world');
     } else if (raw_message === 'bye') {
-      event.botApi('sendPrivateMsg', user_id, 'good bye');
+      bot.sendPrivateMsg(user_id, 'good bye');
     } else {
       /** ... */
     }
@@ -201,7 +201,7 @@ plugin
     const { group_id, user_id } = event;
     const message = ['欢迎新成员 ', segment.at(user_id), ' 的加入~'];
  
-    event.botApi('sendGroupMsg', group_id, message);
+    bot.sendGroupMsg(group_id, 'good bye');
   })
 
 plugin
@@ -244,6 +244,23 @@ plugin
   .sugar(/^你好$/)
   .action(ctx => {
     ctx.reply('hello world');
+  })
+```
+
+:::warning TODO
+不定期更新
+:::
+
+## 定时任务
+
+```typescript{6-9}
+import { Plugin } from 'kokkoro';
+
+const plugin = new Plugin('test');
+
+plugin
+  .schedule('0 0 0 * * *', () => {
+    console.log('午时已到');
   })
 ```
 

@@ -26,7 +26,5 @@ features:
   - title: 轻便
     details: 基于 node 环境，不用安装任何第三方软件（mirai、cqhttp 等）
   - title: 高效
-    details: 使用 worker_threads 分离 bot 与 plugin 线程，密集运算性能更佳
-  - title: 灵活
     details: 插件完全兼容 ts 与 js 开发，支持热重载，对于开发者而言事半功倍
 ---

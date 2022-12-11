@@ -26,7 +26,7 @@
 ## 编写插件
 
 :::info
-在编写模块前，你需要先在 plugins 目录下，创建一个文件夹来存放代码文件。
+在编写模块前，你需要先在 plugins 目录下，创建一个文件夹来存放代码文件。  
 :::
 
 例如 `plugins/test`，test 为你的 **插件名**，命名规则无严格限制。 ~~你用中文都大丈夫 (锟斤拷警告)~~
@@ -48,12 +48,12 @@ const { Plugin } = require('kokkoro');
 const plugin = new Plugin();
 ```
 
-这个时候你就已经写好了一个插件，不需要任何额外操作，仅需将 Plugin 类实例化，就会在 **项目启动时** 为其自动创建对应的工作线程。  
+这个时候你就已经写好了一个插件，不需要任何额外操作，该插件会在 **项目启动时** 自动导入执行。  
 不过目前这个插件还什么都不能干，我们没有为其编写相应的交互逻辑。
 
 ## 实现交互
 
-相信你这个时候一定有很多疑问，因为这其中涉及到相当多的概念，`Plugin` 到底是什么？工作线程？
+相信你这个时候一定有很多疑问，因为这其中涉及到相当多的概念，`Plugin` 到底是什么？
 
 :::info
 当前章节仅提供示例，目的在于让你能自己编写出可以进行简单交互的插件。  
@@ -70,10 +70,10 @@ const plugin = new Plugin();
 plugin
   .listen('message.private')
   .trigger((event) => {
-    const { sender } = event;
+    const { bot, sender } = event;
     const { user_id } = sender;
 
-    event.botApi('sendPrivateMsg', user_id, 'hello world');
+    bot.sendPrivateMsg(user_id, 'hello world');
   })
 ```
 
@@ -87,10 +87,10 @@ const plugin = new Plugin();
 plugin
   .listen('message.private')
   .trigger((event) => {
-    const { sender } = event;
+    const { bot, sender } = event;
     const { user_id } = sender;
 
-    event.botApi('sendPrivateMsg', user_id, 'hello world');
+    bot.sendPrivateMsg(user_id, 'hello world');
   })
 ```
 
@@ -103,13 +103,13 @@ plugin
   <ChatMessage id="2225151531">...</ChatMessage>
 </ChatPanel>
 
-什么都没有发生呐！前面我们有提到，插件会在项目服务启动时创建对应的工作线程，当前这个插件不是在项目启动时就存在的，而是你在当前服务运行时完成开发并 **后续添加** 的。
+什么都没有发生呐！前面我们有提到，插件会在项目服务启动时自动执行实例化，当前这个插件不是在项目启动时就存在的，而是你在当前服务运行时完成开发并 **后续添加** 的。
 
 不过你并不需要为此就去重启整个服务，每次重启服务 bot 都将会重新登录，频繁上下线会导致登录异常甚至掉线，我们只需要单独 **挂载插件** 就可以正常使用。
 
 ## 挂载插件
 
-你可以给机器人发送 `mount <name>` 或者 `挂载 <插件名>` 指令，插件名就是你刚才创建的 **文件夹名**，所有插件都是通过 `plugins` 和 `node_module` 内的文件夹名来创建工作线程的。
+你可以给机器人发送 `mount <name>` 或者 `挂载 <插件名>` 指令，插件名就是你刚才创建的 **文件夹名**，所有插件都是通过 `plugins` 和 `node_module` 内的文件夹名来作为唯一标识的。
 
 <ChatPanel>
   <ChatMessage id="2225151531">挂载 test</ChatMessage>
@@ -130,7 +130,9 @@ plugin
   .version('0.0.1')
 ```
 
-## 插件生命周期
+你可以在项目根目录下使用 cli 指令 `kokkoro create <name>` 来快速创建模板。
+
+## 插件权限
 
 除了 `mount` 指令外，还有 `unmount`、`enable` 等内置指令，你可以输入 help 查看所有内置指令。
 
@@ -146,6 +148,9 @@ plugin
     <div>&emsp;reload &lt;name&gt;  重载插件</div>
     <div>&emsp;enable &lt;name&gt;  启用插件</div>
     <div>&emsp;disable &lt;name&gt;  禁用插件</div>
+    <div>&emsp;server  查看当前群服务列表</div>
+    <div>&emsp;apply &lt;name&gt;  应用群服务</div>
+    <div>&emsp;exempt &lt;name&gt;  免除群服务</div>
     <div>&emsp;help  帮助信息</div>
     <div>&emsp;version  版本信息</div>
     <br />
@@ -155,9 +160,9 @@ plugin
 
 你一定有所疑问，mount 与 enable 有什么区别？
 
-kokkoro 使用了 [worker_threads](https://nodejs.org/api/worker_threads.html) 分离插件与 bot，每一个插件都是独立的线程服务。当你挂载插件，程序会从 plugins 与 node_modules 目录中检索，若有与之匹配的 js 文件，就会为其创建一个全新的线程执行对应代码。反之，`unmount` 会直接销毁掉整个插件线程。
+当你启动项目时，程序会从 plugins 与 node_modules 目录中检索，若有与之匹配的 js 文件，就会将其自动导入并执行对应代码，也就是 `mount` 操作。反之，`unmount` 会直接销毁掉整个插件任务。
 
-那么 enable 呢？kokkoro 支持多 bot 账号管理，若出现机器人 A 想要使用某个插件，机器人 B 却不需要这个插件时，就可以使用该项指令。
+那么 `enable` 呢？kokkoro 支持多 bot 账号管理，若出现机器人 A 想要使用某个插件，机器人 B 却不需要这个插件时，就可以使用该项指令。
 
 <ChatPanel>
   <ChatMessage id="2225151531">禁用 test</ChatMessage>
@@ -166,4 +171,4 @@ kokkoro 使用了 [worker_threads](https://nodejs.org/api/worker_threads.html) �
   <ChatMessage id="2225151531">将不再收到消息</ChatMessage>
 </ChatPanel>
 
-现在 kokkoro 已经将 test 插件屏蔽，该 bot 将不会处理任何 test 插件下的消息事件，不过 test 插件线程仍然在正常运行。
+现在 kokkoro 已经将 test 插件屏蔽，该 bot 将不会处理任何 test 插件下的消息事件，不过插件仍然在正常运行，若你登录了多个账号，其它 bot 仍然可以正常收发消息。
