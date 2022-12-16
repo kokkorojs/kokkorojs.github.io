@@ -114,11 +114,7 @@ npm i kokkoro-plugin-setu
 npm i kokkoro-plugin-rss
 ```
 
-## 图片搜索
-
-::: warning
-因 kokkoro v1 重构，该插件适配中
-:::
+## SauceNAO 图片搜索
 
 ```shell
 npm i kokkoro-plugin-saucenao
@@ -250,9 +246,9 @@ kokkoro 最初就是以公主连结玩家为核心开发相关功能的，现在
 
 ## 空调
 
-::: warning
-因 kokkoro v1 重构，该插件适配中
-:::
+```shell
+npm i kokkoro-plugin-aircon
+```
 
 ### 开关
 
@@ -266,6 +262,13 @@ kokkoro 最初就是以公主连结玩家为核心开发相关功能的，现在
 <ChatPanel>
   <ChatMessage id="2225151531">设置温度 28</ChatMessage>
   <ChatMessage id="709289491">哔~☀️当前温度 28°</ChatMessage>
+</ChatPanel>
+
+### 温度查询
+
+<ChatPanel>
+  <ChatMessage id="2225151531">群温度</ChatMessage>
+  <ChatMessage id="709289491">☀️当前温度 28°</ChatMessage>
 </ChatPanel>
 
 ### ~~年轻人的第一款人造太阳~~
