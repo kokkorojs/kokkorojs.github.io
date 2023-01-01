@@ -16,68 +16,63 @@
       "enum": ["trace", "debug", "info", "warn", "error", "fatal", "mark", "off"]
     },
     "bots": {
-      "type": "object",
+      "type": "array",
       "description": "bot 信息，可添加多个",
       "minProperties": 1,
-      "propertyNames": {
-        "pattern": "^[1-9][0-9]{4,10}$"
-      },
-      "patternProperties": {
-        ".+": {
-          "type": "object",
+      "items": {
+        "uin": {
           "description": "bot 账号",
+          "pattern": "^[1-9][0-9]{4,10}$"
+        },
+        "auto_login": {
+          "description": "项目启动时自动登录，默认 true",
+          "type": "boolean"
+        },
+        "masters": {
+          "description": "bot 主人，可添加多个",
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "pattern": "^[1-9][0-9]{4,10}$"
+          }
+        },
+        "password": {
+          "description": "账号密码，若不填写则使用扫码登陆",
+          "type": ["null", "string"]
+        },
+        "protocol": {
+          "type": "object",
+          "description": "协议配置，不要随意修改，除非你知道自己在做什么",
           "properties": {
-            "auto_login": {
-              "description": "项目启动时自动登录，默认 true",
+            "platform": {
+              "description": "1:安卓手机(默认) 2:aPad 3:安卓手表 4:MacOS 5:iPad",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            "ignore_self": {
+              "description": "忽略自己的消息",
               "type": "boolean"
             },
-            "masters": {
-              "description": "bot 主人，可添加多个",
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "pattern": "^[1-9][0-9]{4,10}$"
-              }
+            "resend": {
+              "description": "被风控时是否尝试用分片发送",
+              "type": "boolean"
             },
-            "password": {
-              "description": "账号密码，若不填写则使用扫码登陆",
-              "type": ["null", "string"]
+            "data_dir": {
+              "description": "数据存储文件夹",
+              "type": "string"
             },
-            "protocol": {
-              "type": "object",
-              "description": "协议配置，不要随意修改，除非你知道自己在做什么",
-              "properties": {
-                "platform": {
-                  "description": "1:安卓手机(默认) 2:aPad 3:安卓手表 4:MacOS 5:iPad",
-                  "type": "integer",
-                  "minimum": 1,
-                  "maximum": 5
-                },
-                "ignore_self": {
-                  "description": "忽略自己的消息",
-                  "type": "boolean"
-                },
-                "resend": {
-                  "description": "被风控时是否尝试用分片发送",
-                  "type": "boolean"
-                },
-                "data_dir": {
-                  "description": "数据存储文件夹",
-                  "type": "string"
-                },
-                "reconn_interval": {
-                  "description": "重新登录间隔",
-                  "type": "integer"
-                },
-                "cache_group_member": {
-                  "description": "是否缓存群员列表\n群多的时候 (500~1000) 会多占据约 100MB+ 内存，关闭后进程只需不到 20MB 内存",
-                  "type": "boolean"
-                },
-                "auto_server": {
-                  "description": "自动选择最优服务器\n关闭后会一直使用 `msfwifi.3g.qq.com:8080` 进行连接",
-                  "type": "boolean"
-                }
-              }
+            "reconn_interval": {
+              "description": "重新登录间隔",
+              "type": "integer"
+            },
+            "cache_group_member": {
+              "description": "是否缓存群员列表\n群多的时候 (500~1000) 会多占据约 100MB+ 内存，关闭后进程只需不到 20MB 内存",
+              "type": "boolean"
+            },
+            "auto_server": {
+              "description": "自动选择最优服务器\n关闭后会一直使用 `msfwifi.3g.qq.com:8080` 进行连接",
+              "type": "boolean"
             }
           }
         }
