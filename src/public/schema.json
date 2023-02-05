@@ -4,11 +4,21 @@
   "description": "可可萝配置文件",
   "type": "object",
   "properties": {
-    "port": {
-      "description": "web 服务端口号",
-      "type": "integer",
-      "minimum": 0,
-      "maximum": 65535
+    "server": {
+      "type": "object",
+      "description": "web 服务配置",
+      "properties": {
+        "port": {
+          "description": "API 端口号",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65535
+        },
+        "domain": {
+          "description": "域名",
+          "type": "string"
+        }
+      }
     },
     "log_level": {
       "description": "日志等级，打印日志会降低性能，若消息量巨大建议修改此参数",
