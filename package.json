@@ -1,6 +1,6 @@
 {
   "name": "kokkorojs.github.io",
-  "description": "Documentation for kokkoro",
+  "description": "Documentation for kokkoro.",
   "scripts": {
     "dev": "vitepress",
     "build": "vitepress build",

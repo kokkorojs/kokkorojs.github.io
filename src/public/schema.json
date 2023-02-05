@@ -24,10 +24,6 @@
           "description": "bot 账号",
           "pattern": "^[1-9][0-9]{4,10}$"
         },
-        "auto_login": {
-          "description": "项目启动时自动登录，默认 true",
-          "type": "boolean"
-        },
         "masters": {
           "description": "bot 主人，可添加多个",
           "type": "array",
@@ -44,6 +40,11 @@
           "type": "object",
           "description": "协议配置，不要随意修改，除非你知道自己在做什么",
           "properties": {
+            "log_level": {
+              "description": "日志等级，与上面的 log_level 不同，只针对 bot 消息打印",
+              "type": "string",
+              "enum": ["trace", "debug", "info", "warn", "error", "fatal", "mark", "off"]
+            },
             "platform": {
               "description": "1:安卓手机(默认) 2:aPad 3:安卓手表 4:MacOS 5:iPad",
               "type": "integer",
