@@ -17,10 +17,10 @@
   },
   "homepage": "https://github.com/kokkorojs/kokkorojs.github.io#readme",
   "dependencies": {
-    "vitepress": "^1.0.0-alpha.31"
+    "vitepress": "^1.0.0-alpha.45"
   },
   "devDependencies": {
     "gitalk": "^1.8.0",
-    "sass": "^1.56.2"
+    "sass": "^1.58.0"
   }
 }

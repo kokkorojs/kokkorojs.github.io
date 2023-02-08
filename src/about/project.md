@@ -8,8 +8,9 @@
 
 | Tables | Cool |
 | --- |---|
-| web 路由服务 | 🟡 |
-| 多 bot 管理 | 🔴 |
+| web 路由服务 | 🔵 |
+| 多 bot 管理 | 🔵 |
+| 数据库支持 | 🟡 |
 | QQ 频道支持 | 🔴 |
 
 ## 插件适配
@@ -30,9 +31,3 @@
 | lifeRestart | 🔴 |
 | qa | 🔴 |
 | galgame | 🔴 |
-
-## 核心库拆分
-
-- @kokkoro/core
-- @kokkoro/utils
-- @kokkoro/jsondb

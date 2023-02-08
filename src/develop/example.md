@@ -48,7 +48,7 @@ const { Plugin } = require('kokkoro');
 const plugin = new Plugin();
 ```
 
-这个时候你就已经写好了一个插件，不需要任何额外操作，该插件会在 **项目启动时** 自动导入执行。  
+这个时候你就已经写好了一个插件，不需要任何额外操作，该插件会在 **项目启动时** 自动将其 `import` 执行。  
 不过目前这个插件还什么都不能干，我们没有为其编写相应的交互逻辑。
 
 ## 实现交互
@@ -68,9 +68,9 @@ const { Plugin } = require('kokkoro');
 const plugin = new Plugin();
 
 plugin
-  .listen('message.private')
-  .trigger((event) => {
-    const { bot, sender } = event;
+  .event('message.private')
+  .action((ctx) => {
+    const { bot, sender } = ctx;
     const { user_id } = sender;
 
     bot.sendPrivateMsg(user_id, 'hello world');
@@ -85,9 +85,9 @@ import { Plugin } from 'kokkoro';
 const plugin = new Plugin();
 
 plugin
-  .listen('message.private')
-  .trigger((event) => {
-    const { bot, sender } = event;
+  .event('message.private')
+  .action((ctx) => {
+    const { bot, sender } = ctx;
     const { user_id } = sender;
 
     bot.sendPrivateMsg(user_id, 'hello world');
@@ -103,7 +103,7 @@ plugin
   <ChatMessage id="2225151531">...</ChatMessage>
 </ChatPanel>
 
-什么都没有发生呐！前面我们有提到，插件会在项目服务启动时自动执行实例化，当前这个插件不是在项目启动时就存在的，而是你在当前服务运行时完成开发并 **后续添加** 的。
+什么都没有发生呐！前面我们有提到，插件会在项目服务启动时自动执行，当前这个插件不是在项目启动时就存在的，而是你在当前服务运行时完成开发并 **后续添加** 的。
 
 不过你并不需要为此就去重启整个服务，每次重启服务 bot 都将会重新登录，频繁上下线会导致登录异常甚至掉线，我们只需要单独 **挂载插件** 就可以正常使用。
 
@@ -113,7 +113,7 @@ plugin
 
 <ChatPanel>
   <ChatMessage id="2225151531">挂载 test</ChatMessage>
-  <ChatMessage id="709289491">已创建 test 线程</ChatMessage>
+  <ChatMessage id="709289491">已将 test 挂载</ChatMessage>
   <ChatMessage id="2225151531">hello</ChatMessage>
   <ChatMessage id="709289491">hello world</ChatMessage>
 </ChatPanel>
