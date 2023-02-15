@@ -81,8 +81,8 @@ interface Params {
   user_id: number;
   // 消息
   message: string;
-  // 是否引用
-  source: boolean;
+  // 引用消息
+  source: Quotable;
 }
 ```
 
@@ -100,8 +100,8 @@ interface Params {
   group_id: number;
   // 消息
   message: string;
-  // 是否引用
-  source: boolean;
+  // 引用消息
+  source: Quotable;
 }
 ```
 
