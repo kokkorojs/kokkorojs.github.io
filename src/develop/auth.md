@@ -32,7 +32,7 @@ plugin
 
 <ChatPanel>
   <ChatMessage id="437402067">你好</ChatMessage>
-  <ChatMessage id="709289491">越权，指令 disable 的 level 范围：4 ~ 6，你当前的 level 为：0</ChatMessage>
+  <ChatMessage id="709289491">越权，指令 hello 的 level 范围：4 ~ 6，你当前的 level 为：0</ChatMessage>
   <ChatMessage id="2225151531">你好</ChatMessage>
   <ChatMessage id="709289491">hello world</ChatMessage>
 </ChatPanel>
