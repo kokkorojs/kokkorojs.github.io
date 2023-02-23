@@ -9,7 +9,7 @@ hero:
   text: (OxO)?!...
   tagline: とある咕咕の QQ 机器人框架
   image:
-    src: /104321865_p0.jpg
+    src: /kokkoro.png
     alt: kokkoro
 
   actions:
