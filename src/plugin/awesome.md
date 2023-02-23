@@ -6,6 +6,35 @@
 还在适配中的插件会注明，该页面未适配完成的功能都会随着时间逐步完善，若有你比较中意的功能可以在群里催更或者提 issue，会优先开发。
 :::
 
+## chatGPT
+
+```shell
+npm i kokkoro-plugin-chatgpt
+```
+
+### 咨询
+
+<ChatPanel>
+  <ChatMessage id="2225151531">咨询 怎么做光刻机？</ChatMessage>
+  <ChatMessage id="709289491">
+  {{
+    [
+      '光刻机操作很简单，大致可以分为几个步骤： ',
+      '1. 准备好要刻的图像。', 
+      '2. 把图像通过光刻机传输到腐蚀液中。', 
+      '3. 将腐蚀液加热或用化学物质处理，使其变成图像。', 
+      '4. 通过检查图像，确保它的质量。 ',
+      '5. 使用干燥剂将图像固定在一个特定的位置上。 ',
+      '6. 最后，将硬件放置在指定的位置上，就可以完成制作工作了。',
+    ].join('\n')
+  }}
+  </ChatMessage>
+</ChatPanel>
+
+这...很简单么？
+
+### 消息队列
+
 ## 切噜语
 
 ```shell
@@ -107,7 +136,7 @@ npm i kokkoro-plugin-setu
 ## RSS 订阅
 
 ::: warning
-因 kokkoro v1 重构，该插件适配中
+因 kokkoro v2 重构，该插件适配中
 :::
 
 ```shell
@@ -115,6 +144,10 @@ npm i kokkoro-plugin-rss
 ```
 
 ## SauceNAO 图片搜索
+
+::: warning
+因 kokkoro v2 重构，该插件适配中
+:::
 
 ```shell
 npm i kokkoro-plugin-saucenao
@@ -140,7 +173,7 @@ npm i kokkoro-plugin-saucenao
 ## 公主连结
 
 ::: warning
-因 kokkoro v1 重构，该插件适配中
+因 kokkoro v2 重构，该插件适配中
 :::
 
 ```shell
@@ -202,7 +235,7 @@ kokkoro 最初就是以公主连结玩家为核心开发相关功能的，现在
 ## 沙盒
 
 ::: warning
-因 kokkoro v1 重构，该插件适配中
+因 kokkoro v2 重构，该插件适配中
 :::
 
 可执行任意 js 代码段，包括 bot api 和发送网络请求，有着极高的可玩性，你可以把这个插件当做浏览器的 f12 去实现各种有意思的东西
@@ -231,9 +264,13 @@ kokkoro 最初就是以公主连结玩家为核心开发相关功能的，现在
 
 <ChatPanel>
   <ChatMessage id="2225151531">
-    <div>> for (let i = 0; i &lt 3; i++) {</div>
-    <div>&emsp;event.reply('重要的事情说三遍！');</div>
-    <div>}</div>
+  {{
+    [
+      '> for (let i = 0; i &lt 3; i++) {',
+      "  ctx.reply('重要的事情说三遍！');",
+      '}',
+    ].join('\n')
+  }}
   </ChatMessage>
   <ChatMessage id="709289491">重要的事情说三遍！</ChatMessage>
   <ChatMessage id="709289491">重要的事情说三遍！</ChatMessage>
@@ -281,7 +318,7 @@ npm i kokkoro-plugin-aircon
 ## 五子棋
 
 ::: warning
-因 kokkoro v1 重构，该插件适配中
+因 kokkoro v2 重构，该插件适配中
 :::
 
 ### 开始游戏
@@ -321,7 +358,7 @@ npm i kokkoro-plugin-aircon
 ## 猜头像
 
 ::: warning
-因 kokkoro v1 重构，该插件适配中
+因 kokkoro v2 重构，该插件适配中
 :::
 
 本来是计划把猜头像也整合进 pcr 插件，考虑到后续可能会添加其它游戏类型的头像，所以仍然独立。
@@ -342,7 +379,7 @@ npm i kokkoro-plugin-aircon
 ## 人生重开
 
 ::: warning
-因 kokkoro v1 重构，该插件适配中
+因 kokkoro v2 重构，该插件适配中
 :::
 
 ### 重开
@@ -367,7 +404,7 @@ npm i kokkoro-plugin-aircon
 ## 你问我答
 
 ::: warning
-因 kokkoro v1 重构，该插件适配中
+因 kokkoro v2 重构，该插件适配中
 :::
 
 ### 问
