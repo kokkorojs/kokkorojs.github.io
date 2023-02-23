@@ -50,7 +50,31 @@ const sidebar = [
       },
       {
         text: '消息事件',
-        link: '/develop/message',
+        link: '/develop/event',
+      },
+      {
+        text: '指令前缀',
+        link: '/develop/prefix',
+      },
+      {
+        text: '语法糖',
+        link: '/develop/sugar',
+      },
+      {
+        text: '参数获取',
+        link: '/develop/query',
+      },
+      {
+        text: '指令鉴权',
+        link: '/develop/auth',
+      },
+      {
+        text: '定时任务',
+        link: '/develop/schedule',
+      },
+      {
+        text: '插件配置项',
+        link: '/develop/option',
       },
     ]
   },
@@ -71,7 +95,7 @@ export default defineConfigWithTheme({
   description: 'とある咕咕の QQ 机器人框架',
   srcDir: 'src',
   head: [
-    ['link', { rel: 'icon', href: `/images/logo.png` }],
+    ['link', { rel: 'icon', href: '/images/logo.png', }],
   ],
   lang: 'zh-CN',
   lastUpdated: true,
@@ -98,6 +122,6 @@ export default defineConfigWithTheme({
     },
   },
   markdown: {
-    // lineNumbers: true
+    lineNumbers: true,
   },
 });

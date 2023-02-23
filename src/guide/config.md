@@ -27,7 +27,7 @@
       // bot 账号
       "uin": 1145141919,
       // 项目启动时自动登录，默认 false
-      // "auto_login": true,
+      "auto_login": false,
       // 账号密码，若不填写则使用扫码登陆
       "password": null,
       // bot 主人，可添加多个
@@ -69,7 +69,7 @@
 
 ```tex
 # saucenao api key
-KOKKORO_SAUCENAO=3d14159265358979323846264338327950288419
+SAUCENAO_API_KEY=3d14159265358979323846264338327950288419
 ```
 
 命名并无限制，不过为了防止变量名冲突，我一般用 `KOKKORO` 作为前缀名。项目启动时会将其添加到 `process.env` 中，文件支持热更，修改后会自动修改变量值。

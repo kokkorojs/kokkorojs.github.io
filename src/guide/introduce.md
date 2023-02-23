@@ -6,7 +6,7 @@
 
 ## 什么是 kokkoro？
 
-本项目是一个基于 [oicq](https://github.com/takayama-lily/oicq) 协议库，使用 TypeScript 语言开发的 QQ 机器人框架。
+本项目是一个基于 [amesu](https://github.com/dcyuki/amesu) 协议库，使用 TypeScript 语言开发的 QQ 机器人框架。
 
 最初起名为 [yumemi（まるで、夢みたい）](https://github.com/dcyuki/yumemi_bot) 作为自用 bot，并没有开源的打算。因立项时没有考虑过后续维护，导致代码严重耦合，所以有了重构的打算，就顺便开源了。一想到我的项目能多少给他人带来便利，难到不是一件很 cool 的事情么？
 
@@ -45,10 +45,12 @@
 
 其次是开发文档层次不齐，想开发插件部分情况下找不到相关 api，只能面向源码编程或面向群主编程，也没有体验较好的 cli。
 
-kokkoro 的初衷是想让开发变得简单易上手，她完全基于 node 环境，无需安装任何第三方应用，插件开发也十分简洁，没有任何多余的语句，仅需下列7行代码：
+kokkoro 的初衷是想让开发变得 **简单易上手**，她完全基于 node 环境，无需安装任何第三方应用，插件开发也十分简洁，没有任何多余的语句，仅需下列7行代码：
 
-```typescript
-import { Plugin } from 'kokkoro';
+::: code-group
+
+```typescript [typescript]
+import { Plugin } from '@kokkoro/core';
 
 const plugin = new Plugin();
 
@@ -58,6 +60,20 @@ plugin
     ctx.reply('hello world');
   })
 ```
+
+```javascript [javascript]
+const { Plugin } = require('@kokkoro/core');
+
+const plugin = new Plugin();
+
+plugin
+  .command('hello')
+  .action((ctx) => {
+    ctx.reply('hello world');
+  })
+```
+
+:::
 
 能够基于不同的群聊单独配置插件设置项，而且支持多账号登录，可以用 cli 一键创建项目、安装插件、生成插件开发模板...这在当时是绝无仅有的。
 
@@ -91,8 +107,8 @@ plugin
   + windows 11
   + windows server
 - linux
-  + ubintu 18.04
-  + ubintu 20.04
+  + ubuntu 18.04
+  + ubuntu 20.04
   + cent os 8
   + cent os 8.2
   + raspberry pi os desktop

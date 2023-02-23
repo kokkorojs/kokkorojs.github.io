@@ -91,6 +91,7 @@ onMounted(() => {
   word-break: break-all;
   padding: 0.6rem 0.7rem;
   margin-top: 0.2rem;
+  white-space: pre;
 
   >img {
     border-radius: 0.5rem;

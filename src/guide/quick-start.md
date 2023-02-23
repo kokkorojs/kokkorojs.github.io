@@ -8,7 +8,7 @@
 
 本项目不用安装任何第三方软件，非常简单轻便，仅需三行命令即可构建。
 
-```shell
+```shell:no-line-numbers
 # 安装 kokkoro cli
 npm i -g @kokkoro/cli
 
@@ -26,7 +26,7 @@ kokkoro init
 
 当你输入 `kokkoro init` 后， kokkoro 将会为你在当前所在目录自动安装并生成相关文件。
 
-```tex
+```tex:no-line-numbers
 .
 ├─ data/              资源目录
 ├─ db/                数据库目录
@@ -45,11 +45,11 @@ kokkoro 确实只会生成上面的 5 个文件，不过 `data` 和 `db` 目录�
 
 一切准备就绪，开始启动你的项目吧。如果你是本地安装，就要使用 `npx kokkoro start -d` 启动项目。
 
-```shell
+```shell:no-line-numbers
 kokkoro start -d
 ```
 
-首次启动项目会将 admin 编译为静态页面，因为要动态配置例如 api url 等参数，所以时间会稍微有点慢，第一次编译完成后只要不修改相关 config 就不会再次编译。
+首次启动项目会动态编译 admin 配置参数，例如 api url 等，所以时间会稍微有点慢，第一次编译完成后只要不修改相关 config 就不会再次编译。
 
 :::info
 `-d` 代表着 develop 模式，会将 web serve 指向内网 ip 运行，方便用于本地调试。若要在服务器部署可以直接使用 `kokkoro start` 或者 `node main.js`，后者指向公网 ip。

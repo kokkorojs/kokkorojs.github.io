@@ -23,7 +23,16 @@
     "log_level": {
       "description": "日志等级，打印日志会降低性能，若消息量巨大建议修改此参数",
       "type": "string",
-      "enum": ["trace", "debug", "info", "warn", "error", "fatal", "mark", "off"]
+      "enum": [
+        "trace",
+        "debug",
+        "info",
+        "warn",
+        "error",
+        "fatal",
+        "mark",
+        "off"
+      ]
     },
     "bots": {
       "type": "array",
@@ -33,6 +42,10 @@
         "uin": {
           "description": "bot 账号",
           "pattern": "^[1-9][0-9]{4,10}$"
+        },
+        "auto_login": {
+          "description": "自动登录",
+          "type": "boolean"
         },
         "masters": {
           "description": "bot 主人，可添加多个",
@@ -44,7 +57,10 @@
         },
         "password": {
           "description": "账号密码，若不填写则使用扫码登陆",
-          "type": ["null", "string"]
+          "type": [
+            "null",
+            "string"
+          ]
         },
         "protocol": {
           "type": "object",
@@ -53,7 +69,16 @@
             "log_level": {
               "description": "日志等级，与上面的 log_level 不同，只针对 bot 消息打印",
               "type": "string",
-              "enum": ["trace", "debug", "info", "warn", "error", "fatal", "mark", "off"]
+              "enum": [
+                "trace",
+                "debug",
+                "info",
+                "warn",
+                "error",
+                "fatal",
+                "mark",
+                "off"
+              ]
             },
             "platform": {
               "description": "1:安卓手机(默认) 2:aPad 3:安卓手表 4:MacOS 5:iPad",
