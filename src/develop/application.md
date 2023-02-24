@@ -82,8 +82,8 @@ plugin
 ## 快来试试
 
 <ChatPanel>
-  <ChatMessage id="2225151531">hello</ChatMessage>
-  <ChatMessage id="2225151531">...</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="yuki">hello</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="yuki">...</ChatMessage>
 </ChatPanel>
 
 什么都没有发生呐！前面我们有提到，插件会在 **项目启动时** 自动挂载，当前这个插件不是在项目启动时就存在的，而是你在当前服务运行时完成开发并 **后续添加** 的。
@@ -95,8 +95,8 @@ plugin
 你可以给机器人发送 `mount <...name>` 或者 `挂载 <...插件名>` 指令，插件名就是你刚才创建的 **文件夹名**。
 
 <ChatPanel>
-  <ChatMessage id="2225151531">mount test</ChatMessage>
-  <ChatMessage id="709289491">
+  <ChatMessage :id="2225151531" nickname="yuki">mount test</ChatMessage>
+  <ChatMessage :id="709289491" nickname="kokkoro">
   {{
     JSON.stringify({
       test: {
@@ -105,8 +105,8 @@ plugin
     }, null, 2)
   }}
   </ChatMessage>
-  <ChatMessage id="2225151531">hello</ChatMessage>
-  <ChatMessage id="709289491">hello world</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="yuki">hello</ChatMessage>
+  <ChatMessage :id="709289491" nickname="kokkoro">hello world</ChatMessage>
 </ChatPanel>
 
 所有插件都是通过 `plugins` 和 `node_module` 内的文件夹名来作为唯一标识的。
@@ -116,8 +116,8 @@ plugin
 除了 `mount` 指令外，还有 `unmount`、`enable` 等内置指令，你可以输入 help 查看所有内置指令。
 
 <ChatPanel>
-  <ChatMessage id="2225151531">help</ChatMessage>
-  <ChatMessage id="709289491">
+  <ChatMessage :id="2225151531" nickname="yuki">help</ChatMessage>
+  <ChatMessage :id="709289491" nickname="kokkoro">
   {{
     [
       'Commands: ',
@@ -148,8 +148,8 @@ plugin
 那么 `enable` 呢？kokkoro 支持多 bot 账号管理，若出现机器人 A 想要使用某个插件，机器人 B 却不需要这个插件时，就可以使用该项指令。
 
 <ChatPanel>
-  <ChatMessage id="2225151531">disable test</ChatMessage>
-  <ChatMessage id="709289491">
+  <ChatMessage :id="2225151531" nickname="yuki">disable test</ChatMessage>
+  <ChatMessage :id="709289491" nickname="kokkoro">
   {{
     JSON.stringify({
       test: {
@@ -158,8 +158,8 @@ plugin
     }, null, 2)
   }}
   </ChatMessage>
-  <ChatMessage id="2225151531">hello</ChatMessage>
-  <ChatMessage id="2225151531">将不再收到消息</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="yuki">hello</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="yuki">将不再收到消息</ChatMessage>
 </ChatPanel>
 
 现在 kokkoro 已经将 test 插件屏蔽，**该 bot** 将不会处理 test 插件下的任何消息事件，不过插件仍然在正常运行，若你登录了多个账号，其它 bot 仍然可以正常收发消息。

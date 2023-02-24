@@ -5,8 +5,8 @@
 :::
 
 <ChatPanel>
-  <ChatMessage id="2225151531">help</ChatMessage>
-  <ChatMessage id="709289491">
+  <ChatMessage :id="2225151531" nickname="yuki">help</ChatMessage>
+  <ChatMessage :id="709289491" nickname="kokkoro">
   {{
     [
       'Commands: ',

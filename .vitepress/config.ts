@@ -1,4 +1,11 @@
+import axios from 'axios';
 import { defineConfigWithTheme } from 'vitepress';
+
+function getPackageVersion(name: string) {
+  return axios
+    .get(`https://registry.npmjs.org/${name}/latest`)
+    .then(result => result.data.version)
+}
 
 const nav = [
   {
@@ -32,6 +39,15 @@ const nav = [
       { text: '历史', link: '/about/history' },
     ]
   },
+  // {
+  //   text: getPackageVersion('kokkoro'),
+  //   items: [
+  //     {
+  //       text: '更新日志',
+  //       link: 'https://github.com/kokkorojs/kokkoro/releases',
+  //     },
+  //   ],
+  // },
 ];
 const sidebar = {
   '/develop/': [

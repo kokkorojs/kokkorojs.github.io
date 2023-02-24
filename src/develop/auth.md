@@ -31,8 +31,8 @@ plugin
 ```
 
 <ChatPanel>
-  <ChatMessage id="437402067">你好</ChatMessage>
-  <ChatMessage id="709289491">越权，指令 hello 的 level 范围：4 ~ 6，你当前的 level 为：0</ChatMessage>
-  <ChatMessage id="2225151531">你好</ChatMessage>
-  <ChatMessage id="709289491">hello world</ChatMessage>
+  <ChatMessage :id="437402067" nickname="友人A">你好</ChatMessage>
+  <ChatMessage :id="709289491" nickname="kokkoro">越权，指令 hello 的 level 范围：4 ~ 6，你当前的 level 为：0</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="yuki">你好</ChatMessage>
+  <ChatMessage :id="709289491" nickname="kokkoro">hello world</ChatMessage>
 </ChatPanel>

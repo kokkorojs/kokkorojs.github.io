@@ -1,4 +1,4 @@
-# 快速开始
+# 快速上手
 
 ::: info 准备工作
 在开始前，请先确保你安装了 [Node.js](https://nodejs.org/zh-cn/)，要求 **不能低于 node v15**。如果你对此有疑问，可以 [在这里](/about/faq) 查看关于版本问题。
@@ -65,14 +65,14 @@ kokkoro start -d
 登录成功后，你将会收到一条私信。（你填写的 masters）
 
 <ChatPanel>
-  <ChatMessage id="709289491">おはようございます、主様♪</ChatMessage>
+  <ChatMessage :id="709289491" nickname="kokkoro">おはようございます、主様♪</ChatMessage>
 </ChatPanel>
 
 输入 `print` 指令可以测试消息打印，现在开启一段属于你的物语吧♪ q(≧▽≦q)
 
 <ChatPanel>
-  <ChatMessage id="2225151531">print hello world</ChatMessage>
-  <ChatMessage id="709289491">hello world</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="yuki">print hello world</ChatMessage>
+  <ChatMessage :id="709289491" nickname="kokkoro">hello world</ChatMessage>
 </ChatPanel>
 
 当然，如果你有 JavaScript 的相关知识，随时都可以编写自己的插件，详情可在 [插件开发](/develop/application) 一栏查看，更多插件安装和使用说明可以在 [插件社区](/plugin/awesome) 中查找。

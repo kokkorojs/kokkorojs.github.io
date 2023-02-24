@@ -10,8 +10,8 @@
 在上一章节，我们介绍了如何编写自己的第一个插件，在挂载插件后，`test` 监听了 `message.private` 事件。
 
 <ChatPanel>
-  <ChatMessage id="437402067">那个那个，ctx 到底是什么呀？</ChatMessage>
-  <ChatMessage id="2225151531">哈？你问我干嘛，打出来看看不就知道了嘛！</ChatMessage>
+  <ChatMessage :id="437402067" nickname="友人A">那个那个，ctx 到底是什么呀？</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="yuki">哈？你问我干嘛，打出来看看不就知道了嘛！</ChatMessage>
 </ChatPanel>
 
 ::: code-group
@@ -81,13 +81,13 @@ kokkoro 是基于 oicq 协议库，事件名与协议库保持一致，更多事
 如果我们想让 bot 收到 hello 就回复 hello world，收到 bye 就发送 good bye 该如何实现？
 
 <ChatPanel>
-  <ChatMessage id="437402067">yuki yuki，听你这么一说，我完全懂了</ChatMessage>
-  <ChatMessage id="2225151531">啊？懂...懂什么哦？</ChatMessage>
-  <ChatMessage id="437402067">当我需要用到某个插件，在去挂载的时候，kokkoro 就帮我执行插件里面所有的代码</ChatMessage>
-  <ChatMessage id="2225151531">没错，至于插件的挂载就是 require 操作，与 npm 规范是保持一致的</ChatMessage>
-  <ChatMessage id="437402067">那么在这个时候，我可以编写执行 plugin.event() 方法，去监听我想要得到的任何消息</ChatMessage>
-  <ChatMessage id="2225151531">是哦，消息事件没有你收不到，只有你想不到，目前来说足够满足日常使用</ChatMessage>
-  <ChatMessage id="437402067">那我知道怎么改了！</ChatMessage>
+  <ChatMessage :id="437402067" nickname="友人A">yuki yuki，听你这么一说，我完全懂了</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="yuki">啊？懂...懂什么哦？</ChatMessage>
+  <ChatMessage :id="437402067" nickname="友人A">当我需要用到某个插件，在去挂载的时候，kokkoro 就帮我执行插件里面所有的代码</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="yuki">没错，至于插件的挂载就是 require 操作，与 npm 规范是保持一致的</ChatMessage>
+  <ChatMessage :id="437402067" nickname="友人A">那么在这个时候，我可以编写执行 plugin.event() 方法，去监听我想要得到的任何消息</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="yuki">是哦，消息事件没有你收不到，只有你想不到，目前来说足够满足日常使用</ChatMessage>
+  <ChatMessage :id="437402067" nickname="友人A">那我知道怎么改了！</ChatMessage>
 </ChatPanel>
 
 ```typescript
@@ -111,9 +111,9 @@ plugin
 ```
 
 <ChatPanel>
-  <ChatMessage id="437402067">蒋蒋~怎么样，是不是这样就可以解决问题了？</ChatMessage>
-  <ChatMessage id="2225151531">蛤？！</ChatMessage>
-  <ChatMessage id="2225151531">
+  <ChatMessage :id="437402067" nickname="友人A">蒋蒋~怎么样，是不是这样就可以解决问题了？</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="yuki">蛤？！</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="yuki">
     <img width="200" src="/images/meme/西内.jpg" />
   </ChatMessage>
 </ChatPanel>

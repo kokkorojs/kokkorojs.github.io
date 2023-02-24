@@ -3,7 +3,7 @@ import 'gitalk/dist/gitalk.css';
 import Gitalk from 'gitalk';
 import { onMounted } from 'vue';
 
-onMounted(() => {
+const initGitalk = () => {
   const gitalk = new Gitalk({
     clientID: '2966b08bee02e561b5f0',
     clientSecret: '717c72176ebe736b21274c4821a2ee23a8042b73',
@@ -13,7 +13,12 @@ onMounted(() => {
     id: location.pathname,
     distractionFreeMode: false,
   });
+
   gitalk.render('gitalk-container');
+};
+
+onMounted(() => {
+  initGitalk();
 });
 </script>
 
@@ -21,6 +26,4 @@ onMounted(() => {
   <div id="gitalk-container"></div>
 </template>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

@@ -1,9 +1,16 @@
 <template>
   <div style="display: inline-block">
-    <img v-if="props.avatar || props.id" class="avatar"
-      :src="props.avatar || getAvatarById(props.id, props.type, props.size)" />
-    <div v-else class="avatar" :style="`background-color:${color}`">
-      {{ props.nickname[0] }}
+    <img
+      v-if="props.avatar || props.id"
+      class="avatar"
+      :src="props.avatar || getAvatarById(props.id, props.type, props.size)"
+    />
+    <div
+      v-else
+      class="avatar"
+      :style="`background-color:${color}`"
+    >
+      <span>{{ props.nickname }}</span>
     </div>
   </div>
 </template>
@@ -12,7 +19,7 @@
 interface ChatAvatarProps {
   avatar?: string;
   id?: number | null;
-  type?: 'qq' | string;
+  type?: 'qq' | 'group' | string;
   size?: number;
   nickname?: string;
   color?: string;
@@ -40,13 +47,13 @@ const getAvatarById = (id, type, size) => {
 
 <style>
 .avatar {
-  display: inline-flex;
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: 50%;
-  line-height: 0;
-  justify-content: center;
-  align-items: center;
   color: white;
+  display: inline-flex;
+  line-height: 0;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
 }
 </style>

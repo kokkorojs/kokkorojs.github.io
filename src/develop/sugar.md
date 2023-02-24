@@ -20,6 +20,6 @@ plugin
 ```
 
 <ChatPanel>
-  <ChatMessage id="2225151531">你好</ChatMessage>
-  <ChatMessage id="709289491">hello world</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="yuki">你好</ChatMessage>
+  <ChatMessage :id="709289491" nickname="kokkoro">hello world</ChatMessage>
 </ChatPanel>

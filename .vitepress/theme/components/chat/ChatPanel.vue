@@ -2,14 +2,14 @@
   <div class="chat-panel">
     <template v-if="props.controls">
       <div class="controls">
-        <div class="circle red" />
-        <div class="circle yellow" />
-        <div class="circle green" />
+        <div class="circle red"></div>
+        <div class="circle yellow"></div>
+        <div class="circle green"></div>
         <div class="title">{{ props.title }}</div>
       </div>
     </template>
     <div class="content">
-      <slot />
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -19,6 +19,7 @@ interface ChatPanelProps {
   controls?: boolean;
   title?: string;
 }
+
 const props = withDefaults(defineProps<ChatPanelProps>(), {
   controls: true,
   title: '聊天记录',
@@ -32,7 +33,7 @@ const props = withDefaults(defineProps<ChatPanelProps>(), {
   margin: 1rem auto;
   padding: 0.3rem 0;
   background-color: var(--vp-sidebar-bg-color);
-  overflow-x: auto;
+  overflow: hidden;
 
   .controls {
     display: initial;

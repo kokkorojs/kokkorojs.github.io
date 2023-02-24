@@ -1,17 +1,11 @@
 <script setup lang="ts">
-import { useData } from 'vitepress'
-import { computed } from 'vue';
-
-const data = useData();
-const src = computed((): string => {
-  return !data.isDark.value
-    ? '/images/priconne/105931.png'
-    : '/images/priconne/107661.png';
-});
+import { useData } from 'vitepress';
+const { isDark } = useData();
 </script>
 
 <template>
-  <img :src="src" alt="kokkoro">
+  <img v-show="!isDark" src="/images/priconne/105931.png" alt="kokkoro">
+  <img v-show="isDark" src="/images/priconne/107661.png" alt="kokkoro">
 </template>
 
 <style lang="scss"></style>

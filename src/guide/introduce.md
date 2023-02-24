@@ -49,10 +49,10 @@ plugin
 #### 结果展示
 
 <ChatPanel>
-  <ChatMessage id="2225151531">hello</ChatMessage>
-  <ChatMessage id="709289491">hello world</ChatMessage>
-  <ChatMessage id="2225151531">你好</ChatMessage>
-  <ChatMessage id="709289491">hello world</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="yuki">hello</ChatMessage>
+  <ChatMessage :id="709289491" nickname="kokkoro">hello world</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="yuki">你好</ChatMessage>
+  <ChatMessage :id="709289491" nickname="kokkoro">hello world</ChatMessage>
 </ChatPanel>
 
 上面的示例展示了 kokkoro 的两个核心功能：
