@@ -1,3 +1,7 @@
+<script setup>
+import Kokkoro from '../../.vitepress/theme/components/kokkoro/index.vue';
+</script>
+
 # 简介
 
 ::: info 你正在阅读的是 kokkoro v2 的文档！
@@ -66,7 +70,7 @@ plugin
 
 可可萝 (コッコロ) 是 Cygames 开发和发行的游戏 《公主连结Re:Dive》 中的登场角色，其罗马音 **kokkoro** 用作了本项目的名字。
 
-![kokkoro](/images/original.jpg)
+<Kokkoro />
 
 最初起名为 [yumemi（まるで、夢みたい）](https://github.com/dcyuki/yumemi_bot) 作为自用 bot，并没打算开源。因立项时没有考虑过后续维护，导致代码严重耦合，重构后就顺便开源了。一想到我的项目能多少给他人带来便利，难到不是一件很 cool 的事情么？
 

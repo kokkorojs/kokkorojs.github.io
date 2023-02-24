@@ -21,7 +21,7 @@ interface ChatPanelProps {
 }
 const props = withDefaults(defineProps<ChatPanelProps>(), {
   controls: true,
-  title: "聊天记录",
+  title: '聊天记录',
 });
 </script>
 
@@ -31,7 +31,7 @@ const props = withDefaults(defineProps<ChatPanelProps>(), {
   border-radius: 0.5rem;
   margin: 1rem auto;
   padding: 0.3rem 0;
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: var(--vp-sidebar-bg-color);
   overflow-x: auto;
 
   .controls {

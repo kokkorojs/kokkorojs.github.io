@@ -1,4 +1,5 @@
 import DefaultTheme from 'vitepress/theme';
+import './custom.scss';
 
 import Layout from './components/theme/Layout.vue';
 import NotFound from './components/theme/NotFound.vue';

@@ -11,7 +11,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, onMounted } from "vue";
+import { ref, watch, onMounted } from 'vue';
+
 interface ChatMessageProps {
   avatar?: string;
   id?: number;
@@ -20,7 +21,7 @@ interface ChatMessageProps {
 }
 const props = defineProps<ChatMessageProps>();
 const emit = defineEmits<{
-  (e: "appear"): void;
+  (e: 'appear'): void;
 }>();
 const messageEl = ref<HTMLElement | null>();
 const show = ref(false);
@@ -33,7 +34,7 @@ const moving = ref(false);
 //   const prev =
 //     messageEl.value.previousElementSibling
 //   if (prev && (prev.moving || !prev.show)) {
-//     prev.$once("appear", appear);
+//     prev.$once('appear', appear);
 //   } else {
 //     appear();
 //   }
@@ -43,7 +44,7 @@ const appear = () => {
   moving.value = true;
   setTimeout(() => {
     moving.value = false;
-    emit("appear");
+    emit('appear');
   }, 200);
 };
 const handleScroll = () => {
@@ -53,7 +54,7 @@ const handleScroll = () => {
 };
 onMounted(() => {
   handleScroll();
-  addEventListener("scroll", handleScroll);
+  addEventListener('scroll', handleScroll);
 });
 </script>
 
@@ -87,7 +88,7 @@ onMounted(() => {
   position: relative;
   font-size: 0.9rem;
   border-radius: 0.5rem;
-  background-color: #fff;
+  background-color: var(--vp-c-bg);
   word-break: break-all;
   padding: 0.6rem 0.7rem;
   margin-top: 0.2rem;
@@ -109,7 +110,7 @@ onMounted(() => {
     border-bottom-width: 5px;
     border-bottom-color: currentColor;
     border-radius: 0 0 0 1rem;
-    color: #fff;
+    color: var(--vp-c-bg);
   }
 }
 </style>

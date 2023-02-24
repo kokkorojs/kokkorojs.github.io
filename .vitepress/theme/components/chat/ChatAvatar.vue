@@ -12,24 +12,26 @@
 interface ChatAvatarProps {
   avatar?: string;
   id?: number | null;
-  type?: "qq" | string;
+  type?: 'qq' | string;
   size?: number;
   nickname?: string;
   color?: string;
 }
+
 const props = withDefaults(defineProps<ChatAvatarProps>(), {
-  avatar: "",
+  avatar: '',
   id: null,
-  type: "qq",
+  type: 'qq',
   size: 100,
-  nickname: "",
-  color: "steelblue",
+  nickname: '',
+  color: 'steelblue',
 });
 const getAvatarById = (id, type, size) => {
-  let url = "https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg";
-  if (type === "qq") {
+  let url = 'https://s2.loli.net/2022/04/30/8xjO5MuVkwSQHzt.png';
+
+  if (type === 'qq') {
     url = `https://q1.qlogo.cn/g?b=qq&nk=${id}&s=${size}`;
-  } else if (type === "group") {
+  } else if (type === 'group') {
     url = `https://p.qlogo.cn/gh/${id}/${id}/${size}`;
   }
   return url;
