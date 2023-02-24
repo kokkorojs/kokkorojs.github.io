@@ -1,7 +1,7 @@
 # 快速开始
 
-::: tip
-在开始前，请先确保你安装了 [nodejs](https://nodejs.org/zh-cn/)，因为项目使用了大量 es 最新语法，要求版本不能低于 v15。
+::: info 准备工作
+在开始前，请先确保你安装了 [Node.js](https://nodejs.org/zh-cn/)，要求 **不能低于 node v15**。如果你对此有疑问，可以 [在这里](/about/faq) 查看关于版本问题。
 :::
 
 ## 项目构建
@@ -10,7 +10,7 @@
 
 ```shell:no-line-numbers
 # 安装 kokkoro cli
-npm i -g @kokkoro/cli
+npm i @kokkoro/cli -g
 
 # 创建并进入文件夹
 mkdir bot && cd bot
@@ -19,8 +19,8 @@ mkdir bot && cd bot
 kokkoro init
 ```
 
-> 若网速较慢可以尝试使用阿里镜像源：  
-> `npm i -g @kokkoro/cli --registry=https://registry.npm.taobao.org`
+> 若网速较慢可以尝试使用淘宝镜像源：  
+> `npm i @kokkoro/cli -g --registry=https://registry.npmmirror.com`
 
 ## 目录结构
 
@@ -43,19 +43,20 @@ kokkoro 确实只会生成上面的 5 个文件，不过 `data` 和 `db` 目录�
 
 ## 启动程序
 
-一切准备就绪，开始启动你的项目吧。如果你是本地安装，就要使用 `npx kokkoro start -d` 启动项目。
+一切准备就绪，开始启动你的项目吧。
 
 ```shell:no-line-numbers
 kokkoro start -d
 ```
+> 如果你是本地安装，就要使用 `npx kokkoro start -d` 启动项目。
 
 首次启动项目会动态编译 admin 配置参数，例如 api url 等，所以时间会稍微有点慢，第一次编译完成后只要不修改相关 config 就不会再次编译。
 
-:::info
-`-d` 代表着 develop 模式，会将 web serve 指向内网 ip 运行，方便用于本地调试。若要在服务器部署可以直接使用 `kokkoro start` 或者 `node main.js`，后者指向公网 ip。
-:::
-
 如上述步骤无误，控制台会输出服务地址，首次访问会提示创建 admin 账号，之后进入后台即可管理账号登录与插件状态。
+
+::: info 内网服务
+刚刚的 `-d` 代表着 develop 模式，会将 web serve 指向内网 ip 运行，方便用于本地调试。若要在服务器部署可以直接使用 `kokkoro start` 或者 `node main.js`，后者指向公网 ip。
+:::
 
 账号登录成功后，会在根目录下的 `data/bot` 自动生成 QQ 账号的缓存及相关配置文件。
 
@@ -74,4 +75,4 @@ kokkoro start -d
   <ChatMessage id="709289491">hello world</ChatMessage>
 </ChatPanel>
 
-当然，如果你有 js 的相关知识，随时都可以编写自己的插件，详情可在 [插件开发](/develop/example) 一栏查看，更多插件安装和使用说明可以在 [插件社区](/plugin/awesome) 中查找。
+当然，如果你有 JavaScript 的相关知识，随时都可以编写自己的插件，详情可在 [插件开发](/develop/application) 一栏查看，更多插件安装和使用说明可以在 [插件社区](/plugin/awesome) 中查找。

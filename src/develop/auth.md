@@ -1,6 +1,6 @@
 # 指令鉴权
 
-:::warning TODO
+::: warning TODO
 不定期更新
 :::
 
@@ -16,7 +16,7 @@
 
 ## code
 
-```typescript{7}
+```typescript{8}
 import { Plugin } from '@kokkoro/core';
 
 const plugin = new Plugin('test');

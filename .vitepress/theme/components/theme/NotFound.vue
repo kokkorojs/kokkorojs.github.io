@@ -8,11 +8,11 @@ const { site } = useData()
   <div class="NotFound">
     <p class="code">404</p>
     <h1 class="title">电波传达不到哦</h1>
-    <div class="divider" />
+    <div class="divider"></div>
     <blockquote class="quote">
-      这里什么都没有，一定是哪里出了问题
+      <!-- <img src="/images/404.png" alt="pixiv: 101246138"> -->
+      <span>这里什么都没有，一定是哪里出了问题</span>
     </blockquote>
-
     <div class="action">
       <a class="link" :href="site.base" aria-label="go to home">
         返回首页

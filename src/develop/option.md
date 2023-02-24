@@ -1,6 +1,6 @@
 # 插件配置项
 
-:::warning TODO
+::: warning TODO
 不定期更新
 :::
 

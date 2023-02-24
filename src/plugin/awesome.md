@@ -308,7 +308,7 @@ npm i kokkoro-plugin-aircon
   <ChatMessage id="709289491">☀️当前温度 28°</ChatMessage>
 </ChatPanel>
 
-### ~~年轻人的第一款人造太阳~~
+### ~~群友的第一款人造太阳~~
 
 <ChatPanel>
   <ChatMessage id="2225151531">设置温度 114514</ChatMessage>

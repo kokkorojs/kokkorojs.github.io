@@ -1,4 +1,4 @@
-# API
+# web API
 
 你可以在项目的 `.env` 文件内新增 `KOKKORO_API_KEY` 变量来控制部分 API 的鉴权。配置后 API 请求参数需要携带 `api_key`，例如 bot 的消息发送。
 
