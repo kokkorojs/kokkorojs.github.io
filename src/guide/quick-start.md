@@ -39,7 +39,7 @@ kokkoro init
 
 kokkoro 确实只会生成上面的 5 个文件，不过 `data` 和 `db` 目录如果你 **从未启动过项目**，就不会自动创建。
 
-至于 `node_modules`、`package.json` 等都是 npm 生成的，后面在 [插件开发](/develop/example) 中会讲到。如果你不准备开发插件，就不用去关心这些 **依赖文件**，感兴趣你也可以先使用搜索引擎查找相关知识。
+至于 `node_modules`、`package.json` 等都是 npm 生成的，后面在 [插件开发](/develop/application) 中会讲到。如果你不准备开发插件，就不用去关心这些 **依赖文件**，感兴趣你也可以先使用搜索引擎查找相关知识。
 
 ## 启动程序
 
