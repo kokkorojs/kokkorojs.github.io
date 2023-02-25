@@ -17,7 +17,7 @@ const nav = [
   },
   {
     text: '开发',
-    link: '/develop/application',
+    link: '/develop/overview',
     activeMatch: '/develop/',
   },
   {
@@ -121,10 +121,10 @@ const sidebar = {
     {
       text: '插件',
       items: [
-        {
-          text: '插件列表',
-          link: '/plugin/awesome',
-        },
+        // {
+        //   text: '插件列表',
+        //   link: '/plugin/awesome',
+        // },
       ]
     },
   ],
@@ -185,11 +185,12 @@ export default defineConfigWithTheme({
         link: 'https://jq.qq.com/?_wv=1027&k=3hcWCnhq',
       },
     ],
-    // algolia: {
-    //   appId: '',
-    //   apiKey: '',
-    //   indexName: 'kokkoro'
-    // },
+    algolia: {
+      appId: '5U0A1D2B9B',
+      apiKey: 'bb75354d004316adaf47ceb8c54b3119',
+      indexName: 'kokkoro-js',
+      placeholder: '搜索',
+    },
     sidebarMenuLabel: '菜单',
     returnToTopLabel: '返回顶部',
   },
