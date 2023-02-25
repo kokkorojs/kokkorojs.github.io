@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import 'gitalk/dist/gitalk.css';
 import Gitalk from 'gitalk';
-import { onMounted } from 'vue';
+import { onMounted, watch } from 'vue';
+import { useRoute } from 'vitepress';
 
+const route = useRoute();
 const initGitalk = () => {
   const gitalk = new Gitalk({
     clientID: '2966b08bee02e561b5f0',
@@ -20,6 +22,13 @@ const initGitalk = () => {
 onMounted(() => {
   initGitalk();
 });
+
+watch(
+  () => route.path,
+  () => {
+    initGitalk();
+  }
+);
 </script>
 
 <template>

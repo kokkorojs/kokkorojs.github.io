@@ -9,7 +9,7 @@ import ChatMessage from './components/chat/ChatMessage.vue';
 
 export default {
   ...DefaultTheme,
-  // Layout,
+  Layout,
   NotFound,
   enhanceApp({ app }) {
     app.component('ChatAvatar', ChatAvatar);
