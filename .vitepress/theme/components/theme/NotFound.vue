@@ -21,7 +21,7 @@ const { site } = useData()
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .NotFound {
   padding: 64px 24px 96px;
   text-align: center;

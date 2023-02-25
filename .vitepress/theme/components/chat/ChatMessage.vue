@@ -47,7 +47,7 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .chat-message {
   position: relative;
   margin: 1rem 0;
@@ -64,7 +64,7 @@ onMounted(() => {
 .message-box {
   display: inline-block;
   margin-left: 0.5rem;
-  max-width: 90%;
+  max-width: calc(100% - 3rem);
   vertical-align: top;
 
   .nickname {
@@ -80,7 +80,7 @@ onMounted(() => {
     word-break: break-all;
     padding: 0.6rem 0.7rem;
     margin-top: 0.2rem;
-    white-space: pre;
+    white-space: pre-wrap;
     box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
       rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 

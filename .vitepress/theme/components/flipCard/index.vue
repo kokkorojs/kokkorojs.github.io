@@ -1,25 +1,32 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
+
+interface FlipCardProps {
+  front: string;
+  back: string;
+}
+
+const props = defineProps<FlipCardProps>();
 const { isDark } = useData();
 </script>
 
 <template>
-  <div class="kokkoro-container">
-    <img class="original" src="/images/priconne/105931.png" alt="kokkoro">
+  <div class="container">
+    <img class="original" :src="props.front">
 
     <div class="card" :class="{ dark: isDark }">
-      <div class="cover">
-        <img src="/images/priconne/105931.png" alt="kokkoro">
+      <div class="front">
+        <img :src="props.front">
       </div>
       <div class="back">
-        <img src="/images/priconne/107661.png" alt="kokkoro">
+        <img :src="props.back">
       </div>
     </div>
   </div>
 </template>
 
-<style lang="scss">
-.kokkoro-container {
+<style lang="scss" scoped>
+.container {
   position: relative;
 
   .original {
@@ -34,7 +41,7 @@ const { isDark } = useData();
     left: 0;
     perspective: 100vw;
 
-    .cover,
+    .front,
     .back {
       position: absolute;
       backface-visibility: hidden;
@@ -46,7 +53,7 @@ const { isDark } = useData();
     }
 
     &.dark {
-      .cover {
+      .front {
         transform: rotateY(180deg);
       }
 

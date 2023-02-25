@@ -26,7 +26,7 @@ const props = withDefaults(defineProps<ChatPanelProps>(), {
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .chat-panel {
   position: relative;
   border-radius: 0.5rem;

@@ -45,7 +45,7 @@ const getAvatarById = (id, type, size) => {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .avatar {
   width: 2.5rem;
   height: 2.5rem;

@@ -13,6 +13,4 @@ const { Layout } = DefaultTheme;
   </Layout>
 </template>
 
-<style lang="scss">
-
-</style>
+<style lang="scss" scoped></style>
