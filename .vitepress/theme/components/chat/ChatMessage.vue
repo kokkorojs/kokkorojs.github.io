@@ -33,9 +33,13 @@ const handleScroll = () => {
   if (!messageRef.value) {
     return;
   }
-  const observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver(function (this: IntersectionObserver, entries) {
     entries.forEach(entrie => {
-      show.value = entrie.isIntersecting;
+      if (!entrie.isIntersecting) {
+        return;
+      }
+      show.value = true;
+      this.unobserve(messageRef.value!);
     });
   });
 
