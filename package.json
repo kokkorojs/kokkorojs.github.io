@@ -20,6 +20,6 @@
     "axios": "^1.3.4",
     "gitalk": "^1.8.0",
     "sass": "^1.58.3",
-    "vitepress": "^1.0.0-alpha.47"
+    "vitepress": "^1.0.0-alpha.48"
   }
 }

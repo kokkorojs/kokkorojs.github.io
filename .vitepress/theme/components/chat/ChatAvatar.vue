@@ -1,5 +1,5 @@
 <template>
-  <div style="display: inline-block">
+  <div class="chat-avatar-container">
     <img
       v-if="props.avatar || props.id"
       class="avatar"
@@ -46,14 +46,18 @@ const getAvatarById = (id, type, size) => {
 </script>
 
 <style lang="scss" scoped>
-.avatar {
-  width: 2.5rem;
-  height: 2.5rem;
-  color: white;
-  display: inline-flex;
-  line-height: 0;
-  border-radius: 50%;
-  align-items: center;
-  justify-content: center;
+.chat-avatar-container{
+  display: inline-block;
+
+  .avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: white;
+    display: inline-flex;
+    line-height: 0;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+  }
 }
 </style>

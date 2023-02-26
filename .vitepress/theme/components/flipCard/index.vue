@@ -11,7 +11,7 @@ const { isDark } = useData();
 </script>
 
 <template>
-  <div class="container">
+  <div class="flip-card-container">
     <img class="original" :src="props.front">
 
     <div class="card" :class="{ dark: isDark }">
@@ -26,7 +26,7 @@ const { isDark } = useData();
 </template>
 
 <style lang="scss" scoped>
-.container {
+.flip-card-container {
   position: relative;
 
   .original {

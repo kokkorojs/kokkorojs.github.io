@@ -1,5 +1,5 @@
 <template>
-  <div class="chat-panel">
+  <div class="chat-panel-container">
     <template v-if="props.controls">
       <div class="controls">
         <div class="circle red"></div>
@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<ChatPanelProps>(), {
 </script>
 
 <style lang="scss" scoped>
-.chat-panel {
+.chat-panel-container {
   position: relative;
   border-radius: 0.5rem;
   margin: 1rem auto;

@@ -1,5 +1,5 @@
 <template>
-  <div ref="messageRef" class="chat-message" :class="{ show }">
+  <div ref="messageRef" class="chat-message-container" :class="{ show }">
     <chat-avatar
       :id="props.id"
       :color="props.color"
@@ -48,7 +48,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.chat-message {
+.chat-message-container {
   position: relative;
   margin: 1rem 0;
   opacity: 0;

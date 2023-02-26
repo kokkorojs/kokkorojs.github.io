@@ -23,7 +23,9 @@ const initGitalk = (): void => {
     clientSecret: '717c72176ebe736b21274c4821a2ee23a8042b73',
     repo: 'kokkorojs.github.io',
     owner: 'kokkorojs',
-    admin: ['dcyuki'],
+    admin: [
+      'dcyuki',
+    ],
     id: location.pathname,
     distractionFreeMode: false,
   });
