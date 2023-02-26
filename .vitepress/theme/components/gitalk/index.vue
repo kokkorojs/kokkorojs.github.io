@@ -48,4 +48,14 @@ watch(
   <div ref="gitalkRef"></div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.gt-header-textarea {
+  background-color: var(--vp-sidebar-bg-color) !important;
+}
+
+.gt-btn-preview {
+  // color: var(--vp-c-brand) !important;
+  // border: 1px solid var(--vp-c-brand) !important;
+  background-color: var(--vp-c-bg) !important;
+}
+</style>
