@@ -1,5 +1,5 @@
 <script setup>
-import FlipCard from '../../.vitepress/theme/components/flipCard/index.vue';
+import FlipCard from '../../.vitepress/theme/components/theme/FlipCard.vue';
 </script>
 
 # 简介
@@ -112,7 +112,7 @@ plugin
 
 ## 如何使用
 
-如果你有自己的服务器，可以参考 [快速开始](/guide/quick-start) 一栏自建。
+如果你有自己的服务器，可以参考 [快速上手](/guide/quick-start) 一栏自建。
 
 不懂编程也没关系，有使用的需求随时都可以 [加群申请](https://jq.qq.com/?_wv=1027&k=3hcWCnhq)，是免费提供的，未来也没有准备收费的打算，靠爱发电嘛，给个 star 就行（笑）
 

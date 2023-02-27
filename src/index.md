@@ -14,7 +14,7 @@ hero:
 
   actions:
     - theme: brand
-      text: 快速开始
+      text: 快速上手
       link: /guide/introduce
     - theme: alt
       text: 在 GitHub 查看

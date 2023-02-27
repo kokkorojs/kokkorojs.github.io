@@ -167,6 +167,10 @@ export default defineConfigWithTheme({
       message: 'Released under the <a href="https://github.com/kokkorojs/kokkoro/blob/master/LICENSE">MIT License</a>.',
       copyright: 'Copyright © 2020-2023 <a href="https://github.com/dcyuki">Yuki</a>'
     },
+    docFooter: {
+      prev: '上一页',
+      next: '下一页',
+    },
     outlineTitle: '本页目录',
     editLink: {
       pattern: 'https://github.com/kokkorojs/kokkorojs.github.io/edit/master/src/:path',
