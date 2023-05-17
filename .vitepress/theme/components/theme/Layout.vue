@@ -1,16 +1,11 @@
 <script setup lang="ts">
 import DefaultTheme from 'vitepress/theme';
-import Gitalk from './Gitalk.vue';
 
 const { Layout } = DefaultTheme;
 </script>
 
 <template>
-  <Layout>
-    <template #doc-after>
-      <Gitalk />
-    </template>
-  </Layout>
+  <Layout />
 </template>
 
 <style lang="scss" scoped></style>
