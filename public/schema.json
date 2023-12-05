@@ -30,52 +30,54 @@
       "description": "bot 信息，可添加多个",
       "minProperties": 1,
       "items": {
-        "appid": {
-          "description": "机器人 ID",
-          "type": "string"
-        },
-        "token": {
-          "description": "机器人令牌",
-          "type": "string"
-        },
-        "secret": {
-          "description": "机器人密钥",
-          "type": "string"
-        },
-        "logLevel": {
-          "description": "日志等级，打印日志会降低性能，若消息量巨大建议修改此参数",
-          "type": "string",
-          "enum": ["ALL", "TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL"]
-        },
-        "autoOnline": {
-          "description": "自动连接",
-          "type": "boolean"
-        },
-        "events": {
-          "description": "订阅的机器人事件",
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "GUILDS",
-              "GUILD_MEMBERS",
-              "GUILD_MESSAGES",
-              "GUILD_MESSAGE_REACTIONS",
-              "DIRECT_MESSAGE",
-              "GROUP_MESSAGES",
-              "INTERACTION",
-              "MESSAGE_AUDIT",
-              "FORUMS_EVENT",
-              "AUDIO_ACTION",
-              "PUBLIC_GUILD_MESSAGES"
-            ]
-          }
-        },
-        "plugins": {
-          "description": "启用的插件服务，若为空则默认启用所有插件",
-          "type": "array",
-          "items": {
+        "properties": {
+          "appid": {
+            "description": "机器人 ID",
             "type": "string"
+          },
+          "token": {
+            "description": "机器人令牌",
+            "type": "string"
+          },
+          "secret": {
+            "description": "机器人密钥",
+            "type": "string"
+          },
+          "logLevel": {
+            "description": "日志等级，打印日志会降低性能，若消息量巨大建议修改此参数",
+            "type": "string",
+            "enum": ["ALL", "TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL"]
+          },
+          "autoOnline": {
+            "description": "自动连接",
+            "type": "boolean"
+          },
+          "events": {
+            "description": "订阅的机器人事件",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "GUILDS",
+                "GUILD_MEMBERS",
+                "GUILD_MESSAGES",
+                "GUILD_MESSAGE_REACTIONS",
+                "DIRECT_MESSAGE",
+                "GROUP_MESSAGES",
+                "INTERACTION",
+                "MESSAGE_AUDIT",
+                "FORUMS_EVENT",
+                "AUDIO_ACTION",
+                "PUBLIC_GUILD_MESSAGES"
+              ]
+            }
+          },
+          "plugins": {
+            "description": "启用的插件服务，若为空则默认启用所有插件",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }
