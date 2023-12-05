@@ -1,5 +1,11 @@
 :root {
   --kokkoro-color: #57b497;
+  --vp-home-hero-name-color: var(--kokkoro-color);
+  --vp-button-brand-bg: var(--vp-c-green-3);
+  --vp-button-brand-active-bg: var(--vp-c-green-1);
+  --vp-button-brand-hover-bg: var(--vp-c-green-2);
+
+  // --vp-c-brand-1: var(--vp-c-green-1);
 
   ::-webkit-scrollbar {
     width: 8px;
