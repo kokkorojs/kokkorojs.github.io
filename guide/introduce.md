@@ -17,7 +17,7 @@ kokkoro (可可萝) 是一个基于 [amesu](https://github.com/xueelf/amesu) SDK
 ::: code-group
 
 ```javascript [javascript]
-import { useCommand, useEvent } from '@kokkoro/core';
+import { useCommand } from '@kokkoro/core';
 
 /**
  * @type {import('@kokkoro/core').Metadata}
@@ -33,7 +33,7 @@ export default function Demo() {
 ```
 
 ```typescript [typescript (Hook)]
-import { Metadata, useCommand, useEvent } from '@kokkoro/core';
+import { Metadata, useCommand } from '@kokkoro/core';
 
 export const metadata: Metadata = {
   name: 'example',
