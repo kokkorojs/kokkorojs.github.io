@@ -1,0 +1,59 @@
+<template>
+  <div class="chat-avatar-container">
+    <img
+      v-if="props.avatar || props.id"
+      class="avatar"
+      :src="props.avatar || getAvatarById(props.id, props.type, props.size)"
+    />
+    <div v-else class="avatar" :style="`background-color:${color}`">
+      <span>{{ props.nickname }}</span>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+interface ChatAvatarProps {
+  avatar?: string;
+  id?: number | null;
+  type?: 'qq' | 'group' | string;
+  size?: number;
+  nickname?: string;
+  color?: string;
+}
+
+const props = withDefaults(defineProps<ChatAvatarProps>(), {
+  avatar: '',
+  id: null,
+  type: 'qq',
+  size: 100,
+  nickname: '',
+  color: 'steelblue',
+});
+const getAvatarById = (id, type, size) => {
+  let url = 'https://s2.loli.net/2022/04/30/8xjO5MuVkwSQHzt.png';
+
+  if (type === 'qq') {
+    url = `https://q1.qlogo.cn/g?b=qq&nk=${id}&s=${size}`;
+  } else if (type === 'group') {
+    url = `https://p.qlogo.cn/gh/${id}/${id}/${size}`;
+  }
+  return url;
+};
+</script>
+
+<style lang="scss" scoped>
+.chat-avatar-container {
+  display: inline-block;
+
+  .avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: white;
+    display: inline-flex;
+    line-height: 0;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+  }
+}
+</style>

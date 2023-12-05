@@ -1,0 +1,13 @@
+:root {
+  --kokkoro-color: #57b497;
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--kokkoro-color);
+    border-radius: 6666rem;
+  }
+}
