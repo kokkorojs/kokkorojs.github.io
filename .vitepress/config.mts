@@ -144,7 +144,7 @@ export default defineConfig({
     ],
     algolia: {
       appId: '5U0A1D2B9B',
-      apiKey: 'bb75354d004316adaf47ceb8c54b3119',
+      apiKey: 'fe71b8264dbbb9e369659eee7a8977dc',
       indexName: 'kokkoro-js',
       placeholder: '搜索',
     },
