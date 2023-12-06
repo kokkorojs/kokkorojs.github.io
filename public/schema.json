@@ -20,10 +20,10 @@
         }
       }
     },
-    "logLevel": {
+    "log_level": {
       "description": "日志等级，打印日志会降低性能，若消息量巨大建议修改此参数",
       "type": "string",
-      "enum": ["ALL", "TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL"]
+      "enum": ["OFF", "FATAL", "ERROR", "WARN", "INFO", "DEBUG", "TRACE", "ALL"]
     },
     "bots": {
       "type": "array",
@@ -43,12 +43,12 @@
             "description": "机器人密钥",
             "type": "string"
           },
-          "logLevel": {
+          "log_level": {
             "description": "日志等级，打印日志会降低性能，若消息量巨大建议修改此参数",
             "type": "string",
-            "enum": ["ALL", "TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL"]
+            "enum": ["OFF", "FATAL", "ERROR", "WARN", "INFO", "DEBUG", "TRACE", "ALL"]
           },
-          "autoOnline": {
+          "auto_online": {
             "description": "自动连接",
             "type": "boolean"
           },
