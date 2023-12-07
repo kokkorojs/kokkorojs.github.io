@@ -1,6 +1,6 @@
 # 快速上手
 
-::: info
+::: info 准备工作
 在开始前，请先确保你安装了 [Node.js](https://nodejs.org/zh-cn/)，要求 **不能低于 node v20**。如果你对此有疑问，可以 [在这里](/about/faq) 查看关于版本问题。
 :::
 
@@ -47,15 +47,23 @@ kokkoro start
 
 > 如果你不是全局安装的 cli，就要使用 `npx kokkoro start` 启动项目。
 
-如上述步骤无误，在项目启动的时候，程序会先挂载所有插件。待插件挂载完毕后，便会开始为 bot 建立通信。
+如上述步骤无误，在项目启动后，便会开始为 bot 建立通信。
 
-## 你好世界
+## 插件扩展
 
-输入相关指令，便可与插件进行交互，现在开启一段属于你的物语吧 ♪ q(≧▽≦q)
+你可以直接安装 npm 插件来为自己的 bot 扩展相对应的功能，例如：
+
+```shell:no-line-numbers
+npm i kokkoro-plugin-hitokoto
+```
+
+程序会在 bot 建立通信前，自动挂载项目内的所有插件。
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">/测试</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">hello world</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="Yuki">@可可萝 /来点骚话</ChatMessage>
+  <ChatMessage :id="2854205915" nickname="可可萝">『大部分人并不想长大，只是没办法继续当一个小孩子。』——「小林家的龙女仆」</ChatMessage>
 </ChatPanel>
+
+现在，开启一段属于你的物语吧 ♪ q(≧▽≦q)
 
 当然，如果你有 JavaScript 的相关知识，随时都可以编写自己的插件，详情可在 [插件开发](/develop/application) 一栏查看，更多插件安装和使用说明可以在 [插件社区](/plugin/awesome) 中查找。

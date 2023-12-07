@@ -7,7 +7,7 @@
 
 ## 上下文
 
-在上一章节，我们介绍了如何编写自己的第一个插件，在挂载插件后，`test` 监听了 `message.private` 事件。
+在上一章节，我们介绍了如何编写自己的第一个插件，我们使用了 `Event`，让 `example` 插件监听了 `session.ready` 事件。
 
 <ChatPanel>
   <ChatMessage :id="437402067" nickname="友人A">那个那个，ctx 到底是什么呀？</ChatMessage>
@@ -16,294 +16,220 @@
 
 ::: code-group
 
-```typescript [typescript]
-import { Plugin } from '@kokkoro/core';
+```javascript [javascript]
+import { useEvent } from '@kokkoro/core';
 
-const plugin = new Plugin();
+/**
+ * @type {import('@kokkoro/core').Metadata}
+ */
+export const metadata = {
+  name: 'example',
+  description: '插件示例',
+};
 
-plugin
-  .event('message.private')
-  .action(console.log)
+export default function Example() {
+  useEvent(console.log, ['session.ready']);
+}
 ```
 
-```javascript [javascript]
-const { Plugin } = require('@kokkoro/core');
+```typescript [typescript (Hook)]
+import { Metadata, useEvent } from '@kokkoro/core';
 
-const plugin = new Plugin();
+export const metadata: Metadata = {
+  name: 'example',
+  description: '示例插件',
+};
 
-plugin
-  .event('message.private')
-  .action(console.log)
+export default function Example(): void {
+  useEvent(console.log, ['session.ready']);
+}
+```
+
+```typescript [typescript (Decorator)]
+import { Context, Event, Plugin } from '@kokkoro/core';
+
+@Plugin({
+  name: 'example',
+  description: '示例插件',
+})
+export default class Example {
+  @Event('session.ready')
+  onReady(ctx: Context<'session.ready'>) {
+    console.log(ctx);
+  }
+}
 ```
 
 :::
 
-给 bot 私发消息后，可以在控制台看到如下输出。初次你可能看不懂这里面的大部分字段，但是下面的这些属性，就算我不写注释你应该也知道代表着什么。
+在 bot 建立通信后，可以在控制台看到如下输出。初次你可能看不懂这里面的大部分字段，但是下面的这些属性，就算我不写注释你应该也知道代表着什么。
 
-```javascript
+```shell:no-line-numbers
 {
-  raw_message: 'hello',
-  font: '微软雅黑',
-  sender: {
-    user_id: 2225151531,
-    nickname: 'yuki',
+  user: {
+    id: '1145141919810',
+    username: '可可萝',
+    bot: true,
+    status: 1
   },
   // ...
 }
 ```
 
-没错，你已经猜到了，属性 `ctx` 正是你所发送消息的 **事件上下文**，它里面还有着大量你用得到的属性与方法。
+没错，你已经猜到了，属性 `ctx` 正是你所发送消息的**事件上下文**，里面还有着大量你用得到的属性与方法。
 
-例如我们刚刚发消息触发了 **私聊事件**，在这个上下文就有着对方的 qq 号及账号资料的相关字段。
+例如我们刚刚触发的**会话事件**，在这个上下文中就有着 bot 的 id 及账号昵称的相关字段。
 
 ## 事件监听
 
-刚刚 `plugin.event()` 便是监听 bot 事件的方法，刚刚编写的 test 插件只监听了 `message.private` 事件，所以只会在私聊时执行对应逻辑。
+上面示例中的 `Event` 便是监听 bot 事件的方法，刚刚编写的 example 插件只监听了 `session.ready` 事件，所以只会在客户端建立通信时执行对应逻辑。
 
-例如我们刚刚使用到的是 **消息事件**，共有以下三种：
-
-- 全部消息事件 message
-- 群组消息事件 message.group
-- 私聊消息事件 message.private
-
-而事件有很多很多，消息事件只是其中之一，其它比较常见的例如 **群事件**（群消息、新人入群）、**系统事件**（登录成功）都有相关事件。
-
-::: info
-kokkoro 是基于 oicq 协议库，事件名与协议库保持一致，更多事件可查看：https://github.com/takayama-lily/oicq/wiki/92.%E4%BA%8B%E4%BB%B6%E6%96%87%E6%A1%A3
-:::
+而事件有很多很多种，会话事件只是其中之一，其它比较常见的例如**群事件**（群消息）、**频道事件**（子频道消息）都有相关事件名。kokkoro 是基于 amesu SDK，事件名与官方保持一致，更多事件可在腾讯 [官方文档](https://bot.q.qq.com/wiki/develop/api-v2/dev-prepare/interface-framework/event-emit.html#%E4%BA%8B%E4%BB%B6%E8%AE%A2%E9%98%85Intents) 查看。
 
 在这里，你可以通过事件制作出各种各样有趣的插件，让 kokkoro 变得更加强大 o((>ω< ))o
 
 ## 代码规范
 
-刚刚编写的 test 插件虽然实现了基础的消息收发，但是我们并没有对消息文本做过滤，任何人对 bot 发送 **任意消息** 都将会自动回复。
+前面我们有提到，bot 是通过事件驱动的，任何动作都会产生与之相对应的事件，消息也不例外。
 
-如果我们想让 bot 收到 hello 就回复 hello world，收到 bye 就发送 good bye 该如何实现？
+比如，你可以这样子去监听频道的消息事件：
+
+::: code-group
+
+```javascript [hook]
+import { useEvent } from '@kokkoro/core';
+
+export default function Example() {
+  useEvent(console.log, ['at.message.create']);
+}
+```
+
+```typescript [decorator]
+import { Context, Event } from '@kokkoro/core';
+
+export default class Example {
+  @Event('at.message.create')
+  onReady(ctx: Context<'at.message.create'>) {
+    console.log(ctx);
+  }
+}
+```
+
+:::
+
+<ChatPanel>
+  <ChatMessage :id="2225151531" nickname="Yuki">@可可萝 /测试</ChatMessage>
+</ChatPanel>
+
+```shell:no-line-numbers {3}
+{
+  channel_id: '633481120',
+  content: '<@!3958153663914325267> /测试 ',
+  guild_id: '8187260533469556672',
+  id: '08c0df9ca8bcc2bfcf7110a0cf88ae0238df0548d3cac5ab06',
+  member: {
+    joined_at: '2022-04-05T11:55:52+08:00',
+    nick: 'Yuki',
+    roles: [ '4', '15' ]
+  },
+  // ...
+}
+```
+
+这样一来，bot 就可以直接获取到消息的详情。
 
 <ChatPanel>
   <ChatMessage :id="437402067" nickname="友人A">yuki yuki，听你这么一说，我完全懂了</ChatMessage>
   <ChatMessage :id="2225151531" nickname="Yuki">啊？懂...懂什么哦？</ChatMessage>
-  <ChatMessage :id="437402067" nickname="友人A">当我需要用到某个插件，在去挂载的时候，kokkoro 就帮我执行插件里面所有的代码</ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">没错，至于插件的挂载就是 require 操作，与 npm 规范是保持一致的</ChatMessage>
-  <ChatMessage :id="437402067" nickname="友人A">那么在这个时候，我可以编写执行 plugin.event() 方法，去监听我想要得到的任何消息</ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">是哦，消息事件没有你收不到，只有你想不到，目前来说足够满足日常使用</ChatMessage>
-  <ChatMessage :id="437402067" nickname="友人A">那我知道怎么改了！</ChatMessage>
+  <ChatMessage :id="437402067" nickname="友人A">既然通过事件就能获取到消息内容，那么指令的响应我是不是就可以这样去写</ChatMessage>
 </ChatPanel>
 
-```typescript
-import { Plugin } from '@kokkoro/core';
+::: code-group
 
-const plugin = new Plugin();
+```javascript [hook] {6-11}
+import { useEvent } from '@kokkoro/core';
 
-plugin
-  .event('message.private')
-  .action((ctx, bot) => {
-    const { raw_message, user_id } = ctx;
+export default function Example() {
+  useEvent(
+    ctx => {
+      const { content } = ctx;
+      const message = content.replace(/^.+(?=\/)/, '').trimEnd();
 
-    if (raw_message === 'hello') {
-      bot.sendPrivateMsg(user_id, 'hello world');
-    } else if (raw_message === 'bye') {
-      bot.sendPrivateMsg(user_id, 'good bye');
-    } else {
-      // ...
-    }
-  })
+      if (message === '测试') {
+        return 'hello world';
+      }
+    },
+    ['at.message.create'],
+  );
+}
 ```
 
+```typescript [decorator] {6-11}
+import { Context, Event } from '@kokkoro/core';
+
+export default class Example {
+  @Event('at.message.create')
+  onReady(ctx: Context<'at.message.create'>) {
+    const { content } = ctx;
+    const message = content.replace(/^.+(?=\/)/, '').trimEnd();
+
+    if (message === '测试') {
+      return 'hello world';
+    }
+  }
+}
+```
+
+:::
+
 <ChatPanel>
+  <ChatMessage :id="437402067" nickname="友人A">@可可萝 /测试</ChatMessage>
+  <ChatMessage :id="2854205915" nickname="可可萝">hello world</ChatMessage>
   <ChatMessage :id="437402067" nickname="友人A">蒋蒋~怎么样，是不是这样就可以解决问题了？</ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">蛤？！</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="Yuki">哈？！</ChatMessage>
   <ChatMessage :id="2225151531" nickname="Yuki">
     <img width="200" src="/images/meme/西内.jpg" />
   </ChatMessage>
 </ChatPanel>
 
 ::: danger
-尽量避免将 **指令过滤** 的逻辑代码直接写到 `action` 里！  
-为什么说是尽量避免，而不是严格禁止？ ~~(你非要写我也拦不住啊，而且这样确实能达到效果)~~
+我们一定要避免将**指令逻辑**的代码，直接写到 `Event` 里！  
+为什么说是避免，而不是禁止？ ~~(你非要写我也拦不住啊，而且这样确实能达到效果)~~
 :::
 
-不要仅看了前面一点内容就开始急于编写代码。
+## 指令处理
 
-确实，kokkoro 的插件开发十分易上手，如果你有编程经验，甚至熟悉 js 的话，你现在完全可以独立写出自己的插件。
+虽然这样写确实可以实现自定义指令的效果，但是会导致插件后续的可维护性极差，不利于维护。
 
-但是在这之前，请务将本章节看完，在了解整套体系之后，上手也不迟。
-
-## 指令过滤
-
-虽然这样写你可以实现自定义指令的效果，但是会导致插件后续的可维护性极差，不利于维护。
-
-```typescript{10-16}
-import { Plugin } from '@kokkoro/core';
-
-const plugin = new Plugin();
-
-plugin
-  .event('message.private')
-  .action((ctx, bot) => {
-    const { raw_message, user_id } = ctx;
-
-    if (raw_message === 'hello') {
-      bot.sendPrivateMsg(user_id, 'hello world');
-    } else if (raw_message === 'bye') {
-      bot.sendPrivateMsg(user_id, 'good bye');
-    } else {
-      // ...
-    }
-  })
-```
-
-kokkoro 在开坑之前，我的本意是满足自用，任何改动我都会自己先试一遍，验证过可行性再考虑后续开发。显然这种不断嵌套 if 的代码是不合理的，至少从开发者的角度出发，写起来非常的不舒服。
-
-所以在项目初期，我几乎每过几个月都会重构一次，毕竟连我自己写起来都觉得不舒服，谁还会想着来用呢？最后，经过不断地探索，针对指令需求，我封装了 `plugin.command()` 方法。
-
-下列代码段与 `plugin.listen()` 的效果是一致的，但是更为简洁
+所以，kokkoro 提供了 `Command` 来进行指令处理，与 `Event` 去手动监听**消息事件**实现的效果是等价的，但是更为简洁。
 
 ::: code-group
 
-```typescript [typescript]
-import { Plugin } from '@kokkoro/core';
+```javascript [hook] {4}
+import { useEvent } from '@kokkoro/core';
 
-const plugin = new Plugin();
-
-plugin
-  .command('hello')
-  .action(ctx => {
-    ctx.reply('hello world');
-  })
-
-plugin
-  .command('bye')
-  .action(ctx => {
-    ctx.reply('good bye');
-  })
+export default function Example() {
+  useCommand('/测试', () => 'hello world');
+}
 ```
 
-```javascript [javascript]
-const { Plugin } = require('@kokkoro/core');
+```typescript [decorator] {4,6}
+import { Context, Command } from '@kokkoro/core';
 
-const plugin = new Plugin();
-
-plugin
-  .command('hello')
-  .action(ctx => {
-    ctx.reply('hello world');
-  })
-
-plugin
-  .command('bye')
-  .action(ctx => {
-    ctx.reply('good bye');
-  })
+export default class Example {
+  @Command('/测试')
+  sayHello() {
+    return 'hello world';
+  }
+}
 ```
 
 :::
 
-当然，你也可以指定指令所监听的消息类型，默认值是 **all**
+`Command` 其实就是 `Event` 的语法糖，`Command` 为我们监听了 at.message.create 和 group.at.message.create 这两个事件，分别对应群聊与频道，并在此基础上做了指令参数校验。
 
-```typescript
-// 全部
-plugin.command('hello', 'all');
-// 群聊
-plugin.command('hello', 'group');
-// 私聊
-plugin.command('hello', 'private');
-```
+## Event 还是 Command？
 
-若你不喜欢链式调用，你也可以这样写
+尽管 `Command` 看起来使用的会更加频繁，但是 `Event` 也同样重要，分别用于处理不同的业务场景。
 
-::: code-group
-
-```typescript [typescript]
-import { Plugin } from '@kokkoro/core';
-
-const plugin = new Plugin();
-const hellpCommand = plugin.command('hello');
-const byeCommand = plugin.command('bye');
-
-hellpCommand.action(ctx => {
-  ctx.reply('hello world');
-});
-byeCommand.action(ctx => {
-  ctx.reply('good bye');
-});
-```
-
-```javascript [javascript]
-const { Plugin } = require('@kokkoro/core');
-
-const plugin = new Plugin();
-const hellpCommand = plugin.command('hello');
-const byeCommand = plugin.command('bye');
-
-hellpCommand.action(ctx => {
-  ctx.reply('hello world');
-});
-byeCommand.action(ctx => {
-  ctx.reply('good bye');
-});
-```
-
-:::
-
-`ctx.reply` 其实就是 `bot.sendPrivateMsg`、`bot.sendGroupMsg` 的语法糖。
-
-## command 还是 event？
-
-尽管 `plugin.event()` 与 `plugin.command()` 很相似，但是它们还是有着本质上的区别。
-
-event 是监听 bot 任意事件，而 command 是仅处理消息事件，当你调用 command 其实就是监听了与之对应的 message 事件，并针对传入的字符串做匹配处理，也只是二次封装。
-
-例如你想在 bot 上线或下线时做一些 http 或者 io 操作，又或者在群内有新成员加入时消息提示， command 肯定是实现不了的
-
-::: code-group
-
-```typescript [typescript]
-import { segment } from 'amesu';
-import { Plugin } from '@kokkoro/core';
-
-const plugin = new Plugin();
-
-plugin
-  .event('notice.group.increase')
-  .action(ctx, bot) => {
-    const { group_id, user_id } = ctx;
-    const message = ['欢迎新成员 ', segment.at(user_id), ' 的加入~'];
- 
-    bot.sendGroupMsg(group_id, message);
-  })
-
-plugin
-  .event('system.offline')
-  .action(ctx => {
-    console.log('bot 已掉线，开始记录日志');
-    // ...
-  })
-```
-
-```javascript [javascript]
-const { segment } = require('amesu');
-const { Plugin } = require('@kokkoro/core');
-
-const plugin = new Plugin();
-
-plugin
-  .event('notice.group.increase')
-  .action(ctx, bot) => {
-    const { group_id, user_id } = ctx;
-    const message = ['欢迎新成员 ', segment.at(user_id), ' 的加入~'];
- 
-    bot.sendGroupMsg(group_id, message);
-  })
-
-plugin
-  .event('system.offline')
-  .action(ctx => {
-    console.log('bot 已掉线，开始记录日志');
-    // ...
-  })
-```
-
-:::
-
-上列功能已有插件实现，你不用手动编写。`segment` 是构造消息段的方法，例如上面的代码我们使用了 `segment.at()` 来生成一个 at 信息，在新成员入群后 at 并提示，这个后面会讲解。
+例如你想在 bot 上线或下线时做一些 http 请求或者是 io 操作，又或者在群内有新成员加入时消息提示， `Command` 肯定是实现不了的。

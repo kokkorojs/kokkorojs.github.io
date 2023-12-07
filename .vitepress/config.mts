@@ -51,33 +51,8 @@ const sidebar: DefaultTheme.Sidebar = {
           link: '/develop/event',
         },
         {
-          text: '指令前缀',
-          link: '/develop/prefix',
-        },
-        {
-          text: '语法糖',
-          link: '/develop/sugar',
-        },
-        {
           text: '参数获取',
           link: '/develop/query',
-        },
-        {
-          text: '指令鉴权',
-          link: '/develop/auth',
-        },
-        {
-          text: '定时任务',
-          link: '/develop/schedule',
-        },
-      ],
-    },
-    {
-      text: '权限',
-      items: [
-        {
-          text: '插件配置项',
-          link: '/develop/option',
         },
       ],
     },
@@ -93,15 +68,6 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: '使用',
       items: [{ text: '配置文件', link: '/guide/config' }],
-    },
-    {
-      text: '插件',
-      items: [
-        {
-          text: '插件列表',
-          link: '/plugin/awesome',
-        },
-      ],
     },
   ],
 };

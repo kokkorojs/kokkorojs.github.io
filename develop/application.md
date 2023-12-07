@@ -2,164 +2,161 @@
 
 ::: tip
 当前页面并不会对编程语言做深入讲解，即使你是小白也可以放心观看。  
-之前从未接触过 js 也没关系，接下来的开发过程中会为你逐一讲解 \(￣︶￣*\))
+之前从未接触过 JavaScript 也能放心食用，接下来的开发过程中会为你逐一讲解 \(￣︶￣\*\))
 :::
-
-## 编写插件
 
 如果你对 npmjs 并不了解也没关系，在这里只会介绍本地插件的编写。  
 但是如果你想对 kokkoro 有一个更深入的了解，还是需要熟悉 nodejs 及 npmjs 的基本原理。
 
-::: info
-在编写模块前，你需要先在 plugins 目录下，创建一个文件夹来存放代码文件。  
-:::
+## 编写插件
 
-例如 `plugins/test`，test 为你的 **插件名**，命名规则无严格限制。 ~~(你用中文都大丈夫，锟斤拷警告)~~
-
-创建完成后开始在当前目录下编写 `index.js` 文件：
+在我们使用 cli 创建插件模板后，将会为你生成以下的代码：
 
 ::: code-group
 
-```typescript [typescript]
-import { Plugin } from '@kokkoro/core';
+```javascript [javascript]
+import { useCommand, useEvent } from '@kokkoro/core';
 
-const plugin = new Plugin();
+/**
+ * @type {import('@kokkoro/core').Metadata}
+ */
+export const metadata = {
+  name: 'example',
+  description: '插件示例',
+};
+
+export default function Example() {
+  useEvent(
+    ctx => {
+      ctx.logger.mark('Bot online.');
+    },
+    ['session.ready'],
+  );
+
+  useCommand('/测试', () => 'hello world');
+  useCommand('/复读 <message>', ctx => ctx.query.message);
+}
 ```
 
-```javascript [javascript]
-const { Plugin } = require('kokkoro');
+```typescript [typescript (Hook)]
+import { Metadata, useCommand, useEvent } from '@kokkoro/core';
 
-const plugin = new Plugin();
+export const metadata: Metadata = {
+  name: 'example',
+  description: '示例插件',
+};
+
+export default function Example(): void {
+  useEvent(
+    ctx => {
+      ctx.logger.mark('Bot online.');
+    },
+    ['session.ready'],
+  );
+
+  useCommand('/测试', () => 'hello world');
+  useCommand<{ message: string }>('/复读 <message>', ctx => ctx.query.message);
+}
+```
+
+```typescript [typescript (Decorator)]
+import { Command, CommandContext, Context, Event, Plugin } from '@kokkoro/core';
+
+@Plugin({
+  name: 'example',
+  description: '示例插件',
+})
+export default class Example {
+  @Event('session.ready')
+  onReady(ctx: Context<'session.ready'>) {
+    ctx.logger.mark('Bot online.');
+  }
+
+  @Command('/测试')
+  sayHello() {
+    return 'hello world';
+  }
+
+  @Command('/复读 <message>')
+  replayMessage(ctx: CommandContext<{ message: string }>) {
+    return ctx.query.message;
+  }
+}
 ```
 
 :::
 
-这个时候你就已经写好了一个插件，不需要任何额外操作，该插件会在 **项目启动时** 自动将其 `require` 执行。
+这个时候你就已经写好了一个插件，该插件会在**项目启动时**自动将其进行挂载。
 
-不过目前这个插件还什么都不能干，我们没有为其编写相应的交互逻辑。
+## 进行交互
 
-## 实现交互
-
-相信你这个时候一定有很多疑问，`Plugin` 到底是什么？
+相信你这个时候一定有很多疑问，虽然我们前面有讲过，`metadata` 是用来作为插件的唯一标识，但是 `Event` 与 `Command` 又是什么？
 
 ::: info
 当前章节仅提供示例，目的在于让你能自己编写出可以进行简单交互的插件。  
 目前你无需关心这段代码是什么意思，后面会逐一介绍，所以不用着急，让我们继续。
 :::
 
-你可以参考下列代码段，添加 `message.private` 事件监听，在 `action` 回调函数里可以编写你的逻辑代码：
-
-::: code-group
-
-```typescript{5-9} [typescript]
-import { Plugin } from '@kokkoro/core';
-
-const plugin = new Plugin();
-
-plugin
-  .event('message.private')
-  .action((ctx, bot) => {
-    bot.sendPrivateMsg(ctx.user_id, 'hello world');
-  })
-```
-
-```javascript{5-9} [javascript]
-const { Plugin } = require('@kokkoro/core');
-
-const plugin = new Plugin();
-
-plugin
-  .event('message.private')
-  .action((ctx, bot) => {
-    bot.sendPrivateMsg(ctx.user_id, 'hello world');
-  })
-```
-
-:::
-
-这下我们就编写好了一段指令完整的交互逻辑，你可以大致理解为只要有人给 bot 私发了消息，便会收到 `hello world`，是不是非常简单？ (●'◡'●)
-
-## 快来试试
+在 bot 建立通信连接后，该插件会在日志里输出 "Bot online."，并且会对指令消息进行响应。
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">hello</ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">...</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="Yuki">@可可萝 /测试</ChatMessage>
+  <ChatMessage :id="2854205915" nickname="可可萝">hello world</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="Yuki">@可可萝 /复读</ChatMessage>
+  <ChatMessage :id="2854205915" nickname="可可萝">缺少指令参数，有效语句为："/复读 &lt;message>"</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="Yuki">@可可萝 /复读 人的本质</ChatMessage>
+  <ChatMessage :id="2854205915" nickname="可可萝">人的本质</ChatMessage>
 </ChatPanel>
 
-什么都没有发生呐！前面我们有提到，插件会在 **项目启动时** 自动挂载，当前这个插件不是在项目启动时就存在的，而是你在当前服务运行时完成开发并 **后续添加** 的。
-
-不过你并不需要为此就去重启整个服务，每次重启服务 bot 都将会重新登录，频繁上下线会导致登录异常甚至掉线，我们只需要 **手动挂载** 插件就可以正常使用。
-
-## 挂载插件
-
-你可以给机器人发送 `mount <...name>` 或者 `挂载 <...插件名>` 指令，插件名就是你刚才创建的 **文件夹名**。
-
-<ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">mount test</ChatMessage>
-  <ChatMessage :id="709289491" nickname="kokkoro">
-  {{
-    JSON.stringify({
-      test: {
-        message: 'plugin mount success.',
-      }
-    }, null, 2)
-  }}
-  </ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">hello</ChatMessage>
-  <ChatMessage :id="709289491" nickname="kokkoro">hello world</ChatMessage>
-</ChatPanel>
-
-所有插件都是通过 `plugins` 和 `node_module` 内的文件夹名来作为唯一标识的。
+这下我们就实现好了一个插件的完整交互，是不是非常简单？ (●'◡'●)
 
 ## 插件权限
 
-除了 `mount` 指令外，还有 `unmount`、`enable` 等内置指令，你可以输入 help 查看所有内置指令。
+我们在快速开始一栏中有提到，项目内的所有插件，都是在启动时（bot 建立通信前）自动挂载的。
+
+但是现在我们有一个需求，想要运行多个 bot，但是只需要特定的 bot 去使用特定的插件，应该如何实现自定义？
+
+打开 `kokkoro.json` 配置文件，你可以在 bot 一栏中添加 `plugins` 属性：
+
+```json {7}
+{
+  "bots": [
+    {
+      "appid": "1145141919",
+      "token": "38bc73e16208135fb111c0c573a44eaa",
+      "secret": "6208135fb111c0c5",
+      "plugins": []
+    }
+  ]
+}
+```
+
+`plugins` 传入的是一个字符串数组，数组值正是插件的 `metadata.name` 属性，当 `plugins` 没传入任何参数的时候，该 bot 就会响应全部插件。
+
+例如我们现在安装了 hitokoto 和 pcr 这两个插件，假如机器人**可可萝**想要使用 pcr 插件，机器人**爱梅斯**却不需要这个插件时，就可以这样去修改：
+
+```json {7}
+{
+  "bots": [
+    // 可可萝
+    {
+      "plugins": ["hitokoto", "pcr"]
+    },
+    // 爱梅斯
+    {
+      "plugins": ["hitokoto"]
+    }
+  ]
+}
+```
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">help</ChatMessage>
-  <ChatMessage :id="709289491" nickname="kokkoro">
-  {{
-    [
-      'Commands: ',
-      '  print <message>  打印测试',
-      '  state  查看 bot 运行信息',
-      '  plugin  插件模块列表',
-      '  mount <...names>  挂载插件',
-      '  unmount <...names>  卸载插件',
-      '  reload <...names>  重载插件',
-      '  enable <...names>  启用插件',
-      '  disable <...names>  禁用插件',
-      '  server  查看当前群服务列表',
-      '  apply <...names>  应用群服务',
-      '  exempt <...names>  免除群服务',
-      '  version  版本信息',
-      '  help  帮助信息',
-      '',
-      'More: https://kokkoro.js.org',
-    ].join('\n')
-  }}
-  </ChatMessage>
+  <ChatMessage :id="2225151531" nickname="Yuki">@可可萝 /来点骚话</ChatMessage>
+  <ChatMessage :id="2854205915" nickname="可可萝">『只有分离后才能懂的事，却没有了感慨的时间。』——「宝石之国」</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="Yuki">@爱梅斯 /来点骚话</ChatMessage>
+  <ChatMessage :id="2854211958" nickname="爱梅斯">『只要努力活下去，总有一天会笑着回忆。』——「不可思议游戏」</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="Yuki">@可可萝 /发起会战</ChatMessage>
+  <ChatMessage :id="2854205915" nickname="可可萝">已开启射手座会战 (*/ω＼*)</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="Yuki">@爱梅斯 /发起会战</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="Yuki">爱梅斯在这里不会作出相应</ChatMessage>
 </ChatPanel>
-
-你一定有所疑问，`mount` 与 `enable` 有什么区别？
-
-当你启动项目时，程序会从 `plugins` 与 `node_modules` 目录中检索，若有与之匹配的模块包，就会将其自动挂载并执行对应代码，也就是 `mount` 操作。反之，`unmount` 会直接清除整个模块包缓存，并将插件对应的事件销毁。
-
-那么 `enable` 呢？kokkoro 支持多 bot 账号管理，若出现机器人 A 想要使用某个插件，机器人 B 却不需要这个插件时，就可以使用该项指令。
-
-<ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">disable test</ChatMessage>
-  <ChatMessage :id="709289491" nickname="kokkoro">
-  {{
-    JSON.stringify({
-      test: {
-        message: 'plugin disable success.',
-      },
-    }, null, 2)
-  }}
-  </ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">hello</ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">将不再收到消息</ChatMessage>
-</ChatPanel>
-
-现在 kokkoro 已经将 test 插件屏蔽，**该 bot** 将不会处理 test 插件下的任何消息事件，不过插件仍然在正常运行，若你登录了多个账号，其它 bot 仍然可以正常收发消息。

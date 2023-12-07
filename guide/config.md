@@ -18,7 +18,7 @@
     "domain": null
   },
   // 日志等级
-  "logLevel": "INFO",
+  "log_level": "INFO",
   // bot 信息，与 amesu 保持一致
   "bots": [
     {

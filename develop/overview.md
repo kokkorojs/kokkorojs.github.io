@@ -1,46 +1,51 @@
 # 概述
 
-::: danger
-当前页面是 v1 时期的文档，内容已过时，将会在近期更新。
-:::
-
 ::: info 插件类型
-在编写插件之前，我们首先要了解项目结构。项目部署时就已经为大家做了初步介绍，插件共分为 **本地插件** 和 **npm 插件** 两大类。
+在编写插件之前，我们首先要了解项目结构。项目部署时就已经为大家做了初步介绍，插件共分为**本地插件**和 **npm 插件**两大类。
 :::
 
 ## 本地插件
 
 - 本地插件将全部存放在根目录的 `plugins` 文件夹下。
-- 所有由你自己编写，并 **仅供个人使用** 的插件就可以称为本地插件。
+- 所有由你自己编写，并**仅供个人使用**的插件就可以称为本地插件。
 
 ## npm 插件
 
 - npm 插件都是直接使用 `npm install` 指令安装，存放在 `node_modules` 目录下。
-- 是由我或者其他开发者编写，上传至 [npmjs](https://www.npmjs.com/) 平台，为 **所有使用 kokkoro 框架的人** 提供服务。
+- 是由我或者其他开发者编写，上传至 [npmjs](https://www.npmjs.com/) 平台，为**所有使用 kokkoro 框架的人**提供服务。
 
 还记得在初始化项目时输入的 `kokkoro init` 么，在界面会有一个选择安装插件的步骤，那些插件就全部属于 npm 插件。
 
 ## 命名规范
 
-世界上不存在两片一模一样的叶子，插件也是如此。kokkoro 不存在两个一模一样的插件，所有插件都是使用其所在的文件名来作为自身的 **唯一标识**。
+世界上不存在两片一模一样的叶子，插件也是如此。
 
-本地插件命名无任何限制，npm 插件命名都是以 `kokkoro-plugin` 作为前缀。任何插件相关的操作，例如 `kokkoro-plugin-base` 插件，使用 `base` 关键字就可以直接匹配到该插件实例。
+kokkoro 不存在两个名字一模一样的插件，所有插件都是使用其模块的 `metadata.name`，来作为自身的**唯一标识**。
 
-::: warning 不能同名！
-所以一定要注意，你不能在 `node_modules` 已存在 `kokkoro-plugin-base` 插件的前提下，又去创建 `plugins/base` 目录。
-:::
-
-万一重名了会怎么样？我也不知道，没试过。理论上这样操作会将前一个插件实例给覆盖掉，可以肯定的是这样一定会影响程序正常执行，这点是毋庸置疑的。
+如果你想开发插件并发布，那么要将插件以 `kokkoro-plugin` 作为前缀。例如 `example` 插件，使用 `kokkoro-plugin-example` 作为模块名，否则会导致插件无法被正常检索。
 
 ## 目录结构
 
-你可以在项目根目录下使用 cli 指令 `kokkoro create <name>` 来快速创建插件模板。
+你可以在项目根目录下，使用 cli 指令 `kokkoro plugin <name>` 来快速创建插件模板。
+
+```shell:no-line-numbers
+kokkoro plugin <name>
+```
+
+你可以自由选择你想使用的插件风格，这里我们以默认的 JavaScript 为例：
+
+```shell:no-line-numbers
+✔ Which plugin style would you like to use:
+>   Javascript
+    Typescript (Hook)
+    Typescript (Decorator)
+
+Info: plugin module create successful.
+```
 
 ```tex:no-line-numbers
 plugins/
-└─ test/                 插件名
-   ├─ index.js           程序主入口
-   └─ package.json       包管理文件 (可选)
+└─ example/
+   ├─ index.js        程序入口
+   └─ package.json    包管理文件
 ```
-
-这就是一个插件最基础的目录结构，它应当符合 `commonjs` 规范，除非你创建了 `package.json` 文件，否则 `index.js` 不能随意 **重命名** ，不然会导致插件无法被检索。

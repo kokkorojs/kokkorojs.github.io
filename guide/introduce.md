@@ -4,8 +4,8 @@ import FlipCard from '../.vitepress/theme/components/FlipCard.vue';
 
 # 简介
 
-::: info
-你正在阅读的是 kokkoro v2 的文档，由于个人时间有限，内容与库的实际表现可能略有差异。
+::: info 这里是正在施工的 kokkoro v2 文档
+由于个人时间有限，部分内容可能会与框架的实际表现略有差异。
 :::
 
 ## 什么是 kokkoro？
@@ -17,23 +17,24 @@ kokkoro (可可萝) 是一个基于 [amesu](https://github.com/xueelf/amesu) SDK
 ::: code-group
 
 ```javascript [javascript]
-import { useCommand } from '@kokkoro/core';
+import { useCommand, useEvent } from '@kokkoro/core';
 
 /**
  * @type {import('@kokkoro/core').Metadata}
  */
 export const metadata = {
-  name: 'demo',
+  name: 'example',
   description: '插件示例',
 };
 
-export default function Demo() {
+export default function Example() {
+  useEvent(() => console.log('Bot online.'), ['session.ready']);
   useCommand('/测试', () => 'hello world');
 }
 ```
 
 ```typescript [typescript (Hook)]
-import { Metadata, useCommand } from '@kokkoro/core';
+import { Metadata, useCommand, useEvent } from '@kokkoro/core';
 
 export const metadata: Metadata = {
   name: 'example',
@@ -41,20 +42,26 @@ export const metadata: Metadata = {
 };
 
 export default function Example(): void {
+  useEvent(() => console.log('Bot online.'), ['session.ready']);
   useCommand('/测试', () => 'hello world');
 }
 ```
 
 ```typescript [typescript (Decorator)]
-import { Command, Plugin } from '@kokkoro/core';
+import { Command, Event, Plugin } from '@kokkoro/core';
 
 @Plugin({
   name: 'example',
   description: '示例插件',
 })
 export default class Example {
+  @Event('session.ready')
+  onReady() {
+    console.log('Bot online.');
+  }
+
   @Command('/测试')
-  testMessage() {
+  sayHello() {
     return 'hello world';
   }
 }
@@ -65,15 +72,18 @@ export default class Example {
 #### 结果展示
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">/测试</ChatMessage>
+  <ChatMessage :id="2225151531" nickname="Yuki">@可可萝 /测试</ChatMessage>
   <ChatMessage :id="2854205915" nickname="可可萝">hello world</ChatMessage>
 </ChatPanel>
 
-上面的示例展示了 kokkoro 的指令交互，如果 `command` 函数返回了字符串，那么会直接作为消息回复出去。
+上面的示例展示了 kokkoro 插件的两个核心功能：
+
+- **事件监听：** 可批量监听客户端发出的任意事件。
+- **指令处理：** 如果 `command` 函数返回了**不为空**的变量，那么会将其直接作为字符串消息回复。
 
 你可能已经有了些疑问 —— 先别急，在后续的文档中我们会详细介绍每一个细节。现在，请继续看下去，以确保你对 kokkoro 作为一个框架到底提供了什么有一个宏观的了解。
 
-::: info
+::: info 预备知识
 虽然 kokkoro 上手非常简单，但你应该对 **JavaScript** 有着基础的知识，如果你对开发完全陌生，最好不要直接从一个框架开始进行入门学习。你可以通过这篇 [JavaScript 概述](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Language_Overview) 来检验你的 **JavaScript** 知识水平。如果之前有其他框架的经验会很有帮助，但也不是必须的。
 :::
 
