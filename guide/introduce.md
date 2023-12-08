@@ -28,7 +28,12 @@ export const metadata = {
 };
 
 export default function Example() {
-  useEvent(() => console.log('Bot online.'), ['session.ready']);
+  useEvent(
+    ctx => {
+      ctx.logger.mark('Bot online.');
+    },
+    ['session.ready'],
+  );
   useCommand('/测试', () => 'hello world');
 }
 ```
@@ -41,14 +46,19 @@ export const metadata: Metadata = {
   description: '示例插件',
 };
 
-export default function Example(): void {
-  useEvent(() => console.log('Bot online.'), ['session.ready']);
+export default function Example() {
+  useEvent(
+    ctx => {
+      ctx.logger.mark('Bot online.');
+    },
+    ['session.ready'],
+  );
   useCommand('/测试', () => 'hello world');
 }
 ```
 
 ```typescript [typescript (Decorator)]
-import { Command, Event, Plugin } from '@kokkoro/core';
+import { Command, Context, Event, Plugin } from '@kokkoro/core';
 
 @Plugin({
   name: 'example',
@@ -56,8 +66,8 @@ import { Command, Event, Plugin } from '@kokkoro/core';
 })
 export default class Example {
   @Event('session.ready')
-  onReady() {
-    console.log('Bot online.');
+  onReady(ctx: Context<'session.ready'>) {
+    ctx.logger.mark('Bot online.');
   }
 
   @Command('/测试')
@@ -72,14 +82,14 @@ export default class Example {
 #### 结果展示
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">@可可萝 /测试</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">hello world</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /测试</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">hello world</ChatMessage>
 </ChatPanel>
 
 上面的示例展示了 kokkoro 插件的两个核心功能：
 
 - **事件监听：** 可批量监听客户端发出的任意事件。
-- **指令处理：** 如果 `command` 函数返回了**不为空**的变量，那么会将其直接作为字符串消息回复。
+- **指令处理：** 如果 `command` 返回了**不为空**的变量，那么会将其直接作为字符串消息回复。
 
 你可能已经有了些疑问 —— 先别急，在后续的文档中我们会详细介绍每一个细节。现在，请继续看下去，以确保你对 kokkoro 作为一个框架到底提供了什么有一个宏观的了解。
 
@@ -102,7 +112,7 @@ export default class Example {
 
 接触过 QQ 机器人的应该都知道，类似的框架其实有非常非常多，为什么还要去重复造轮子呢？
 
-其实这个项目在 19 年就开坑了，起初是因为想利用 QQ 做一些自动化消息推送，后面因为疫情开始接触 pcr，认识了各种各样有趣的人，加上游戏内公会战也需要 bot 去查询各类信息，就用 coolq 简单做了一个。
+其实我在 19 年开始接触 QQ 机器人开发了，起初是因为想利用 QQ 做一些自动化消息推送，后面因为疫情开始接触 pcr，认识了各种各样有趣的人，加上游戏内公会战也需要 bot 去查询各类信息，就用 coolq 简单做了一个。
 
 后来发生的事情大家也都知道，coolq 跑路导致机器人无法正常使用，所以就萌生了开发框架的想法。
 

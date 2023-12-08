@@ -1,6 +1,6 @@
 <template>
   <div ref="messageRef" class="chat-message-container" :class="{ show }">
-    <chat-avatar :id="props.id" :color="props.color" :avatar="props.avatar" :nickname="props.nickname" />
+    <chat-avatar :qq="props.qq" />
     <div class="message-box">
       <div class="nickname">{{ props.nickname }}</div>
       <div class="message shadow-sm">
@@ -11,13 +11,11 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 
 interface ChatMessageProps {
-  avatar?: string;
-  id?: number;
-  nickname?: string;
-  color?: string;
+  qq: number;
+  nickname: string;
 }
 
 const props = defineProps<ChatMessageProps>();
@@ -29,8 +27,8 @@ const handleScroll = () => {
     return;
   }
   const observer = new IntersectionObserver(function (this: IntersectionObserver, entries) {
-    entries.forEach(entrie => {
-      if (!entrie.isIntersecting) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
         return;
       }
       show.value = true;
@@ -86,20 +84,6 @@ onMounted(() => {
       border-radius: 0.5rem;
       vertical-align: middle;
     }
-
-    // &::before {
-    //   content: "";
-    //   position: absolute;
-    //   right: 100%;
-    //   top: 0px;
-    //   width: 8px;
-    //   height: 8px;
-    //   border: 0 solid transparent;
-    //   border-bottom-width: 5px;
-    //   border-bottom-color: currentColor;
-    //   border-radius: 0 0 0 1rem;
-    //   color: var(--vp-c-bg);
-    // }
   }
 }
 </style>

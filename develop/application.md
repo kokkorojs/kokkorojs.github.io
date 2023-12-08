@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   description: '示例插件',
 };
 
-export default function Example(): void {
+export default function Example() {
   useEvent(
     ctx => {
       ctx.logger.mark('Bot online.');
@@ -90,7 +90,7 @@ export default class Example {
 
 ## 进行交互
 
-相信你这个时候一定有很多疑问，虽然我们前面有讲过，`metadata` 是用来作为插件的唯一标识，但是 `Event` 与 `Command` 又是什么？
+相信你这个时候一定有很多疑问，虽然我们前面有讲过，`metadata` 是用来作为插件的唯一标识，但是 `event` 与 `command` 又是什么？
 
 ::: info
 当前章节仅提供示例，目的在于让你能自己编写出可以进行简单交互的插件。  
@@ -100,12 +100,10 @@ export default class Example {
 在 bot 建立通信连接后，该插件会在日志里输出 "Bot online."，并且会对指令消息进行响应。
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">@可可萝 /测试</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">hello world</ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">@可可萝 /复读</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">缺少指令参数，有效语句为："/复读 &lt;message>"</ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">@可可萝 /复读 人的本质</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">人的本质</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /测试</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">hello world</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /复读 人的本质</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">人的本质</ChatMessage>
 </ChatPanel>
 
 这下我们就实现好了一个插件的完整交互，是不是非常简单？ (●'◡'●)
@@ -135,7 +133,7 @@ export default class Example {
 
 例如我们现在安装了 hitokoto 和 pcr 这两个插件，假如机器人**可可萝**想要使用 pcr 插件，机器人**爱梅斯**却不需要这个插件时，就可以这样去修改：
 
-```json {7}
+```json {5,9}
 {
   "bots": [
     // 可可萝
@@ -151,12 +149,12 @@ export default class Example {
 ```
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">@可可萝 /来点骚话</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">『只有分离后才能懂的事，却没有了感慨的时间。』——「宝石之国」</ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">@爱梅斯 /来点骚话</ChatMessage>
-  <ChatMessage :id="2854211958" nickname="爱梅斯">『只要努力活下去，总有一天会笑着回忆。』——「不可思议游戏」</ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">@可可萝 /发起会战</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">已开启射手座会战 (*/ω＼*)</ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">@爱梅斯 /发起会战</ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">爱梅斯在这里不会作出相应</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /来点骚话</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">『只有分离后才能懂的事，却没有了感慨的时间。』——「宝石之国」</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">@爱梅斯 /来点骚话</ChatMessage>
+  <ChatMessage :qq="2854211958" nickname="爱梅斯">『只要努力活下去，总有一天会笑着回忆。』——「不可思议游戏」</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /发起会战</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">已开启射手座会战 (*/ω＼*)</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">@爱梅斯 /发起会战</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">在这里，爱梅斯不会对 pcr 插件指令作出响应</ChatMessage>
 </ChatPanel>

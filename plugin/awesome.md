@@ -19,8 +19,8 @@ npm i kokkoro-plugin-chatgpt
 ### 咨询
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">咨询 怎么做光刻机？</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">
+  <ChatMessage :qq="2225151531" nickname="Yuki">咨询 怎么做光刻机？</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">
   {{
     [
       '光刻机操作很简单，大致可以分为几个步骤： ',
@@ -54,15 +54,15 @@ npm i kokkoro-plugin-cherugo
 ### 加密
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">切噜一下 会长我挂树了</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">切噜～♪切噼噼卟蹦咧噼哔噜蹦巴叮拉嘭噼叮拉噜巴啰铃卟巴噼巴</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">切噜一下 会长我挂树了</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">切噜～♪切噼噼卟蹦咧噼哔噜蹦巴叮拉嘭噼叮拉噜巴啰铃卟巴噼巴</ChatMessage>
 </ChatPanel>
 
 ### 解密
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">切噜～♪切噼噼卟蹦咧噼哔噜蹦巴叮拉嘭噼叮拉噜巴啰铃卟巴噼巴</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">会长我挂树了</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">切噜～♪切噼噼卟蹦咧噼哔噜蹦巴叮拉嘭噼叮拉噜巴啰铃卟巴噼巴</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">会长我挂树了</ChatMessage>
 </ChatPanel>
 
 ## 一言语句
@@ -74,8 +74,8 @@ npm i kokkoro-plugin-hitokoto
 ### 来句骚话
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">/来点骚话</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">
+  <ChatMessage :qq="2225151531" nickname="Yuki">/来点骚话</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">
     <span>『不对失误耿耿于怀，而是专心为今后做打算，这才是最有效率的』</span>
     <br />
     <div style="text-align: right;">—— 间谍过家家</div>
@@ -91,7 +91,7 @@ npm i kokkoro-plugin-hitokoto
 在每天凌晨自动发送
 
 <ChatPanel>
-  <ChatMessage :id="2854205915" nickname="可可萝">
+  <ChatMessage :qq="2854205915" nickname="可可萝">
     <span>失恋的时候，许多年轻人以为整个世界都抛弃了自己，别傻了，世界根本就没需要过你。</span>
   </ChatMessage>
 </ChatPanel>
@@ -109,8 +109,8 @@ npm i kokkoro-plugin-group
 ### 申请头衔
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">申请头衔 咕咕咕</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">申请成功</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">申请头衔 咕咕咕</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">申请成功</ChatMessage>
 </ChatPanel>
 
 ### 欢新提示
@@ -118,8 +118,8 @@ npm i kokkoro-plugin-group
 在群成员发生变更时发送
 
 <ChatPanel>
-  <ChatMessage :id="2854205915" nickname="可可萝">欢迎新人的加入</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">新人已退出群聊</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">欢迎新人的加入</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">新人已退出群聊</ChatMessage>
 </ChatPanel>
 
 ## 色图
@@ -135,22 +135,22 @@ npm i kokkoro-plugin-setu
 ### 随机涩图
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">来点色图</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">不可以涩涩！</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">来点色图</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">不可以涩涩！</ChatMessage>
 </ChatPanel>
 
 ### 指定涩图
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">来点萝莉色图</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">不可以涩涩！</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">来点萝莉色图</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">不可以涩涩！</ChatMessage>
 </ChatPanel>
 
 ### 多张色图
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">来10份色图</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">不可以涩涩！</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">来10份色图</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">不可以涩涩！</ChatMessage>
 </ChatPanel>
 
 ## RSS 订阅
@@ -176,12 +176,12 @@ npm i kokkoro-plugin-saucenao
 ### 搜图
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">搜图</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">请发送你要搜索的图片 (●'◡'●)</ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">
+  <ChatMessage :qq="2225151531" nickname="Yuki">搜图</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">请发送你要搜索的图片 (●'◡'●)</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">
     <img width="200" src="/74237509.jpg" />
   </ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">
+  <ChatMessage :qq="2854205915" nickname="可可萝">
     <div>平台：Pixiv</div>
     <div>封面：</div>
     <img width="100" src="/74237509.jpg" />
@@ -215,8 +215,8 @@ kokkoro 最初就是以公主连结玩家为核心开发相关功能的，现在
 ### 会战
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">开启会战</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">
+  <ChatMessage :qq="2225151531" nickname="Yuki">开启会战</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">
     <div>当前状态:</div>
     <div>&emsp;1 周目 1 阶段 1 王</div>
     <div>boss 信息:</div>
@@ -224,8 +224,8 @@ kokkoro 最初就是以公主连结玩家为核心开发相关功能的，现在
     <div>更新时间:</div>
     <div>&emsp;2022/09/29 22:32:30</div>
   </ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">尾刀</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">
+  <ChatMessage :qq="2225151531" nickname="Yuki">尾刀</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">
     <div>当前状态:</div>
     <div>&emsp;1 周目 1 阶段 2 王</div>
     <div>boss 信息:</div>
@@ -233,15 +233,15 @@ kokkoro 最初就是以公主连结玩家为核心开发相关功能的，现在
     <div>更新时间:</div>
     <div>&emsp;2022/09/29 22:35:30</div>
   </ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">预约 5</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">预约成功</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">预约 5</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">预约成功</ChatMessage>
 </ChatPanel>
 
 ### 十连
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">来发十连</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">素敵な仲間が増えますよ~</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">来发十连</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">素敵な仲間が増えますよ~</ChatMessage>
 </ChatPanel>
 
 ### 竞技场
@@ -263,19 +263,19 @@ kokkoro 最初就是以公主连结玩家为核心开发相关功能的，现在
 ### 执行运算符
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">>1000 - 7</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">993</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">>1000 - 7</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">993</ChatMessage>
 </ChatPanel>
 
 ### 创建变量
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">>const 贴贴 = "不要贴贴，贴贴危险，还会密接"</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">true</ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">贴贴</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">不要贴贴，贴贴危险，还会密接</ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">>delete 贴贴</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">true</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">>const 贴贴 = "不要贴贴，贴贴危险，还会密接"</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">true</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">贴贴</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">不要贴贴，贴贴危险，还会密接</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">>delete 贴贴</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">true</ChatMessage>
 </ChatPanel>
 
 你可以通过创建变量实现类似及时问答的效果，不过更推荐通过 [qa](/plugin/awesome#你问我答) 插件去定义，毕竟单纯地变量不支持正则
@@ -283,7 +283,7 @@ kokkoro 最初就是以公主连结玩家为核心开发相关功能的，现在
 ### 执行脚本
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">
+  <ChatMessage :qq="2225151531" nickname="Yuki">
   {{
     [
       '>for (let i = 0; i &lt 3; i++) {',
@@ -292,9 +292,9 @@ kokkoro 最初就是以公主连结玩家为核心开发相关功能的，现在
     ].join('\n')
   }}
   </ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">重要的事情说三遍！</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">重要的事情说三遍！</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">重要的事情说三遍！</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">重要的事情说三遍！</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">重要的事情说三遍！</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">重要的事情说三遍！</ChatMessage>
 </ChatPanel>
 
 我并未对执行语句做过滤，给大家提供较高的自由度并不代表可以做一些危险的举动，包括但不限于 `process.exit()`、`const exec = require('child_process')`、`while(true) {}`...
@@ -310,29 +310,29 @@ npm i kokkoro-plugin-aircon
 ### 开关
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">开空调</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">哔~❄️当前温度 20°</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">开空调</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">哔~❄️当前温度 20°</ChatMessage>
 </ChatPanel>
 
 ### 温度调节
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">设置温度 28</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">哔~☀️当前温度 28°</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">设置温度 28</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">哔~☀️当前温度 28°</ChatMessage>
 </ChatPanel>
 
 ### 温度查询
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">群温度</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">☀️当前温度 28°</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">群温度</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">☀️当前温度 28°</ChatMessage>
 </ChatPanel>
 
 ### ~~群友的第一款人造太阳~~
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">设置温度 114514</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">哔~🥵当前温度 114514°</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">设置温度 114514</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">哔~🥵当前温度 114514°</ChatMessage>
 </ChatPanel>
 
 ## 五子棋
@@ -344,8 +344,8 @@ npm i kokkoro-plugin-aircon
 ### 开始游戏
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">五子棋</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">
+  <ChatMessage :qq="2225151531" nickname="Yuki">五子棋</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">
     <div>&ensp;&ensp;①&ensp;②&ensp;③&ensp;④&ensp;⑤&ensp;⑥&ensp;⑦&ensp;⑧</div>
     <div>Ａ┌,┬,┬,┬,┬,┬,┬,┬,┬,┬,┬,┐</div>
     <div>Ｂ├,┼,┼,┼,┼,┼,┼,┼,┼,┼,┼,┤</div>
@@ -361,8 +361,8 @@ npm i kokkoro-plugin-aircon
 ### 落子
 
   <ChatPanel>
-    <ChatMessage :id="2225151531" nickname="Yuki">落子 d4</ChatMessage>
-    <ChatMessage :id="2854205915" nickname="可可萝">
+    <ChatMessage :qq="2225151531" nickname="Yuki">落子 d4</ChatMessage>
+    <ChatMessage :qq="2854205915" nickname="可可萝">
       <div>&ensp;&ensp;①&ensp;②&ensp;③&ensp;④&ensp;⑤&ensp;⑥&ensp;⑦&ensp;⑧</div>
       <div>Ａ┌,┬,┬,┬,┬,┬,┬,┬,┬,┬,┬,┐</div>
       <div>Ｂ├,┼,┼,┼,┼,┼,┼,┼,┼,┼,┼,┤</div>
@@ -384,12 +384,12 @@ npm i kokkoro-plugin-aircon
 本来是计划把猜头像也整合进 pcr 插件，考虑到后续可能会添加其它游戏类型的头像，所以仍然独立。
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">猜头像</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">
+  <ChatMessage :qq="2225151531" nickname="Yuki">猜头像</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">
     <img src="/ranfa.png" />
   </ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">麻麻</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">
+  <ChatMessage :qq="2225151531" nickname="Yuki">麻麻</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">
     <img src="/118111.webp" />
     <div>恭喜 yuki 猜对啦~</div>
     <div>关键字： 兰法、妈、妈妈、麻麻、兰法妈妈、兰法麻麻</div>
@@ -405,8 +405,8 @@ npm i kokkoro-plugin-aircon
 ### 重开
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">重开</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">
+  <ChatMessage :qq="2225151531" nickname="Yuki">重开</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">
     <div>请选取 3 个天赋：</div>
     <div>&emsp;1. 城中高楼（你出生在城市）</div>
     <div>&emsp;2. 驻颜（体质>10时颜值+3）</div>
@@ -430,26 +430,26 @@ npm i kokkoro-plugin-aircon
 ### 问
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">有人说贴贴你就说不要贴贴，贴贴危险，还会密接</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">好的，我记住了</ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">有人说妈你就说崽</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">好的，我记住了</ChatMessage>
-  <ChatMessage :id="2225151531" nickname="Yuki">有人说<img width="100" src="/images/meme/这河里妈.jpg" />你就说<img width="100" src="/images/meme/这真步河里.jpg" /></ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">好的，我记住了</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">有人说贴贴你就说不要贴贴，贴贴危险，还会密接</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">好的，我记住了</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">有人说妈你就说崽</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">好的，我记住了</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">有人说<img width="100" src="/images/meme/这河里妈.jpg" />你就说<img width="100" src="/images/meme/这真步河里.jpg" /></ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">好的，我记住了</ChatMessage>
 </ChatPanel>
 
 ### 答
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">贴贴</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">不要贴贴，贴贴危险，还会密接</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">贴贴</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">不要贴贴，贴贴危险，还会密接</ChatMessage>
 </ChatPanel>
 
 ### 查
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">看看有人问</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">贴贴 | 妈 | <img width="100" src="/images/meme/这河里妈.jpg" /></ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">看看有人问</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">贴贴 | 妈 | <img width="100" src="/images/meme/这河里妈.jpg" /></ChatMessage>
 </ChatPanel>
 
 ## Galgame
@@ -461,8 +461,8 @@ npm i kokkoro-plugin-aircon
 ### 开始
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">galgame</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">
+  <ChatMessage :qq="2225151531" nickname="Yuki">galgame</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">
     <div>序章：翘家</div>
     <br />
     <div>阿伟：“好饿哦...”</div>

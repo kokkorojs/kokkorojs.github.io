@@ -1,44 +1,18 @@
 <template>
   <div class="chat-avatar-container">
-    <img
-      v-if="props.avatar || props.id"
-      class="avatar"
-      :src="props.avatar || getAvatarById(props.id, props.type, props.size)"
-    />
-    <div v-else class="avatar" :style="`background-color:${color}`">
-      <span>{{ props.nickname }}</span>
-    </div>
+    <img class="avatar" :src="url" />
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
+
 interface ChatAvatarProps {
-  avatar?: string;
-  id?: number | null;
-  type?: 'qq' | 'group' | string;
-  size?: number;
-  nickname?: string;
-  color?: string;
+  qq: number;
 }
 
-const props = withDefaults(defineProps<ChatAvatarProps>(), {
-  avatar: '',
-  id: null,
-  type: 'qq',
-  size: 100,
-  nickname: '',
-  color: 'steelblue',
-});
-const getAvatarById = (id, type, size) => {
-  let url = 'https://s2.loli.net/2022/04/30/8xjO5MuVkwSQHzt.png';
-
-  if (type === 'qq') {
-    url = `https://q1.qlogo.cn/g?b=qq&nk=${id}&s=${size}`;
-  } else if (type === 'group') {
-    url = `https://p.qlogo.cn/gh/${id}/${id}/${size}`;
-  }
-  return url;
-};
+const props = defineProps<ChatAvatarProps>();
+const url = computed(() => `https://q1.qlogo.cn/g?b=qq&nk=${props.qq}&s=100`);
 </script>
 
 <style lang="scss" scoped>

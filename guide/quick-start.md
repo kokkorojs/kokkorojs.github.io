@@ -60,8 +60,8 @@ npm i kokkoro-plugin-hitokoto
 程序会在 bot 建立通信前，自动挂载项目内的所有插件。
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">@可可萝 /来点骚话</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">『大部分人并不想长大，只是没办法继续当一个小孩子。』——「小林家的龙女仆」</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /来点骚话</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">『大部分人并不想长大，只是没办法继续当一个小孩子。』——「小林家的龙女仆」</ChatMessage>
 </ChatPanel>
 
 现在，开启一段属于你的物语吧 ♪ q(≧▽≦q)

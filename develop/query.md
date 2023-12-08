@@ -6,7 +6,7 @@
 
 ## 语法
 
-你可以通过 reset 语法来为指令添加参数，例如：[arg]、[...args]、&lt;arg>、&lt;...args>。
+你可以通过命令行语法（command line syntax），来为指令添加参数，例如：[arg]、[...args]、&lt;arg>、&lt;...args>。
 
 ::: code-group
 
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   description: '示例插件',
 };
 
-export default function Example(): void {
+export default function Example() {
   useCommand<{ message: string }>('/复读 <message>', ctx => ctx.query.message);
 }
 ```
@@ -56,13 +56,47 @@ export default class Example {
 
 :::
 
-指令参数会全部存储在 `ctx.query`，typescript 可以通过泛型来定义类型。需要注意的是，如果指令没提供任何参数，那么 `query` 的值是 `null` 而不是 `{}` 空对象。
+指令参数会全部存储在 `ctx.query` 中，typescript 可以通过泛型来定义类型。需要注意的是，如果指令没提供任何**命令行参数语法**，那么 `query` 的值是 `null`，而不是 `{}` 空对象。
 
-## 参数校验
+## 必选参数
 
 如果你为指令添加了必填参数（&lt;arg>），那么当参数不匹配的时候，会自动发送语法提示。
 
 <ChatPanel>
-  <ChatMessage :id="2225151531" nickname="Yuki">@可可萝 /复读</ChatMessage>
-  <ChatMessage :id="2854205915" nickname="可可萝">缺少指令参数，有效语句为："/复读 &lt;message>"</ChatMessage>
+  <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /复读</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">缺少指令参数，有效语句为："/复读 &lt;message>"</ChatMessage>
 </ChatPanel>
+
+## 可选参数
+
+如果你为指令添加了可选参数（[arg]），那么当指令未传入参数时，该字段的值是 `null` 而不是 `undefined`，这点需要注意。
+
+::: code-group
+
+```javascript [hook] {4}
+import { useCommand } from '@kokkoro/core';
+
+export default function Example() {
+  useCommand('/复读 [message]', ctx => ctx.query.message);
+}
+```
+
+```typescript [decorator] {4}
+import { Command, CommandContext } from '@kokkoro/core';
+
+export default class Example {
+  @Command('/复读 [message]')
+  replayMessage(ctx: CommandContext<{ message: string | null }>) {
+    return ctx.query.message;
+  }
+}
+```
+
+:::
+
+<ChatPanel>
+  <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /复读</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">null</ChatMessage>
+</ChatPanel>
+
+## 参数类型的自动转换
