@@ -141,7 +141,7 @@ export default class Example {
 }
 ```
 
-这样一来，bot 就可以直接获取到消息的事件详情。
+这样一来，就可以直接获取到 bot 收到消息的事件详情。
 
 <ChatPanel>
   <ChatMessage :qq="437402067" nickname="友人A">yuki yuki，听你这么一说，我完全懂了</ChatMessage>

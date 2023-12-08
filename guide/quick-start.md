@@ -66,4 +66,4 @@ npm i kokkoro-plugin-hitokoto
 
 现在，开启一段属于你的物语吧 ♪ q(≧▽≦q)
 
-当然，如果你有 JavaScript 的相关知识，随时都可以编写自己的插件，详情可在 [插件开发](/develop/application) 一栏查看，更多插件安装和使用说明可以在 [插件社区](/plugin/awesome) 中查找。
+当然，如果你有 JavaScript 的相关知识，随时都可以编写自己的插件，详情可在 [插件开发](/develop/overview) 一栏查看，更多插件安装和使用说明可以在 [插件社区](/plugin/awesome) 中查找。
