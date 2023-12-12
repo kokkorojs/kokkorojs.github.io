@@ -158,9 +158,9 @@ export default function Example() {
   useEvent(
     ctx => {
       const { content } = ctx;
-      const message = content.replace(/^.+(?=\/)/, '').trimEnd();
+      const command = content.replace(/^.+(?=\/)/, '').trimEnd();
 
-      if (message === '测试') {
+      if (command === '测试') {
         return 'hello world';
       }
     },
@@ -176,9 +176,9 @@ export default class Example {
   @Event('at.message.create')
   onReady(ctx: Context<'at.message.create'>) {
     const { content } = ctx;
-    const message = content.replace(/^.+(?=\/)/, '').trimEnd();
+    const command = content.replace(/^.+(?=\/)/, '').trimEnd();
 
-    if (message === '测试') {
+    if (command === '测试') {
       return 'hello world';
     }
   }
@@ -212,7 +212,7 @@ import { useEvent } from '@kokkoro/core';
 export default function Example() {
   useEvent(
     ctx => {
-      ctx.logger.mark('Bot online.');
+      ctx.logger.mark('Bot online');
     },
     ['session.ready'],
   );
@@ -225,7 +225,7 @@ import { Command, Context, Event } from '@kokkoro/core';
 export default class Example {
   @Event('session.ready')
   onReady(ctx: Context<'session.ready'>) {
-    ctx.logger.mark('Bot online.');
+    ctx.logger.mark('Bot online');
   }
 }
 ```
@@ -238,7 +238,7 @@ export default class Example {
 
 虽然刚刚在 `event` 里去手动处理消息匹配，也实现自定义指令的效果，但是会导致插件后续的可维护性极差，不利于维护。
 
-所以，kokkoro 提供了 `command` 来进行指令处理，与 `event` 去手动监听**消息事件**实现的效果是等价的，但是更为简洁。
+所以，kokkoro 提供了 `command` 来进行指令处理，这其实与 `event` 去手动监听**消息事件**实现的效果是等价的，但是能让代码更为简洁。
 
 ::: code-group
 

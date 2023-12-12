@@ -60,7 +60,7 @@ export default class Example {
 
 ## 必选参数
 
-如果你为指令添加了必填参数（&lt;arg>），那么当参数不匹配的时候，会自动发送语法提示。
+如果你为指令添加了必填参数（&lt;arg>），当参数不匹配的时候，就会自动发送语法提示。
 
 <ChatPanel>
   <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /复读</ChatMessage>
@@ -98,5 +98,47 @@ export default class Example {
   <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /复读</ChatMessage>
   <ChatMessage :qq="2854205915" nickname="可可萝">null</ChatMessage>
 </ChatPanel>
+
+## 可变参数
+
+可变参数（&lt;...args>、[...args]）会将后续的**所有内容**全部追加至数组中，这与 JavaScript 中的 [Rest 语法](https://zh.javascript.info/rest-parameters-spread) 十分相似。
+
+`command` 针对可变参数做了严格的语法校验，与 JavaScript 一样，它们都只能放在**参数的最后面**，不然会导致插件无法被正常挂载。
+
+::: code-group
+
+```javascript [hook] {4}
+import { useCommand } from '@kokkoro/core';
+
+export default function Example() {
+  useCommand('/来点涩图 <...tags>', ctx => ctx.query.tags);
+}
+```
+
+```typescript [decorator] {4}
+import { Command, CommandContext } from '@kokkoro/core';
+
+export default class Example {
+  @Command('/来点涩图 <...tags>')
+  sendEroImage(ctx: CommandContext<{ tags: string[] }>) {
+    return ctx.query.tags;
+  }
+}
+```
+
+:::
+
+<ChatPanel>
+  <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /来点涩图 贫乳 萝莉 白丝</ChatMessage>
+  <ChatMessage :qq="2854205915" nickname="可可萝">
+    <div>[</div>
+    <div>  "贫乳",</div>
+    <div>  "萝莉",</div>
+    <div>  "白丝"</div>
+   <div>]</div>
+  </ChatMessage>
+</ChatPanel>
+
+值得注意的是，必选可变参数的非空校验依然存在，而可选可变参数在不传入任何内容的时候，其变量的值是 `[]` 空数组，而不是 `null`。
 
 ## 参数类型的自动转换

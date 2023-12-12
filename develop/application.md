@@ -28,7 +28,7 @@ export const metadata = {
 export default function Example() {
   useEvent(
     ctx => {
-      ctx.logger.mark('Bot online.');
+      ctx.logger.mark('Bot online');
     },
     ['session.ready'],
   );
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 export default function Example() {
   useEvent(
     ctx => {
-      ctx.logger.mark('Bot online.');
+      ctx.logger.mark('Bot online');
     },
     ['session.ready'],
   );
@@ -69,7 +69,7 @@ import { Command, CommandContext, Context, Event, Plugin } from '@kokkoro/core';
 export default class Example {
   @Event('session.ready')
   onReady(ctx: Context<'session.ready'>) {
-    ctx.logger.mark('Bot online.');
+    ctx.logger.mark('Bot online');
   }
 
   @Command('/测试')
@@ -86,7 +86,7 @@ export default class Example {
 
 :::
 
-这个时候你就已经写好了一个插件，该插件会在**项目启动时**自动将其进行挂载。
+这个时候，你就已经准备好了一个插件，该插件会在**项目启动时**自动进行挂载。
 
 ## 进行交互
 
@@ -97,7 +97,7 @@ export default class Example {
 目前你无需关心这段代码是什么意思，后面会逐一介绍，所以不用着急，让我们继续。
 :::
 
-在 bot 建立通信连接后，该插件会在日志里输出 "Bot online."，并且会对指令消息进行响应。
+现在，启动你的项目，在 bot 建立通信连接后，该插件会在日志里输出 "Bot online"，并且会对指令消息进行响应。
 
 <ChatPanel>
   <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /测试</ChatMessage>
@@ -110,7 +110,7 @@ export default class Example {
 
 ## 插件权限
 
-我们在快速开始一栏中有提到，项目内的所有插件，都是在启动时（bot 建立通信前）自动挂载的。
+我们在快速开始一栏中有提到，项目内的所有插件，都是在项目启动时（bot 建立通信前）自动挂载的。
 
 但是现在我们有一个需求，想要运行多个 bot，但是只需要特定的 bot 去使用特定的插件，应该如何实现自定义？
 
