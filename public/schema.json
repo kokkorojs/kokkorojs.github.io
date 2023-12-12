@@ -70,6 +70,10 @@
                 "AUDIO_ACTION",
                 "PUBLIC_GUILD_MESSAGES"
               ]
+            },
+            "max_retry": {
+              "description": "掉线重连数，默认 3",
+              "type": "number"
             }
           },
           "plugins": {
