@@ -26,10 +26,10 @@ kokkoro 不存在两个名字一模一样的插件，所有插件都是使用其
 
 ## 目录结构
 
-你可以在项目根目录下，使用 cli 指令 `kokkoro plugin <name>` 来快速创建插件模板。
+你可以在项目根目录下，使用 `kokkoro plugin <name>` 指令来快速创建插件模板。
 
 ```shell:no-line-numbers
-kokkoro plugin <name>
+kokkoro plugin example
 ```
 
 你可以自由选择你想使用的插件风格，这里我们以默认的 JavaScript 为例：

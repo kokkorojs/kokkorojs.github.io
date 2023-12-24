@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
-import { useData } from 'vitepress';
+  import { defineProps } from 'vue';
+  import { useData } from 'vitepress';
 
-interface FlipCardProps {
-  front: string;
-  back: string;
-}
+  interface FlipCardProps {
+    front: string;
+    back: string;
+  }
 
-const props = defineProps<FlipCardProps>();
-const { isDark } = useData();
+  const props = defineProps<FlipCardProps>();
+  const { isDark } = useData();
 </script>
 
 <template>
@@ -27,41 +27,41 @@ const { isDark } = useData();
 </template>
 
 <style lang="scss" scoped>
-.flip-card-container {
-  position: relative;
+  .flip-card-container {
+    position: relative;
 
-  .original {
-    opacity: 0;
-  }
+    .original {
+      opacity: 0;
+    }
 
-  .card {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    perspective: 100vw;
-
-    .front,
-    .back {
+    .card {
+      width: 100%;
+      height: 100%;
       position: absolute;
-      backface-visibility: hidden;
-      transition: transform 0.4s;
-    }
+      top: 0;
+      left: 0;
+      perspective: 100vw;
 
-    .back {
-      transform: rotateY(-180deg);
-    }
-
-    &.dark {
-      .front {
-        transform: rotateY(180deg);
+      .front,
+      .back {
+        position: absolute;
+        backface-visibility: hidden;
+        transition: transform 0.4s;
       }
 
       .back {
-        transform: rotateY(0deg);
+        transform: rotateY(-180deg);
+      }
+
+      &.dark {
+        .front {
+          transform: rotateY(180deg);
+        }
+
+        .back {
+          transform: rotateY(0deg);
+        }
       }
     }
   }
-}
 </style>

@@ -10,7 +10,7 @@ import FlipCard from '../.vitepress/theme/components/FlipCard.vue';
 
 ## 什么是 kokkoro？
 
-kokkoro (可可萝) 是一个基于 [amesu](https://github.com/xueelf/amesu) SDK，使用 [TypeScript](https://www.typescriptlang.org/) 语言开发的 [QQ](https://im.qq.com/) 机器人框架。本项目的初衷是想让 bot 开发变得**简单易上手**，她完全基于 node 环境，无需安装任何第三方应用，API 也十分简洁。
+kokkoro (可可萝) 是一个基于 [amesu](https://github.com/xueelf/amesu) SDK，使用 [TypeScript](https://www.typescriptlang.org/) 语言开发的 [QQ](https://im.qq.com/) 机器人框架。本项目的初衷是想让机器人开发变得**简单易上手**，她完全基于 node 环境，无需安装任何第三方应用，API 也十分简洁。
 
 下面是一个最基本的插件示例：
 
@@ -30,7 +30,7 @@ export const metadata = {
 export default function Example() {
   useEvent(
     ctx => {
-      ctx.logger.mark('Bot online.');
+      ctx.logger.mark('Bot online');
     },
     ['session.ready'],
   );
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 export default function Example() {
   useEvent(
     ctx => {
-      ctx.logger.mark('Bot online.');
+      ctx.logger.mark('Bot online');
     },
     ['session.ready'],
   );
@@ -67,7 +67,7 @@ import { Command, Context, Event, Plugin } from '@kokkoro/core';
 export default class Example {
   @Event('session.ready')
   onReady(ctx: Context<'session.ready'>) {
-    ctx.logger.mark('Bot online.');
+    ctx.logger.mark('Bot online');
   }
 
   @Command('/测试')
@@ -82,8 +82,8 @@ export default class Example {
 #### 结果展示
 
 <ChatPanel>
-  <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /测试</ChatMessage>
-  <ChatMessage :qq="2854205915" nickname="可可萝">hello world</ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki">@可可萝 /测试</ChatMessage>
+  <ChatMessage qq="2854205915" nickname="可可萝">hello world</ChatMessage>
 </ChatPanel>
 
 上面的示例展示了 kokkoro 插件的两个核心功能：

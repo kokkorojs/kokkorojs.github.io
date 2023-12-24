@@ -100,19 +100,19 @@ export default class Example {
 现在，启动你的项目，在 bot 建立通信连接后，该插件会在日志里输出 "Bot online"，并且会对指令消息进行响应。
 
 <ChatPanel>
-  <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /测试</ChatMessage>
-  <ChatMessage :qq="2854205915" nickname="可可萝">hello world</ChatMessage>
-  <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /复读 人的本质</ChatMessage>
-  <ChatMessage :qq="2854205915" nickname="可可萝">人的本质</ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki">@可可萝 /测试</ChatMessage>
+  <ChatMessage qq="2854205915" nickname="可可萝">hello world</ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki">@可可萝 /复读 人的本质</ChatMessage>
+  <ChatMessage qq="2854205915" nickname="可可萝">人的本质</ChatMessage>
 </ChatPanel>
 
 这下我们就实现好了一个插件的完整交互，是不是非常简单？ (●'◡'●)
 
 ## 插件权限
 
-我们在快速开始一栏中有提到，项目内的所有插件，都是在项目启动时（bot 建立通信前）自动挂载的。
+我们在快速开始一栏中有提到，项目内的所有插件，都是在项目启动时（机器人建立会话通信前）自动挂载的。
 
-但是现在我们有一个需求，想要运行多个 bot，但是只需要特定的 bot 去使用特定的插件，应该如何实现自定义？
+但是假如现在有一个需求，我们想要在项目内运行多个机器人，但是只需要特定的对象去使用对应的指令，应该如何实现自定义？
 
 打开 `kokkoro.json` 配置文件，你可以在 bot 一栏中添加 `plugins` 属性：
 
@@ -129,16 +129,16 @@ export default class Example {
 }
 ```
 
-`plugins` 传入的是一个字符串数组，数组值正是插件的 `metadata.name` 属性，当 `plugins` 没传入任何参数的时候，该 bot 就会响应全部插件。
+`plugins` 传入的是一个字符串数组，数组值正是插件的 `metadata.name` 属性，当 `plugins` 没传入任何参数的时候，该机器人就会响应全部插件。
 
-例如我们现在安装了 hitokoto 和 pcr 这两个插件，假如机器人**可可萝**想要使用 pcr 插件，机器人**爱梅斯**却不需要这个插件时，就可以这样去修改：
+例如我们现在安装了 hitokoto 和 kfc 这两个插件，假如机器人**可可萝**想要使用 kfc 插件，机器人**爱梅斯**却不需要这个插件时，就可以这样去修改：
 
 ```json {5,9}
 {
   "bots": [
     // 可可萝
     {
-      "plugins": ["hitokoto", "pcr"]
+      "plugins": ["hitokoto", "kfc"]
     },
     // 爱梅斯
     {
@@ -149,12 +149,12 @@ export default class Example {
 ```
 
 <ChatPanel>
-  <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /来点骚话</ChatMessage>
-  <ChatMessage :qq="2854205915" nickname="可可萝">『只有分离后才能懂的事，却没有了感慨的时间。』——「宝石之国」</ChatMessage>
-  <ChatMessage :qq="2225151531" nickname="Yuki">@爱梅斯 /来点骚话</ChatMessage>
-  <ChatMessage :qq="2854211958" nickname="爱梅斯">『只要努力活下去，总有一天会笑着回忆。』——「不可思议游戏」</ChatMessage>
-  <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /发起会战</ChatMessage>
-  <ChatMessage :qq="2854205915" nickname="可可萝">已开启射手座会战 (*/ω＼*)</ChatMessage>
-  <ChatMessage :qq="2225151531" nickname="Yuki">@爱梅斯 /发起会战</ChatMessage>
-  <ChatMessage :qq="2225151531" nickname="Yuki">在这里，爱梅斯不会对 pcr 插件指令作出响应</ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki">@可可萝 /来点骚话</ChatMessage>
+  <ChatMessage qq="2854205915" nickname="可可萝">『只有分离后才能懂的事，却没有了感慨的时间。』——「宝石之国」</ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki">@爱梅斯 /来点骚话</ChatMessage>
+  <ChatMessage qq="2854211958" nickname="爱梅斯">『只要努力活下去，总有一天会笑着回忆。』——「不可思议游戏」</ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki">@可可萝 /疯狂星期四</ChatMessage>
+  <ChatMessage qq="2854205915" nickname="可可萝">Steam上多买了一个艾尔登法环的key，送给有缘人了:KFCC-RAZY-THUR-SDAY-VME50</ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki">@爱梅斯 /疯狂星期四</ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki">在这里，爱梅斯不会对 kfc 插件指令作出响应</ChatMessage>
 </ChatPanel>

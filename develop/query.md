@@ -63,8 +63,8 @@ export default class Example {
 如果你为指令添加了必填参数（&lt;arg>），当参数不匹配的时候，就会自动发送语法提示。
 
 <ChatPanel>
-  <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /复读</ChatMessage>
-  <ChatMessage :qq="2854205915" nickname="可可萝">缺少指令参数，有效语句为："/复读 &lt;message>"</ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki">@可可萝 /复读</ChatMessage>
+  <ChatMessage qq="2854205915" nickname="可可萝">缺少指令参数，有效语句为："/复读 &lt;message>"</ChatMessage>
 </ChatPanel>
 
 ## 可选参数
@@ -95,8 +95,8 @@ export default class Example {
 :::
 
 <ChatPanel>
-  <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /复读</ChatMessage>
-  <ChatMessage :qq="2854205915" nickname="可可萝">null</ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki">@可可萝 /复读</ChatMessage>
+  <ChatMessage qq="2854205915" nickname="可可萝">null</ChatMessage>
 </ChatPanel>
 
 ## 可变参数
@@ -129,15 +129,13 @@ export default class Example {
 :::
 
 <ChatPanel>
-  <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /来点涩图 贫乳 萝莉 白丝</ChatMessage>
-  <ChatMessage :qq="2854205915" nickname="可可萝">
-    <div>[</div>
-    <div>  "贫乳",</div>
-    <div>  "萝莉",</div>
-    <div>  "白丝"</div>
-   <div>]</div>
-  </ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki">@可可萝 /来点涩图 贫乳 萝莉 白丝</ChatMessage>
+  <ChatMessage qq="2854205915" nickname="可可萝">["贫乳", "萝莉", "白丝"]</ChatMessage>
 </ChatPanel>
+
+::: warning 不可以涩涩
+这里只是为了趣味性才举了这么一个例子，你可别真的去做一个涩图插件，连指令都过不了审。~~别问我是怎么知道的~~
+:::
 
 值得注意的是，必选可变参数的非空校验依然存在，而可选可变参数在不传入任何内容的时候，其变量的值是 `[]` 空数组，而不是 `null`。
 

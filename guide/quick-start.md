@@ -1,7 +1,7 @@
 # 快速上手
 
 ::: info 准备工作
-在开始前，请先确保你安装了 [Node.js](https://nodejs.org/zh-cn/)，要求 **不能低于 node v20**。如果你对此有疑问，可以 [在这里](/about/faq) 查看关于版本问题。
+在开始前，请先确保你安装了 **20.6.0** 或以上版本的 [Node.js](https://nodejs.org/zh-cn/)，并在 [QQ 开放平台](https://bot.q.qq.com/wiki/develop/api-v2/) 注册好了机器人账号。
 :::
 
 ## 项目构建
@@ -24,7 +24,7 @@ kokkoro init
 
 ## 目录结构
 
-当你输入 `kokkoro init` 后， kokkoro 将会为你在当前所在目录自动安装并生成相关文件。
+当你使用 `init` 命令做好相关配置后， kokkoro 将会为你在当前所在目录自动安装并生成相关文件。
 
 ```tex:no-line-numbers
 .
@@ -47,21 +47,21 @@ kokkoro start
 
 > 如果你不是全局安装的 cli，就要使用 `npx kokkoro start` 启动项目。
 
-如上述步骤无误，在项目启动后，便会开始为 bot 建立通信。
+如上述步骤无误，在项目启动后，便会开始为机器人建立会话通信。
 
 ## 插件扩展
 
-你可以直接安装 npm 插件来为自己的 bot 扩展相对应的功能，例如：
+你可以直接安装 npm 插件来为自己的机器人扩展相对应的功能，例如：
 
 ```shell:no-line-numbers
 npm i kokkoro-plugin-hitokoto
 ```
 
-程序会在 bot 建立通信前，自动挂载项目内的所有插件。
+程序会在机器人建立会话通信前，**自动挂载**项目内的所有插件。
 
 <ChatPanel>
-  <ChatMessage :qq="2225151531" nickname="Yuki">@可可萝 /来点骚话</ChatMessage>
-  <ChatMessage :qq="2854205915" nickname="可可萝">『大部分人并不想长大，只是没办法继续当一个小孩子。』——「小林家的龙女仆」</ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki">@可可萝 /来点骚话</ChatMessage>
+  <ChatMessage qq="2854205915" nickname="可可萝">『大部分人并不想长大，只是没办法继续当一个小孩子。』——「小林家的龙女仆」</ChatMessage>
 </ChatPanel>
 
 现在，开启一段属于你的物语吧 ♪ q(≧▽≦q)
