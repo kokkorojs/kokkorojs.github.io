@@ -28,7 +28,7 @@ export const metadata = {
 export default function Example() {
   useEvent(
     ctx => {
-      ctx.logger.mark('Bot online');
+      ctx.logger.mark('link start');
     },
     ['session.ready'],
   );
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 export default function Example() {
   useEvent(
     ctx => {
-      ctx.logger.mark('Bot online');
+      ctx.logger.mark('link start');
     },
     ['session.ready'],
   );
@@ -69,7 +69,7 @@ import { Command, CommandContext, Context, Event, Plugin } from '@kokkoro/core';
 export default class Example {
   @Event('session.ready')
   onReady(ctx: Context<'session.ready'>) {
-    ctx.logger.mark('Bot online');
+    ctx.logger.mark('link start');
   }
 
   @Command('/测试')
@@ -97,7 +97,7 @@ export default class Example {
 目前你无需关心这段代码是什么意思，后面会逐一介绍，所以不用着急，让我们继续。
 :::
 
-现在，启动你的项目，在 bot 建立通信连接后，该插件会在日志里输出 "Bot online"，并且会对指令消息进行响应。
+现在，启动你的项目，在 bot 建立通信连接后，该插件会在日志里输出 "link start"，并且会对指令消息进行响应。
 
 <ChatPanel>
   <ChatMessage qq="2225151531" nickname="Yuki">@可可萝 /测试</ChatMessage>

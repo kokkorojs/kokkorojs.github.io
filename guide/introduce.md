@@ -30,7 +30,7 @@ export const metadata = {
 export default function Example() {
   useEvent(
     ctx => {
-      ctx.logger.mark('Bot online');
+      ctx.logger.mark('link start');
     },
     ['session.ready'],
   );
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 export default function Example() {
   useEvent(
     ctx => {
-      ctx.logger.mark('Bot online');
+      ctx.logger.mark('link start');
     },
     ['session.ready'],
   );
@@ -67,7 +67,7 @@ import { Command, Context, Event, Plugin } from '@kokkoro/core';
 export default class Example {
   @Event('session.ready')
   onReady(ctx: Context<'session.ready'>) {
-    ctx.logger.mark('Bot online');
+    ctx.logger.mark('link start');
   }
 
   @Command('/测试')
