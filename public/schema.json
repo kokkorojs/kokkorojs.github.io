@@ -9,7 +9,7 @@
       "description": "web 服务配置",
       "properties": {
         "port": {
-          "description": "API 端口号",
+          "description": "端口号",
           "type": "integer",
           "minimum": 1,
           "maximum": 65535
@@ -24,6 +24,26 @@
       "description": "日志等级，打印日志会降低性能，若消息量巨大建议修改此参数",
       "type": "string",
       "enum": ["OFF", "FATAL", "ERROR", "WARN", "INFO", "DEBUG", "TRACE", "ALL"]
+    },
+    "events": {
+      "description": "订阅的机器人事件",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "GUILDS",
+          "GUILD_MEMBERS",
+          "GUILD_MESSAGES",
+          "GUILD_MESSAGE_REACTIONS",
+          "DIRECT_MESSAGE",
+          "GROUP_MESSAGES",
+          "INTERACTION",
+          "MESSAGE_AUDIT",
+          "FORUMS_EVENT",
+          "AUDIO_ACTION",
+          "PUBLIC_GUILD_MESSAGES"
+        ]
+      }
     },
     "bots": {
       "type": "array",
@@ -70,11 +90,11 @@
                 "AUDIO_ACTION",
                 "PUBLIC_GUILD_MESSAGES"
               ]
-            },
-            "max_retry": {
-              "description": "掉线重连数，默认 3",
-              "type": "number"
             }
+          },
+          "max_retry": {
+            "description": "掉线重连数，默认 3",
+            "type": "number"
           },
           "plugins": {
             "description": "启用的插件服务，若为空则默认启用所有插件",
