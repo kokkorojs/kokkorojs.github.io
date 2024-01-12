@@ -54,6 +54,10 @@ const sidebar: DefaultTheme.Sidebar = {
           text: '参数获取',
           link: '/develop/query',
         },
+        {
+          text: '数据库',
+          link: '/develop/database',
+        },
       ],
     },
   ],
@@ -83,7 +87,8 @@ export default defineConfig({
     nav,
     sidebar,
     footer: {
-      message: 'Released under the <a href="https://github.com/kokkorojs/kokkoro/blob/master/LICENSE">MIT License</a>.',
+      message:
+        'Released under the <a href="https://github.com/kokkorojs/kokkoro/blob/master/LICENSE">MIT License</a>.',
       copyright: 'Copyright © 2020-2023 <a href="https://github.com/xueelf">Yuki</a>',
     },
     docFooter: {

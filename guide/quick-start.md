@@ -1,19 +1,16 @@
 # 快速上手
 
 ::: info 准备工作
-在开始前，请先确保你安装了 **20.6.0** 或以上版本的 [Node.js](https://nodejs.org/zh-cn/)，并在 [QQ 开放平台](https://bot.q.qq.com/wiki/develop/api-v2/) 注册好了机器人账号。
+在开始前，请先确保你安装了 **18.0.0** 或以上版本的 [Node.js](https://nodejs.org/zh-cn/)，并在 [QQ 开放平台](https://bot.q.qq.com/wiki/develop/api-v2/) 注册好了机器人账号。
 :::
 
 ## 项目构建
 
-本项目不用安装任何第三方软件，非常简单轻便，仅需三行命令即可构建。
+本项目不用安装任何第三方软件，非常简单轻便，仅需 2 行命令即可构建。
 
 ```shell:no-line-numbers
-# 安装 kokkoro cli
+# 安装 kokkoro 脚手架
 npm i @kokkoro/cli -g
-
-# 创建并进入文件夹
-mkdir bot && cd bot
 
 # 初始化项目
 kokkoro init
@@ -24,18 +21,28 @@ kokkoro init
 
 ## 目录结构
 
-当你使用 `init` 命令做好相关配置后， kokkoro 将会为你在当前所在目录自动安装并生成相关文件。
+当你使用 `init` 命令做好相关配置后， kokkoro 将会为你在指定目录自动生成相关文件。
 
 ```tex:no-line-numbers
 .
+├─ logs/              日志列表
 ├─ plugins/           插件目录（存放编写好的插件）
-├─ app.js             程序入口
+├─ index.js           程序入口
 └─ kokkoro.json       配置文件
 ```
 
-这个时候你可能就要说了，yuki 你个骗子，我看了目录明明生成的文件和上面说的不一样。
+接下来，你便可以参考终端的相关提示，安装依赖项：
 
-kokkoro 确实只会生成上面的 3 个文件，`node_modules`、`package.json` 都是 npm 生成的，后面在 [插件开发](/develop/application) 中会讲到。如果你不准备开发插件，就不用去关心这些**依赖文件**，感兴趣你也可以先使用搜索引擎查找相关知识。
+```shell:no-line-numbers
+# 切换至项目根目录
+cd robot
+# 安装依赖
+npm i
+```
+
+等待安装命令执行完毕后，你会发现，在根目录下又生成了 `node_modules` 和 `package.json` 这两个文件，后面在 [插件开发](/develop/application) 中将会为你详细介绍。
+
+如果你不准备开发插件，就不用去关心这些**依赖文件**，感兴趣你也可以先使用搜索引擎查找相关知识。
 
 ## 启动程序
 
@@ -45,7 +52,7 @@ kokkoro 确实只会生成上面的 3 个文件，`node_modules`、`package.json
 kokkoro start
 ```
 
-> 如果你不是全局安装的 cli，就要使用 `npx kokkoro start` 启动项目。
+> 如果你不是全局安装的 cli，也可以使用 `npm run start` 启动项目。
 
 如上述步骤无误，在项目启动后，便会开始为机器人建立会话通信。
 

@@ -34,7 +34,9 @@ export default function Example() {
     },
     ['session.ready'],
   );
+
   useCommand('/测试', () => 'hello world');
+  useCommand('/复读 <message>', ctx => ctx.query.message);
 }
 ```
 

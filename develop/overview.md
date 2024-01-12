@@ -40,7 +40,7 @@ kokkoro plugin example
     Typescript (Hook)
     Typescript (Decorator)
 
-Info: plugin module create successful.
+INFO plugin module create successful.
 ```
 
 ```tex:no-line-numbers

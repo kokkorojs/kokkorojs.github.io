@@ -18,8 +18,8 @@
   },
   "homepage": "https://kokkoro.js.org",
   "devDependencies": {
-    "sass": "^1.69.5",
+    "sass": "^1.69.7",
     "vitepress": "1.0.0-rc.31",
-    "vue": "^3.3.13"
+    "vue": "^3.4.10"
   }
 }
