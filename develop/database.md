@@ -18,3 +18,5 @@ await db.get('message');
 await db.del('message');
 await db.has('message');
 ```
+
+在实例化 `Database` 类后，将会在 `/data/database` 目录中创建本地文件。

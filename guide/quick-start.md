@@ -36,6 +36,7 @@ npm i @kokkoro/cli -g --registry=https://registry.npmmirror.com
 
 ```tex:no-line-numbers
 .
+├─ data/              项目资源
 ├─ logs/              日志列表
 ├─ plugins/           插件目录（存放编写好的插件）
 ├─ index.js           程序入口
