@@ -16,8 +16,19 @@ npm i @kokkoro/cli -g
 kokkoro init
 ```
 
-> 若网速较慢可以尝试使用淘宝镜像源：  
-> `npm i @kokkoro/cli -g --registry=https://registry.npmmirror.com`
+若下载较慢，可以尝试使用淘宝镜像源：
+
+```shell:no-line-numbers
+npm i @kokkoro/cli -g --registry=https://registry.npmmirror.com
+```
+
+::: danger 不要使用 pnpm
+使用 pnpm 可能会导致很多预期之外的问题，我更推荐使用 npm 或者 yarn 来管理 bot 项目。
+:::
+
+![](https://camo.githubusercontent.com/8325363bff130976c862214c3af00c483f26de09ba7e4c31c54bdc14c08c3c55/68747470733a2f2f7062732e7477696d672e636f6d2f6d656469612f444549565f3158577341416c5932392e6a7067)
+
+因为 kokkoro 十分轻便，所以也不用太担心内存占用的问题。至于不使用 pnpm 的原因，你可以 [在这里](/about/faq) 找到答案。
 
 ## 目录结构
 
@@ -52,7 +63,7 @@ npm i
 kokkoro start
 ```
 
-> 如果你不是全局安装的 cli，也可以使用 `npm run start` 启动项目。
+> 如果你没有全局安装的 cli，也可以使用 `npm run start` 启动项目。
 
 如上述步骤无误，在项目启动后，便会开始为机器人建立会话通信。
 
