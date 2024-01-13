@@ -15,8 +15,10 @@
     // 端口号
     "port": 2333,
     // 域名
-    "domain": null
+    "domain": "http://localhost"
   },
+  // 插件目录
+  "plugins_dir": "plugins",
   // 日志等级
   "log_level": "INFO",
   // 订阅事件
