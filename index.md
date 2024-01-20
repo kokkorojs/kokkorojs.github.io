@@ -1,14 +1,13 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
-
 hero:
-  name: kokkoro
+  name: Kokkoro
   text: (OxO)?!...
   tagline: とある咕咕の QQ 机器人框架
   image:
-    src: /kokkoro.png
-    alt: kokkoro
+    src: /logo.png
+    alt: Kokkoro
   actions:
     - theme: brand
       text: 快速上手
@@ -16,14 +15,13 @@ hero:
     - theme: alt
       text: 在 GitHub 查看
       link: https://github.com/kokkorojs/kokkoro
-
 features:
   - title: 简单
-    details: 友好的 cli 工具，配置文件全由命令自动构建
+    details: 友好的 CLI 工具，配置文件和插件全由命令自动构建。
   - title: 轻便
-    details: 仅基于 node 环境，不用安装任何第三方软件
+    details: 仅基于 Node.js 运行环境，不用安装任何第三方软件。
   - title: 高效
-    details: 日益完善的 web 服务，可通过 admin 和 api 快速管理程序
+    details: 代码刚重构不久，目前来说并没有那么高效，但未来可期（
   - title: 灵活
-    details: 插件提供 hook 与 decorator 两种开发方式
+    details: 提供 Hook 与 Decorator 两种 API 风格，可自由搭配。
 ---

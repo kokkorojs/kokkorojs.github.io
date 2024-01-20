@@ -1,11 +1,11 @@
 # 消息事件
 
 ::: tip
-本章节将会涉及到变量类型及函数回调，都是一些特别基础的知识  
-在这里不会做基础讲解，如果你至少要对一门编程语言有相关程度的认知，可以继续往下看
+本章节将会涉及到变量类型及函数回调，都是一些特别基础的知识。  
+在这里不会做基础讲解，如果你至少要对一门编程语言有相关程度的认知，可以继续往下看。
 :::
 
-## 上下文
+## 上下文 {#context}
 
 在上一章节，我们介绍了如何编写自己的第一个插件，我们使用了 `event`，让 example 插件监听了 `session.ready` 事件。
 
@@ -16,23 +16,7 @@
 
 ::: code-group
 
-```javascript [javascript] {12}
-import { useEvent } from '@kokkoro/core';
-
-/**
- * @type {import('@kokkoro/core').Metadata}
- */
-export const metadata = {
-  name: 'example',
-  description: '插件示例',
-};
-
-export default function Example() {
-  useEvent(console.log, ['session.ready']);
-}
-```
-
-```typescript [typescript (Hook)] {9}
+```typescript [Hook] {9}
 import { Metadata, useEvent } from '@kokkoro/core';
 
 export const metadata: Metadata = {
@@ -45,7 +29,7 @@ export default function Example() {
 }
 ```
 
-```typescript [typescript (Decorator)] {10}
+```typescript [Decorator] {10}
 import { Context, Event, Plugin } from '@kokkoro/core';
 
 @Plugin({
@@ -76,7 +60,7 @@ export default class Example {
 }
 ```
 
-没错，你已经猜到了，属性 `ctx` 正是你所发送消息的**事件上下文**，例如我们刚刚触发的**会话事件**，在这个上下文中就有着 bot 的 id 及账号昵称的相关字段。
+没错，你已经猜到了，属性 `ctx` 正是你所发送消息的**事件上下文**，例如我们刚刚触发的**会话事件**，在这个上下文中就有着机器人的 id 及账号昵称的相关字段。
 
 除了基础事件内容，`ctx` 上还有着大量你用得到的属性与方法：
 
@@ -89,9 +73,9 @@ export default class Example {
 
 上面示例中的 `event` 便是监听机器人事件的方法，刚刚编写的 example 插件只监听了 `session.ready` 事件，所以只会在客户端建立会话通信时执行对应逻辑。
 
-而事件有很多很多种，会话事件只是其中之一，其它比较常见的例如**群事件**（群消息）、**频道事件**（子频道消息）都有相关事件名。kokkoro 是基于 amesu SDK，事件名与官方保持一致，更多事件可在腾讯 [官方文档](https://bot.q.qq.com/wiki/develop/api-v2/dev-prepare/interface-framework/event-emit.html#%E4%BA%8B%E4%BB%B6%E8%AE%A2%E9%98%85Intents) 查看。
+而事件有很多很多种，会话事件只是其中之一，其它比较常见的例如**群事件**（群消息）、**频道事件**（子频道消息）都有相关事件名。Kokkoro 是基于 Amesu SDK，事件名与官方保持一致，更多事件可在腾讯 [官方文档](https://bot.q.qq.com/wiki/develop/api-v2/dev-prepare/interface-framework/event-emit.html#%E4%BA%8B%E4%BB%B6%E8%AE%A2%E9%98%85Intents) 查看。
 
-在这里，你可以通过事件制作出各种各样有趣的插件，让机器人变得更加强大 o((>ω< ))o
+在这里，你可以通过事件制作出各种各样有趣的插件，让机器人变得更加强大。o((>ω< ))o
 
 ## 代码规范
 
@@ -101,7 +85,7 @@ export default class Example {
 
 ::: code-group
 
-```javascript [hook] {4}
+```javascript [Hook] {4}
 import { useEvent } from '@kokkoro/core';
 
 export default function Example() {
@@ -109,7 +93,7 @@ export default function Example() {
 }
 ```
 
-```typescript [decorator] {4}
+```typescript [Decorator] {4}
 import { Context, Event } from '@kokkoro/core';
 
 export default class Example {
@@ -123,7 +107,7 @@ export default class Example {
 :::
 
 <ChatPanel>
-  <ChatMessage qq="2225151531" nickname="Yuki">@可可萝 /测试</ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki" at="可可萝">/测试</ChatMessage>
 </ChatPanel>
 
 ```shell:no-line-numbers {3}
@@ -141,7 +125,7 @@ export default class Example {
 }
 ```
 
-这样一来，就可以直接获取到 bot 收到消息的事件详情。
+这样一来，就可以直接获取到机器人收到指令消息的事件详情。
 
 <ChatPanel>
   <ChatMessage qq="437402067" nickname="友人A">yuki yuki，听你这么一说，我完全懂了</ChatMessage>
@@ -151,7 +135,7 @@ export default class Example {
 
 ::: code-group
 
-```javascript [hook] {6-11}
+```javascript [Hook] {6-11}
 import { useEvent } from '@kokkoro/core';
 
 export default function Example() {
@@ -169,7 +153,7 @@ export default function Example() {
 }
 ```
 
-```typescript [decorator] {6-11}
+```typescript [Decorator] {6-11}
 import { Context, Event } from '@kokkoro/core';
 
 export default class Example {
@@ -188,7 +172,7 @@ export default class Example {
 :::
 
 <ChatPanel>
-  <ChatMessage qq="437402067" nickname="友人A">@可可萝 /测试</ChatMessage>
+  <ChatMessage qq="437402067" nickname="友人A" at="可可萝">/测试</ChatMessage>
   <ChatMessage qq="2854205915" nickname="可可萝">hello world</ChatMessage>
   <ChatMessage qq="437402067" nickname="友人A">蒋蒋~怎么样，是不是这样就可以解决问题了？</ChatMessage>
   <ChatMessage qq="2225151531" nickname="Yuki">哈？！</ChatMessage>
@@ -197,16 +181,16 @@ export default class Example {
   </ChatMessage>
 </ChatPanel>
 
-::: danger
+::: danger 不要这样做！
 我们一定要避免将**指令逻辑**的代码，直接写到 `event` 里！  
-为什么说是避免，而不是禁止？ ~~(你非要写我也拦不住啊，而且这样确实能达到效果)~~
+为什么说是避免，而不是禁止？ ~~你非要写我也拦不住呀，而且这样确实能达到效果。~~
 :::
 
 其次，为了演示方便，在先前的示例代码里，我们使用了 `console.log` 用作打印输出。而在 `ctx` 中，有着专门针对日志的封装方法，所以我们也不要在插件里编写任何除 `ctx.logger` 的消息打印。
 
 ::: code-group
 
-```javascript [hook] {6}
+```javascript [Hook] {6}
 import { useEvent } from '@kokkoro/core';
 
 export default function Example() {
@@ -219,7 +203,7 @@ export default function Example() {
 }
 ```
 
-```typescript [decorator] {6}
+```typescript [Decorator] {6}
 import { Command, Context, Event } from '@kokkoro/core';
 
 export default class Example {
@@ -238,11 +222,11 @@ export default class Example {
 
 虽然刚刚在 `event` 里去手动处理消息匹配，也实现自定义指令的效果，但是会导致插件后续的可维护性极差，不利于维护。
 
-所以，kokkoro 提供了 `command` 来进行指令处理，这其实与 `event` 去手动监听**消息事件**实现的效果是等价的，但是能让代码更为简洁。
+所以，Kokkoro 提供了 `command` 来进行指令处理，这其实与 `event` 去手动监听**消息事件**实现的效果是等价的，但是能让代码更为简洁。
 
 ::: code-group
 
-```javascript [hook] {4}
+```javascript [Hook] {4}
 import { useEvent } from '@kokkoro/core';
 
 export default function Example() {
@@ -250,7 +234,7 @@ export default function Example() {
 }
 ```
 
-```typescript [decorator] {4}
+```typescript [Decorator] {4}
 import { Context, Command } from '@kokkoro/core';
 
 export default class Example {

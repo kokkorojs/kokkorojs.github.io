@@ -6,23 +6,7 @@
 
 ::: code-group
 
-```javascript [javascript] {12}
-import { useCommand } from '@kokkoro/core';
-
-/**
- * @type {import('@kokkoro/core').Metadata}
- */
-export const metadata = {
-  name: 'example',
-  description: '插件示例',
-};
-
-export default function Example() {
-  useCommand('/复读 <message>', ctx => ctx.query.message);
-}
-```
-
-```typescript [typescript (Hook)] {9}
+```typescript [Hook] {9}
 import { Metadata, useCommand } from '@kokkoro/core';
 
 export const metadata: Metadata = {
@@ -35,7 +19,7 @@ export default function Example() {
 }
 ```
 
-```typescript [typescript (Decorator)] {8}
+```typescript [Decorator] {8}
 import { Command, CommandContext, Plugin } from '@kokkoro/core';
 
 @Plugin({
@@ -59,7 +43,7 @@ export default class Example {
 如果你为指令添加了必填参数（&lt;arg>），当参数不匹配的时候，就会自动发送语法提示。
 
 <ChatPanel>
-  <ChatMessage qq="2225151531" nickname="Yuki">@可可萝 /复读</ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki" at="可可萝">/复读</ChatMessage>
   <ChatMessage qq="2854205915" nickname="可可萝">缺少指令参数，有效语句为："/复读 &lt;message>"</ChatMessage>
 </ChatPanel>
 
@@ -69,7 +53,7 @@ export default class Example {
 
 ::: code-group
 
-```javascript [hook] {4}
+```javascript [Hook] {4}
 import { useCommand } from '@kokkoro/core';
 
 export default function Example() {
@@ -77,7 +61,7 @@ export default function Example() {
 }
 ```
 
-```typescript [decorator] {4}
+```typescript [Decorator] {4}
 import { Command, CommandContext } from '@kokkoro/core';
 
 export default class Example {
@@ -91,7 +75,7 @@ export default class Example {
 :::
 
 <ChatPanel>
-  <ChatMessage qq="2225151531" nickname="Yuki">@可可萝 /复读</ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki" at="可可萝">/复读</ChatMessage>
   <ChatMessage qq="2854205915" nickname="可可萝">null</ChatMessage>
 </ChatPanel>
 
@@ -103,7 +87,7 @@ export default class Example {
 
 ::: code-group
 
-```javascript [hook] {4}
+```javascript [Hook] {4}
 import { useCommand } from '@kokkoro/core';
 
 export default function Example() {
@@ -111,7 +95,7 @@ export default function Example() {
 }
 ```
 
-```typescript [decorator] {4}
+```typescript [Decorator] {4}
 import { Command, CommandContext } from '@kokkoro/core';
 
 export default class Example {
@@ -143,7 +127,7 @@ export default class Example {
 
 ::: code-group
 
-```javascript [hook] {4}
+```javascript [Hook] {4}
 import { useCommand } from '@kokkoro/core';
 
 export default function Example() {
@@ -151,7 +135,7 @@ export default function Example() {
 }
 ```
 
-```typescript [decorator] {6}
+```typescript [Decorator] {6}
 import { Command, CommandContext } from '@kokkoro/core';
 
 export default class Example {
@@ -175,14 +159,14 @@ export default class Example {
 
 ::: code-group
 
-```javascript [hook] {2,12}
+```javascript [Hook] {2,12}
 import { useCommand } from '@kokkoro/core';
 import { stringToNumber } from '@kokkoro/utils';
 
 export default function Example() {
   useCommand('/复读 <message>', ctx => {
     const { message } = ctx.query;
-    const is_number = /^\d+$/.test(message);
+    const is_number = /^\d+/.test(message);
 
     if (!is_number) {
       return JSON.stringify(message);
@@ -194,7 +178,7 @@ export default function Example() {
 }
 ```
 
-```typescript [decorator] {2,13}
+```typescript [Decorator] {2,13}
 import { Command, CommandContext } from '@kokkoro/core';
 import { stringToNumber } from '@kokkoro/utils';
 
@@ -202,7 +186,7 @@ export default class Example {
   @Command('/复读 <message>')
   replayMessage(ctx: CommandContext<{ message: string }>) {
     const { message } = ctx.query;
-    const is_number = /^\d+$/.test(message);
+    const is_number = /^\d+/.test(message);
 
     if (!is_number) {
       return JSON.stringify(message);
@@ -217,9 +201,9 @@ export default class Example {
 :::
 
 <ChatPanel>
-  <ChatMessage qq="2225151531" nickname="Yuki">@可可萝 /复读 114514</ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki" at="可可萝">/复读 114514</ChatMessage>
   <ChatMessage qq="2854205915" nickname="可可萝">114514</ChatMessage>
-  <ChatMessage qq="2225151531" nickname="Yuki">@可可萝 /复读 哼哼哼啊啊啊啊啊啊啊</ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki" at="可可萝">/复读 哼哼哼啊啊啊啊啊啊啊</ChatMessage>
   <ChatMessage qq="2854205915" nickname="可可萝">"哼哼哼啊啊啊啊啊啊啊"</ChatMessage>
 </ChatPanel>
 
@@ -241,9 +225,9 @@ console.log(stringToNumber(message));
 其实 `stringToNumber` 可以用来做更多有意思的事情，让我们继续刚才的对话：
 
 <ChatPanel>
-  <ChatMessage qq="2225151531" nickname="Yuki">@可可萝 /复读 世界上卖的最贵的手办是多少钱？</ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki" at="可可萝">/复读 世界上卖的最贵的手办是多少钱？</ChatMessage>
   <ChatMessage qq="2854205915" nickname="可可萝">"世界上卖的最贵的手办是多少钱？"</ChatMessage>
-  <ChatMessage qq="2225151531" nickname="Yuki">@可可萝 /复读 98e</ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki" at="可可萝">/复读 98e</ChatMessage>
   <ChatMessage qq="2854205915" nickname="可可萝">9800000000</ChatMessage>
 </ChatPanel>
 

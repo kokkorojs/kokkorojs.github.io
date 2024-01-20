@@ -1,5 +1,5 @@
 <template>
-  <div class="chat-panel-container">
+  <div class="chat-panel">
     <template v-if="props.controls">
       <div class="controls">
         <div class="circle red"></div>
@@ -15,19 +15,19 @@
 </template>
 
 <script lang="ts" setup>
-  interface ChatPanelProps {
+  interface PanelProps {
     controls?: boolean;
     title?: string;
   }
 
-  const props = withDefaults(defineProps<ChatPanelProps>(), {
+  const props = withDefaults(defineProps<PanelProps>(), {
     controls: true,
     title: '聊天记录',
   });
 </script>
 
 <style lang="scss" scoped>
-  .chat-panel-container {
+  .chat-panel {
     position: relative;
     border-radius: 0.5rem;
     margin: 1rem auto;

@@ -2,6 +2,7 @@
   "private": true,
   "name": "kokkorojs.github.io",
   "description": "Documentation for kokkoro.",
+  "type": "module",
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
@@ -11,15 +12,18 @@
     "type": "git",
     "url": "git+https://github.com/kokkorojs/kokkorojs.github.io.git"
   },
-  "author": "yuki <mail@yuki.sh>",
+  "author": "Yuki <admin@yuki.sh>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kokkorojs/kokkorojs.github.io/issues"
   },
   "homepage": "https://kokkoro.js.org",
+  "peerDependencies": {
+    "vue": "^3.4.15"
+  },
   "devDependencies": {
-    "sass": "^1.69.7",
-    "vitepress": "1.0.0-rc.31",
-    "vue": "^3.4.10"
+    "sass": "^1.70.0",
+    "vitepress": "1.0.0-rc.39",
+    "vue": "^3.4.15"
   }
 }

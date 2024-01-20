@@ -1,25 +1,25 @@
 <template>
-  <div class="chat-avatar-container">
-    <img class="avatar" :src="url" />
+  <div class="chat-avatar">
+    <img class="image" :src="url" />
   </div>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue';
 
-  interface ChatAvatarProps {
+  interface AvatarProps {
     qq: string;
   }
 
-  const props = defineProps<ChatAvatarProps>();
+  const props = defineProps<AvatarProps>();
   const url = computed(() => `https://q1.qlogo.cn/g?b=qq&nk=${props.qq}&s=100`);
 </script>
 
 <style lang="scss" scoped>
-  .chat-avatar-container {
+  .chat-avatar {
     display: inline-block;
 
-    .avatar {
+    .image {
       width: 2.5rem;
       height: 2.5rem;
       color: white;

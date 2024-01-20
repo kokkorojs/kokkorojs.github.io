@@ -2,7 +2,7 @@
 import { h } from 'vue';
 import type { Theme } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
-import './styles/custom.scss';
+import './style.scss';
 import ChatPanel from './components/chat/ChatPanel.vue';
 import ChatAvatar from './components/chat/ChatAvatar.vue';
 import ChatMessage from './components/chat/ChatMessage.vue';

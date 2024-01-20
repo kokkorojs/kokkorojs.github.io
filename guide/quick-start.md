@@ -1,38 +1,58 @@
 # 快速上手
 
-::: info 准备工作
-在开始前，请先确保你安装了 **18.0.0** 或以上版本的 [Node.js](https://nodejs.org/zh-cn/)，并在 [QQ 开放平台](https://bot.q.qq.com/wiki/develop/api-v2/) 注册好了机器人账号。
+::: tip 准备工作
+在开始前，请先确保你安装了 **18.0.0** 或以上版本的 [Node.js](https://nodejs.org/zh-cn/)，并在 [QQ 开放平台](https://bot.q.qq.com/wiki/develop/api-v2/) 创建好了机器人。
 :::
 
 ## 项目构建
 
-本项目不用安装任何第三方软件，非常简单轻便，仅需 2 行命令即可构建。
+你可以打开终端，使用下列命令来初始化项目：
 
-```shell:no-line-numbers
-# 安装 kokkoro 脚手架
+::: code-group
+
+```shell:no-line-numbers [npm]
+# 安装 Kokkoro 脚手架
 npm i @kokkoro/cli -g
 
 # 初始化项目
 kokkoro init
 ```
 
-若下载较慢，可以尝试使用淘宝镜像源：
+```shell:no-line-numbers [yarn]
+# 安装 Kokkoro 脚手架
+yarn global add @kokkoro/cli
 
-```shell:no-line-numbers
-npm i @kokkoro/cli -g --registry=https://registry.npmmirror.com
+# 初始化项目
+kokkoro init
 ```
 
+:::
+
+若下载较慢，可以尝试使用淘宝镜像源：
+
+::: code-group
+
+```shell:no-line-numbers [npm]
+npm config set registry https://registry.npmmirror.com
+```
+
+```shell:no-line-numbers [yarn]
+yarn config set registry https://registry.npmmirror.com
+```
+
+:::
+
 ::: danger 不要使用 pnpm
-使用 pnpm 可能会导致很多预期之外的问题，我更推荐使用 npm 或者 yarn 来管理 bot 项目。
+使用 pnpm 可能会导致很多预期之外的问题，我更推荐使用 npm 或者 yarn 来管理 Kokkoro 项目。
 :::
 
 ![](https://camo.githubusercontent.com/8325363bff130976c862214c3af00c483f26de09ba7e4c31c54bdc14c08c3c55/68747470733a2f2f7062732e7477696d672e636f6d2f6d656469612f444549565f3158577341416c5932392e6a7067)
 
-因为 kokkoro 十分轻便，所以也不用太担心内存占用的问题。至于不使用 pnpm 的原因，你可以 [在这里](/about/faq) 找到答案。
+因为 Kokkoro 十分轻便，所以也不用太担心内存占用的问题。至于不使用 pnpm 的原因，你可以 [在这里](/about/faq) 找到答案。
 
 ## 目录结构
 
-当你使用 `init` 命令做好相关配置后， kokkoro 将会为你在指定目录自动生成相关文件。
+当你使用 `init` 命令做好相关配置后， Kokkoro 将会为你在指定目录自动生成下列目录结构。
 
 ```tex:no-line-numbers
 .
@@ -45,41 +65,74 @@ npm i @kokkoro/cli -g --registry=https://registry.npmmirror.com
 
 接下来，你便可以参考终端的相关提示，安装依赖项：
 
-```shell:no-line-numbers
+::: code-group
+
+```shell:no-line-numbers [npm]
 # 切换至项目根目录
 cd robot
+
 # 安装依赖
 npm i
 ```
 
-等待安装命令执行完毕后，你会发现，在根目录下又生成了 `node_modules` 和 `package.json` 这两个文件，后面在 [插件开发](/develop/application) 中将会为你详细介绍。
+```shell:no-line-numbers [yarn]
+# 切换至项目根目录
+cd robot
+
+# 安装依赖
+yarn
+```
+
+:::
+
+等待安装命令执行完毕后，你会发现，在项目根目录下又生成了 `node_modules` 和 `package.json` 这两个文件，后面在 [插件开发](/develop/application) 中将会为你详细介绍。
 
 如果你不准备开发插件，就不用去关心这些**依赖文件**，感兴趣你也可以先使用搜索引擎查找相关知识。
 
 ## 启动程序
 
-一切准备就绪，开始启动你的项目吧。
+一切准备就绪，现在开始启动你的项目：
 
 ```shell:no-line-numbers
 kokkoro start
 ```
 
-> 如果你没有全局安装的 cli，也可以使用 `npm run start` 启动项目。
+如果你没有**全局安装** CLI，也可以使用下列命令：
 
-如上述步骤无误，在项目启动后，便会开始为机器人建立会话通信。
+::: code-group
+
+```shell:no-line-numbers [npm]
+npm run start
+```
+
+```shell:no-line-numbers [yarn]
+yarn start
+```
+
+:::
+
+如上述步骤无误，在项目启动后，便会开始为机器人建立会话通信。要是出现 Socket 无法正常通信，或者是成功连接但没有接收到事件通知，就要在 `kokkoro.json` 中检查 `events` 参数是否正确配置。
 
 ## 插件扩展
 
 你可以直接安装 npm 插件来为自己的机器人扩展相对应的功能，例如：
 
-```shell:no-line-numbers
+::: code-group
+
+```shell:no-line-numbers [npm]
 npm i kokkoro-plugin-hitokoto
 ```
 
-程序会在机器人建立会话通信前，**自动挂载**项目内的所有插件。
+```shell:no-line-numbers [yarn]
+yarn add kokkoro-plugin-hitokoto
+```
+
+:::
+
+程序会在项目启动后（机器人建立会话通信前），**自动挂载**项目内的所有插件，不用执行额外操作。
 
 <ChatPanel>
-  <ChatMessage qq="2225151531" nickname="Yuki">@可可萝 /来点骚话</ChatMessage>
+  <ChatMessage qq="2225151531" nickname="Yuki" at="可可萝">/来点骚话</ChatMessage>
   <ChatMessage qq="2854205915" nickname="可可萝">『大部分人并不想长大，只是没办法继续当一个小孩子。』——「小林家的龙女仆」</ChatMessage>
 </ChatPanel>
 

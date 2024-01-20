@@ -1,9 +1,10 @@
 <template>
-  <div ref="messageRef" class="chat-message-container" :class="{ show }">
-    <chat-avatar :qq="props.qq" />
-    <div class="message-box">
+  <div ref="messageRef" class="chat-message" :class="{ show }">
+    <ChatAvatar :qq="props.qq" />
+    <div class="box">
       <div class="nickname">{{ props.nickname }}</div>
-      <div class="message shadow-sm">
+      <div class="text shadow-sm">
+        <span v-if="props.at" class="at">@{{ props.at }}&nbsp;</span>
         <slot></slot>
       </div>
     </div>
@@ -11,14 +12,16 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, onMounted, onUnmounted } from 'vue';
+  import { ref, onMounted } from 'vue';
+  import ChatAvatar from './ChatAvatar.vue';
 
-  interface ChatMessageProps {
+  interface MessageProps {
+    at?: string;
     qq: string;
     nickname: string;
   }
 
-  const props = defineProps<ChatMessageProps>();
+  const props = defineProps<MessageProps>();
   const messageRef = ref<HTMLElement | null>();
   const show = ref(false);
 
@@ -45,7 +48,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .chat-message-container {
+  .chat-message {
     position: relative;
     margin: 1rem 0;
     opacity: 0;
@@ -58,7 +61,7 @@
     }
   }
 
-  .message-box {
+  .box {
     display: inline-block;
     margin-left: 0.5rem;
     max-width: calc(100% - 3rem);
@@ -69,7 +72,7 @@
       color: gray;
     }
 
-    .message {
+    .text {
       position: relative;
       font-size: 0.9rem;
       border-radius: 0.5rem;
@@ -84,6 +87,11 @@
       > img {
         border-radius: 0.5rem;
         vertical-align: middle;
+      }
+
+      .at {
+        color: #6495ed;
+        cursor: pointer;
       }
     }
   }
