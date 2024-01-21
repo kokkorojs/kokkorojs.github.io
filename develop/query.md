@@ -6,29 +6,22 @@
 
 ::: code-group
 
-```typescript [Hook] {9}
+```typescript [Hook] {5}
 import { Metadata, useCommand } from '@kokkoro/core';
 
-export const metadata: Metadata = {
-  name: 'example',
-  description: '示例插件',
-};
-
+export const metadata: Metadata = { … };
 export default function Example() {
-  useCommand<{ message: string }>('/复读 <message>', ctx => ctx.query.message);
+  useCommand('/复读 <message>', ctx => ctx.query.message);
 }
 ```
 
-```typescript [Decorator] {8}
+```typescript [Decorator] {5}
 import { Command, CommandContext, Plugin } from '@kokkoro/core';
 
-@Plugin({
-  name: 'example',
-  description: '示例插件',
-})
+@Plugin({ … })
 export default class Example {
   @Command('/复读 <message>')
-  replayMessage(ctx: CommandContext<{ message: string }>) {
+  replayMessage(ctx: CommandContext) {
     return ctx.query.message;
   }
 }
@@ -36,7 +29,7 @@ export default class Example {
 
 :::
 
-指令参数会全部存储在 `ctx.query` 中，typescript 可以通过泛型来定义类型。需要注意的是，如果指令没提供任何**命令行参数语法**，那么 `query` 的值是 `null`，而不是 `{}` 空对象。
+指令参数会全部存储在 `ctx.query` 中，需要注意的是，如果指令没提供任何**命令行参数语法**，那么 `query` 的值是 `null`，而不是 `{}` 空对象。
 
 ## 必选参数
 
@@ -53,20 +46,22 @@ export default class Example {
 
 ::: code-group
 
-```javascript [Hook] {4}
-import { useCommand } from '@kokkoro/core';
+```typescript [Hook] {5}
+import { Metadata, useCommand } from '@kokkoro/core';
 
+export const metadata: Metadata = { … };
 export default function Example() {
   useCommand('/复读 [message]', ctx => ctx.query.message);
 }
 ```
 
-```typescript [Decorator] {4}
-import { Command, CommandContext } from '@kokkoro/core';
+```typescript [Decorator] {5}
+import { Command, CommandContext, Plugin } from '@kokkoro/core';
 
+@Plugin({ … })
 export default class Example {
   @Command('/复读 [message]')
-  replayMessage(ctx: CommandContext<{ message: string | null }>) {
+  replayMessage(ctx: CommandContext) {
     return ctx.query.message;
   }
 }
@@ -87,20 +82,22 @@ export default class Example {
 
 ::: code-group
 
-```javascript [Hook] {4}
-import { useCommand } from '@kokkoro/core';
+```typescript [Hook] {5}
+import { Metadata, useCommand } from '@kokkoro/core';
 
+export const metadata: Metadata = { … };
 export default function Example() {
   useCommand('/来点涩图 <...tags>', ctx => ctx.query.tags);
 }
 ```
 
-```typescript [Decorator] {4}
-import { Command, CommandContext } from '@kokkoro/core';
+```typescript [Decorator] {5}
+import { Command, CommandContext, Plugin } from '@kokkoro/core';
 
+@Plugin({ … })
 export default class Example {
   @Command('/来点涩图 <...tags>')
-  sendEroImage(ctx: CommandContext<{ tags: string[] }>) {
+  sendEroImage(ctx: CommandContext) {
     return ctx.query.tags;
   }
 }
@@ -127,20 +124,22 @@ export default class Example {
 
 ::: code-group
 
-```javascript [Hook] {4}
-import { useCommand } from '@kokkoro/core';
+```typescript [Hook] {5}
+import { Metadata, useCommand } from '@kokkoro/core';
 
+export const metadata: Metadata = { … };
 export default function Example() {
   useCommand('/复读 <message>', ctx => JSON.stringify(ctx.query.message));
 }
 ```
 
-```typescript [Decorator] {6}
-import { Command, CommandContext } from '@kokkoro/core';
+```typescript [Decorator] {7}
+import { Command, CommandContext, Plugin } from '@kokkoro/core';
 
+@Plugin({ … })
 export default class Example {
   @Command('/复读 <message>')
-  replayMessage(ctx: CommandContext<{ message: string }>) {
+  replayMessage(ctx: CommandContext) {
     return JSON.stringify(ctx.query.message);
   }
 }
@@ -159,10 +158,11 @@ export default class Example {
 
 ::: code-group
 
-```javascript [Hook] {2,12}
-import { useCommand } from '@kokkoro/core';
+```typescript [Hook] {1,13}
 import { stringToNumber } from '@kokkoro/utils';
+import { Metadata, useCommand } from '@kokkoro/core';
 
+export const metadata: Metadata = { … };
 export default function Example() {
   useCommand('/复读 <message>', ctx => {
     const { message } = ctx.query;
@@ -178,13 +178,14 @@ export default function Example() {
 }
 ```
 
-```typescript [Decorator] {2,13}
-import { Command, CommandContext } from '@kokkoro/core';
+```typescript [Decorator] {1,14}
 import { stringToNumber } from '@kokkoro/utils';
+import { Command, CommandContext, Plugin } from '@kokkoro/core';
 
+@Plugin({ … })
 export default class Example {
   @Command('/复读 <message>')
-  replayMessage(ctx: CommandContext<{ message: string }>) {
+  replayMessage(ctx: CommandContext) {
     const { message } = ctx.query;
     const is_number = /^\d+/.test(message);
 
@@ -232,3 +233,32 @@ console.log(stringToNumber(message));
 </ChatPanel>
 
 在 `@kokkoro/utils` 中，有着许多你可能会在开发过程中使用到的函数，并不是专用于类型转换，这能为我们的开发带来便捷性。
+
+## 为 query 标注类型
+
+我们可以通过为 command 传入泛型，来定义 query 的字段。
+
+::: code-group
+
+```typescript [Hook] {5}
+import { Metadata, useCommand } from '@kokkoro/core';
+
+export const metadata: Metadata = { … };
+export default function Example() {
+  useCommand<{ message: string }>('/复读 <message>', ctx => ctx.query.message);
+}
+```
+
+```typescript [Decorator] {6}
+import { Command, CommandContext, Plugin } from '@kokkoro/core';
+
+@Plugin({ … })
+export default class Example {
+  @Command('/复读 <message>')
+  replayMessage(ctx: CommandContext<{ message: string }>) {
+    return ctx.query.message;
+  }
+}
+```
+
+:::

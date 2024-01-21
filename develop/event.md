@@ -16,26 +16,19 @@
 
 ::: code-group
 
-```typescript [Hook] {9}
+```typescript [Hook] {5}
 import { Metadata, useEvent } from '@kokkoro/core';
 
-export const metadata: Metadata = {
-  name: 'example',
-  description: '示例插件',
-};
-
+export const metadata: Metadata = { … };
 export default function Example() {
   useEvent(console.log, ['session.ready']);
 }
 ```
 
-```typescript [Decorator] {10}
+```typescript [Decorator] {7}
 import { Context, Event, Plugin } from '@kokkoro/core';
 
-@Plugin({
-  name: 'example',
-  description: '示例插件',
-})
+@Plugin({ … })
 export default class Example {
   @Event('session.ready')
   onReady(ctx: Context<'session.ready'>) {
@@ -85,17 +78,19 @@ export default class Example {
 
 ::: code-group
 
-```javascript [Hook] {4}
-import { useEvent } from '@kokkoro/core';
+```typescript [Hook] {5}
+import { Metadata, useEvent } from '@kokkoro/core';
 
+export const metadata: Metadata = { … };
 export default function Example() {
   useEvent(console.log, ['at.message.create']);
 }
 ```
 
-```typescript [Decorator] {4}
-import { Context, Event } from '@kokkoro/core';
+```typescript [Decorator] {5}
+import { Context, Event, Plugin } from '@kokkoro/core';
 
+@Plugin({ … })
 export default class Example {
   @Event('at.message.create')
   onReady(ctx: Context<'at.message.create'>) {
@@ -130,22 +125,23 @@ export default class Example {
 <ChatPanel>
   <ChatMessage qq="437402067" nickname="友人A">yuki yuki，听你这么一说，我完全懂了</ChatMessage>
   <ChatMessage qq="2225151531" nickname="Yuki">啊？懂...懂什么哦？</ChatMessage>
-  <ChatMessage qq="437402067" nickname="友人A">既然通过事件就能获取到消息内容，那么指令的响应我是不是就可以这样去写</ChatMessage>
+  <ChatMessage qq="437402067" nickname="友人A">既然通过事件就能获取到消息内容，那么指令的响应我是不是就可以这样去写？</ChatMessage>
 </ChatPanel>
 
 ::: code-group
 
-```javascript [Hook] {6-11}
-import { useEvent } from '@kokkoro/core';
+```typescript [Hook] {6-13}
+import { Metadata, useEvent } from '@kokkoro/core';
 
+export const metadata: Metadata = { … };
 export default function Example() {
   useEvent(
     ctx => {
-      const { content } = ctx;
-      const command = content.replace(/^.+(?=\/)/, '').trimEnd();
+      const command = ctx.content.replace(/^.+(?=\/)/, '').trimEnd();
 
-      if (command === '测试') {
-        return 'hello world';
+      switch (command) {
+        case '测试':
+          return 'hello world';
       }
     },
     ['at.message.create'],
@@ -153,17 +149,18 @@ export default function Example() {
 }
 ```
 
-```typescript [Decorator] {6-11}
-import { Context, Event } from '@kokkoro/core';
+```typescript [Decorator] {6-13}
+import { Context, Event, Plugin } from '@kokkoro/core';
 
+@Plugin({ … })
 export default class Example {
   @Event('at.message.create')
   onReady(ctx: Context<'at.message.create'>) {
-    const { content } = ctx;
-    const command = content.replace(/^.+(?=\/)/, '').trimEnd();
+    const command = ctx.content.replace(/^.+(?=\/)/, '').trimEnd();
 
-    if (command === '测试') {
-      return 'hello world';
+    switch (command) {
+      case '测试':
+        return 'hello world';
     }
   }
 }
@@ -190,9 +187,10 @@ export default class Example {
 
 ::: code-group
 
-```javascript [Hook] {6}
-import { useEvent } from '@kokkoro/core';
+```typescript [Hook] {7}
+import { Metadata, useEvent } from '@kokkoro/core';
 
+export const metadata: Metadata = { … };
 export default function Example() {
   useEvent(
     ctx => {
@@ -203,9 +201,10 @@ export default function Example() {
 }
 ```
 
-```typescript [Decorator] {6}
-import { Command, Context, Event } from '@kokkoro/core';
+```typescript [Decorator] {7}
+import { Context, Event, Plugin } from '@kokkoro/core';
 
+@Plugin({ … })
 export default class Example {
   @Event('session.ready')
   onReady(ctx: Context<'session.ready'>) {
@@ -226,17 +225,19 @@ export default class Example {
 
 ::: code-group
 
-```javascript [Hook] {4}
-import { useEvent } from '@kokkoro/core';
+```typescript [Hook] {5}
+import { Metadata, useEvent } from '@kokkoro/core';
 
+export const metadata: Metadata = { … };
 export default function Example() {
   useCommand('/测试', () => 'hello world');
 }
 ```
 
-```typescript [Decorator] {4}
-import { Context, Command } from '@kokkoro/core';
+```typescript [Decorator] {5}
+import { Context, Event, Plugin } from '@kokkoro/core';
 
+@Plugin({ … })
 export default class Example {
   @Command('/测试')
   sayHello() {

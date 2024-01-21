@@ -64,7 +64,7 @@ export const metadata: Metadata = {
 
 export default function Example() {
   useCommand('/测试', () => 'hello world');
-  useCommand<{ message: string }>('/复读 <message>', ctx => ctx.query.message);
+  useCommand('/复读 <message>', ctx => ctx.query.message);
 }
 ```
 
@@ -82,7 +82,7 @@ export default class Example {
   }
 
   @Command('/复读 <ChatMessage>')
-  replayMessage(ctx: CommandContext<{ message: string }>) {
+  replayMessage(ctx: CommandContext) {
     return ctx.query.message;
   }
 }
