@@ -42,7 +42,7 @@ yarn config set registry https://registry.npmmirror.com
 
 :::
 
-::: danger 不要使用 pnpm
+::: danger 不要使用 PNPM
 使用 pnpm 可能会导致很多预期之外的问题，我更推荐使用 npm 或者 yarn 来管理 Kokkoro 项目。
 :::
 
