@@ -99,7 +99,7 @@ export default class Example {
 
 现在，启动你的项目，在机器人首次建立通信连接后，该插件会在日志里输出 "link start" 的信息，并且还会对指令消息进行响应。
 
-```shell:no-line-numbers {5,8}
+```shell {5,8}
 [2024-01-20T19:46:16.519] [INFO] [kokkoro] - ----------
 [2024-01-20T19:46:16.521] [INFO] [kokkoro] - Package Version: kokkoro@2.0.5
 [2024-01-20T19:46:16.521] [INFO] [kokkoro] - View Documents: https://kokkoro.js.org

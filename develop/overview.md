@@ -26,13 +26,13 @@ Kokkoro 不存在两个名字一模一样的插件，所有插件都是使用其
 
 你可以在项目根目录下，使用 `kokkoro plugin <name>` 指令来快速创建插件模板。
 
-```shell:no-line-numbers
+```shell
 kokkoro plugin example
 ```
 
 你可以自由选择你想使用的插件风格，这里我们以默认的 JavaScript 为例：
 
-```shell:no-line-numbers
+```shell
 ✔ Which plugin style would you like to use:
 >   Javascript
     Typescript (Hook)
@@ -41,7 +41,7 @@ kokkoro plugin example
 INFO plugin module create successful.
 ```
 
-```tex:no-line-numbers
+```tex
 plugins/
 └─ example/
    ├─ index.js        程序入口

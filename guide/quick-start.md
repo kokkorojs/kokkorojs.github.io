@@ -10,7 +10,7 @@
 
 ::: code-group
 
-```shell:no-line-numbers [npm]
+```shell [npm]
 # 安装 Kokkoro 脚手架
 npm i @kokkoro/cli -g
 
@@ -18,7 +18,7 @@ npm i @kokkoro/cli -g
 kokkoro init
 ```
 
-```shell:no-line-numbers [yarn]
+```shell [yarn]
 # 安装 Kokkoro 脚手架
 yarn global add @kokkoro/cli
 
@@ -32,11 +32,11 @@ kokkoro init
 
 ::: code-group
 
-```shell:no-line-numbers [npm]
+```shell [npm]
 npm config set registry https://registry.npmmirror.com
 ```
 
-```shell:no-line-numbers [yarn]
+```shell [yarn]
 yarn config set registry https://registry.npmmirror.com
 ```
 
@@ -54,7 +54,7 @@ yarn config set registry https://registry.npmmirror.com
 
 当你使用 `init` 命令做好相关配置后， Kokkoro 将会为你在指定目录自动生成下列目录结构。
 
-```tex:no-line-numbers
+```tex
 .
 ├─ data/              项目资源
 ├─ logs/              日志列表
@@ -67,7 +67,7 @@ yarn config set registry https://registry.npmmirror.com
 
 ::: code-group
 
-```shell:no-line-numbers [npm]
+```shell [npm]
 # 切换至项目根目录
 cd robot
 
@@ -75,7 +75,7 @@ cd robot
 npm i
 ```
 
-```shell:no-line-numbers [yarn]
+```shell [yarn]
 # 切换至项目根目录
 cd robot
 
@@ -93,7 +93,7 @@ yarn
 
 一切准备就绪，现在开始启动你的项目：
 
-```shell:no-line-numbers
+```shell
 kokkoro start
 ```
 
@@ -101,11 +101,11 @@ kokkoro start
 
 ::: code-group
 
-```shell:no-line-numbers [npm]
+```shell [npm]
 npm run start
 ```
 
-```shell:no-line-numbers [yarn]
+```shell [yarn]
 yarn start
 ```
 
@@ -119,11 +119,11 @@ yarn start
 
 ::: code-group
 
-```shell:no-line-numbers [npm]
+```shell [npm]
 npm i kokkoro-plugin-hitokoto
 ```
 
-```shell:no-line-numbers [yarn]
+```shell [yarn]
 yarn add kokkoro-plugin-hitokoto
 ```
 

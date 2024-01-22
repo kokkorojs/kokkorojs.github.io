@@ -106,7 +106,7 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
   markdown: {
-    lineNumbers: true,
+    lineNumbers: false,
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config

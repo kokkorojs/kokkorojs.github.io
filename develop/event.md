@@ -41,7 +41,7 @@ export default class Example {
 
 在机器人建立会话通信后，可以在控制台看到如下输出。初次你可能看不懂这里面的大部分字段，但是下面的这些属性，就算我不写注释你应该也知道代表着什么。
 
-```shell:no-line-numbers
+```shell
 {
   user: {
     id: '1145141919810',
@@ -105,7 +105,7 @@ export default class Example {
   <ChatMessage qq="2225151531" nickname="Yuki" at="可可萝">/测试</ChatMessage>
 </ChatPanel>
 
-```shell:no-line-numbers {3}
+```shell {3}
 {
   channel_id: '633481120',
   content: '<@!3958153663914325267> /测试 ',
