@@ -8,7 +8,7 @@
 
 Kokkoro 是一个基于 [Amesu](https://github.com/xueelf/amesu) SDK，使用 **TypeScript** 语言开发的 QQ 机器人框架。她能让 QQ 机器人的开发变得简单易上手，仅基于 Node.js 运行环境，不用安装任何第三方软件，API 也十分简洁。
 
-下面是一个**最基本**的插件示例：
+下面是一个**最基础**的插件示例：
 
 ```javascript
 import { useCommand } from '@kokkoro/core';
@@ -36,7 +36,9 @@ export default function Example() {
   <ChatMessage qq="2854205915" nickname="可可萝">人的本质</ChatMessage>
 </ChatPanel>
 
-虽然 Kokkoro 的上手十分简单，但在这之前，你要对 **JavaScript** 有着基础的知识。如果你对开发完全陌生，那最好不要直接从一个框架开始进行入门学习。你可以通过这篇 [JS 教程](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Language_overview) 来了解这门编程语言，这能让你后面的开发事半功倍。
+虽然 Kokkoro 的上手十分简单，文档中也会为你介绍 Node.js 的开发过程，但在这之前，你要对 **JavaScript** 有着基础的了解。
+
+如果你对开发完全陌生，那最好不要直接从一个框架开始进行入门学习，不然会遇到许多瓶颈。你可以通过这篇 [JS 教程](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Language_overview) 来上手这门编程语言，在了解完基础语法后，再回到这里。
 
 ## 名字的由来
 
@@ -44,7 +46,7 @@ export default function Example() {
 
 ![3★コッコロ](/images/priconne/105931.webp)
 
-在最初，项目起名为 [Yumemi](https://github.com/xueelf/yumemi_bot) 并在游戏公会内自用，并没打算开放。因立项时没有考虑过后续维护，导致代码严重耦合，重构后就顺便开源了。一想到我的项目能多少给他人带来便利，这难到不是一件很 cool 的事情么？
+最初，项目起名为 [Yumemi](https://github.com/xueelf/yumemi_bot) 并在游戏公会内自用，并没打算开放。因立项时没有考虑过后续维护，导致代码严重耦合，重构后就顺便开源了。一想到我的项目能多少给他人带来便利，这难到不是一件很 cool 的事情么？
 
 ## API 风格
 
@@ -81,7 +83,7 @@ export default class Example {
     return 'hello world';
   }
 
-  @Command('/复读 <ChatMessage>')
+  @Command('/复读 <message>')
   replayMessage(ctx: CommandContext) {
     return ctx.query.message;
   }
@@ -98,7 +100,7 @@ export default class Example {
 
 接触过 QQ 机器人的应该都知道，类似的框架其实有非常非常多，那为什么还要去重复造轮子呢？
 
-其实我在 19 年开始接触 QQ 机器人了，起初是因为想利用 QQ 做一些自动化消息推送。后面因为疫情开始接触『公主连结』，认识了许许多多有趣的人，加上游戏内公会战也需要机器人去查询各类信息，就用 coolq 简单做了一个。
+其实在 19 年我就开始接触 QQ 机器人了，起初是因为想利用 QQ 做一些自动化消息推送。后面因为疫情开始接触『公主连结』，认识了许许多多有趣的人，加上游戏内公会战也需要机器人去查询各类信息，就用 coolq 简单做了一个。
 
 这也是为什么这个项目我使用游戏内角色名的理由，但后来发生的事情大家也都知道，coolq 跑路导致机器人无法正常使用，所以就萌生了开发框架的想法。
 
@@ -106,10 +108,10 @@ export default class Example {
 
 ## 如何使用
 
-如果你没有服务器或者是技术小白，有机器人使用的需求随时都可以 [加群](https://jq.qq.com/?_wv=1027&k=3hcWCnhq) 申请，是免费提供的，未来也没有收费的打算。靠爱发电嘛，给个 star 就行（笑）。
+如果你没有服务器或者是技术小白，有机器人的使用需求随时都可以 [加群](https://jq.qq.com/?_wv=1027&k=3hcWCnhq) 申请，是免费提供的，未来也没有收费的打算。靠爱发电嘛，给个 star 就行（笑）。
 
 在使用过程中你有任何意见或建议，都可以提 issue 或在群内反馈，有想要添加的新功能都可以来跟我说，比较实用而且需求较大我会**考虑开发**。
 
-本身是出于自用开发的，平时都是用业余时间维护，也没有做过相关宣传与推广。这 4 年时间里，都没有第二个人开发，不过 Kokkoro 依然在保持着更新。
+本身是出于自用开发的，平时都是用业余时间维护，也没有做过相关宣传与推广。这 4 年时间里都没有第二个人开发，不过 Kokkoro 依然在保持着更新。
 
 至于维护到什么时候嘛，谁知道呢，毕竟这傻女儿是我一手带大的。如果这个项目帮到了你，那就是我最大的荣幸了。
