@@ -73,6 +73,13 @@ type IntentEvent = keyof typeof Intent;
 
 需要注意的是，Intent `1 << 25` 是 QQ 群消息事件，但文档中并未说明，我参考 `GUILD_MEMBERS` 事件，将其命名为了 `GROUP_MESSAGES`。这并不是官方命名，未来可能会发生变化。
 
+## sandbox
+
+- **类型：**`boolean`
+- **默认：**`false`
+
+是否处于沙箱场景（只会收到测试频道的事件，且调用 API 仅能操作测试频道），若 bots 中也配置了 `sandbox`，遵循就近原则。
+
 ## bots
 
 - **类型：**`BotConfig[]`
