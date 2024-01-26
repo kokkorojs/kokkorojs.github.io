@@ -49,6 +49,10 @@
         ]
       }
     },
+    "sandbox": {
+      "description": "是否处于沙箱场景",
+      "type": "boolean"
+    },
     "bots": {
       "type": "array",
       "description": "bot 信息，可添加多个",
@@ -95,6 +99,10 @@
                 "PUBLIC_GUILD_MESSAGES"
               ]
             }
+          },
+          "sandbox": {
+            "description": "是否处于沙箱场景",
+            "type": "boolean"
           },
           "max_retry": {
             "description": "掉线重连数，默认 3",
