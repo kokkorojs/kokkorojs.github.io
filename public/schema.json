@@ -40,7 +40,7 @@
           "GUILD_MESSAGES",
           "GUILD_MESSAGE_REACTIONS",
           "DIRECT_MESSAGE",
-          "GROUP_MESSAGES",
+          "GROUP_AND_C2C_EVENT",
           "INTERACTION",
           "MESSAGE_AUDIT",
           "FORUMS_EVENT",
